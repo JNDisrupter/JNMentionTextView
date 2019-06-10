@@ -1,0 +1,6 @@
+framework module JNMentionTextView {
+  umbrella header "JNMentionTextView-umbrella.h"
+
+  export *
+  module * { export * }
+}

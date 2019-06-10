@@ -1,0 +1,23 @@
+{
+  "name": "JNMentionTextView",
+  "version": "0.1.0",
+  "summary": "A short description of JNMentionTextView.",
+  "description": "A short description of JNMentionTextView.",
+  "homepage": "https://github.com/ihmouda/JNMentionTextView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Jayel Zaghmoutt": "eng.jayel.z@gmail.com",
+    "Mohammad Nabulsi": "mohammad.s.nabulsi@gmail.com",
+    "Mohammad Ihmouda": "mkihmouda@gmail.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "JNMentionTextView/Classes/**/*"
+}

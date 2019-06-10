@@ -1,0 +1,16 @@
+PODS:
+  - JNMentionTextView (0.1.0)
+
+DEPENDENCIES:
+  - JNMentionTextView (from `../`)
+
+EXTERNAL SOURCES:
+  JNMentionTextView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JNMentionTextView: 97e463a1852e59e3008030a3cf9573f0ec89bcdb
+
+PODFILE CHECKSUM: 5f137599136425ec697bdea21cfbdc947753ed2e
+
+COCOAPODS: 1.5.3

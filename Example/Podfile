@@ -1,11 +1,5 @@
 use_frameworks!
 
 target 'JNMentionTextView_Example' do
-  pod 'JNMentionTextView', :path => '../'
-
-  target 'JNMentionTextView_Tests' do
-    inherit! :search_paths
-
-    
-  end
+    pod 'JNMentionTextView', :path => '../'
 end
