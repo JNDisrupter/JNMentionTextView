@@ -16,6 +16,21 @@ extension JNMentionTextView {
      */
     func startMentionProcess() {
         self.pickerView.isHidden = false
+        
+        // super view
+        let superView = self.mentionDelegate?.superViewForPickerView()
+        
+        if self.pickerView.superview != superView {
+            
+            // remove picker view from super view
+            self.pickerView.removeFromSuperview()
+            
+            // add picker view
+            superView?.addSubview(self.pickerView)
+        }
+
+        // set picker view frame
+        self.pickerView.frame.size.height = self.mentionDelegate?.heightForPickerView() ?? 0.0
     }
     
     /**

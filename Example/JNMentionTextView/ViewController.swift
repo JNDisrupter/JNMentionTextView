@@ -52,11 +52,8 @@ class ViewController: UIViewController {
         // customize text view apperance
         self.textView.font = UIFont.systemFont(ofSize: 17.0)
         
-        // set text view mention delegate
-        self.textView.mentionDelegate = self
-        
         // init options
-        let options = JNMentionOptions(borderColor: .gray, borderWitdth: 1.0, backgroundColor: .clear, listViewBackgroundColor: .white, pickerViewHeight: 100.0, viewMode: JNMentionViewMode.bottom(JNMentionViewMode.accessoryView.triangle(length: 15.0)),
+        let options = JNMentionOptions(borderColor: .gray, borderWitdth: 1.0, backgroundColor: .clear, listViewBackgroundColor: .white, viewMode: JNMentionViewMode.bottom(JNMentionViewMode.accessoryView.triangle(length: 15.0)),
                                        mentionReplacements: ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,
                                                                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]],
                                        normalAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)])
@@ -74,7 +71,9 @@ class ViewController: UIViewController {
         
         // etup text view
         self.textView.setup(options: options)
-
+        
+        // set mention delegate
+        self.textView.mentionDelegate = self
     }
     
     /**
@@ -125,26 +124,18 @@ extension ViewController: JNMentionTextViewDelegate {
     }
     
     /**
-     Cell For
-     - Parameter item: JNMentionEntityPickable Item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: UITableViewCell.
+     Super View For Picker View
+     - Returns: the super view for the picker view.
      */
-    func cell(for item: JNMentionEntityPickable, tableView: UITableView) -> UITableViewCell {
-        
-        let cell = UITableViewCell()
-        cell.textLabel?.text = item.getPickableTitle()
-        return cell
+    func superViewForPickerView() -> UIView {
+        return self.view
     }
     
     /**
-     Height for cell
-     - Parameter item: JNMentionEntityPickable item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: cell height.
+     height for picker view
+     - Returns: picker view height.
      */
-    func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) -> CGFloat {
-        return 50.0
+    func heightForPickerView() -> CGFloat {
+        return 100.0
     }
-    
 }

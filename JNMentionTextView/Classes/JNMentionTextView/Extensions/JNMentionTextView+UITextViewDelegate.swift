@@ -14,7 +14,12 @@ extension JNMentionTextView: UITextViewDelegate {
     /**
      Should Change Text In
      */
-    open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        // return if delegate indicate that it sohuld not chnage text in the selected range.
+        if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {
+            return false
+        }
         
         // ShouldChangeText
         var shouldChangeText = true
@@ -108,5 +113,73 @@ extension JNMentionTextView: UITextViewDelegate {
         // calculate range
         let range = NSRange(location: 0, length: self.attributedText.string.count)
         self.applyMentionEngine(searchRange: range)
+        
+        // call delegate
+        self.mentionDelegate?.textViewDidChange?(textView)
+    }
+    
+    /**
+     Text View should begin editing
+     */
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        return self.mentionDelegate?.textViewShouldBeginEditing?(textView) ?? true
+    }
+    
+    /**
+     Text View should end editing
+     */
+    public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        return self.mentionDelegate?.textViewShouldEndEditing?(textView) ?? true
+    }
+    
+    /**
+     Text View Did begin editing
+     */
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        self.mentionDelegate?.textViewDidBeginEditing?(textView)
+    }
+    
+    /**
+     Text View Did end editing
+     */
+    public func textViewDidEndEditing(_ textView: UITextView) {
+        self.mentionDelegate?.textViewDidEndEditing?(textView)
+    }
+    
+    /**
+     Text View did change selection
+     */
+    public func textViewDidChangeSelection(_ textView: UITextView) {
+        self.mentionDelegate?.textViewDidChangeSelection?(textView)
+    }
+    
+    /**
+     Text View should interact with url.
+     */
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return self.mentionDelegate?.textView?(textView, shouldInteractWith: URL, in: characterRange) ?? true
+    }
+    
+    /**
+     Text View should interact with url in range with interaction.
+     */
+    @available(iOS 10.0, *)
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        return self.mentionDelegate?.textView?(textView, shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? true
+    }
+    
+    /**
+     Text View should interact with text attachment in range with interaction.
+     */
+    @available(iOS 10.0, *)
+    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        return self.mentionDelegate?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true
+    }
+    
+    /**
+     Text View should interact with text attachment in range.
+     */
+    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
+        return self.mentionDelegate?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange) ?? true
     }
 }

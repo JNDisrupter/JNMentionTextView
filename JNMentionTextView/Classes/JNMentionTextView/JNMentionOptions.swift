@@ -42,10 +42,7 @@ public struct JNMentionOptions {
     
     /// List View Background Color
     var listViewBackgroundColor: UIColor
-    
-    /// Height
-    var pickerViewHeight: CGFloat
-    
+
     /// View Mode
     var viewMode: JNMentionViewMode
     
@@ -61,12 +58,11 @@ public struct JNMentionOptions {
      - Parameter borderWitdth: Border width value.
      - Parameter backgroundColor: Background color.
      - Parameter listViewBackgroundColor: List view background color.
-     - Parameter pickerViewHeight: Picker view height value.
      - Parameter viewMode: JNMention View Mode.
      - Parameter mentionReplacements: array of JNMentionReplacement objects.
      - Parameter normalAttributes: Normal attributes.
      */
-    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor, listViewBackgroundColor: UIColor, pickerViewHeight: CGFloat, viewMode: JNMentionViewMode, mentionReplacements: [String: [NSAttributedString.Key: Any]], normalAttributes: [NSAttributedString.Key: Any]) {
+    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor, listViewBackgroundColor: UIColor, viewMode: JNMentionViewMode, mentionReplacements: [String: [NSAttributedString.Key: Any]], normalAttributes: [NSAttributedString.Key: Any]) {
         
         // borderColor
         self.borderColor = borderColor
@@ -79,9 +75,6 @@ public struct JNMentionOptions {
         
         // list view background color
         self.listViewBackgroundColor = listViewBackgroundColor
-        
-        // picker View Height
-        self.pickerViewHeight = pickerViewHeight
         
         // view mode
         self.viewMode = viewMode

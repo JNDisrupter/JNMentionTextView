@@ -13,14 +13,11 @@ extension JNMentionTextView {
     
     /**
      Init Picker View
-     - Parameter frame: CGRect frame.
      */
-    func initPickerView(frame: CGRect) {
+    func initPickerView() {
         
-        self.pickerView = JNMentionPickerView(frame: CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: self.options.pickerViewHeight)))
-        
+        self.pickerView = JNMentionPickerView(frame: self.frame)
         self.pickerView.setup(options: self.options)
-        self.superview?.addSubview(pickerView)
     }
     
     /**
