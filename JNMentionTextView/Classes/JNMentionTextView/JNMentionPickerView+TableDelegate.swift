@@ -25,19 +25,6 @@ extension JNMentionPickerView: UITableViewDelegate, UITableViewDataSource {
         return self.delegate?.pickerViewRetrieveData().count ?? 0
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        // data
-        let data = self.delegate?.pickerViewRetrieveData() ?? []
-        
-        // get cell for pickable item
-        if data.count > indexPath.row {
-            return self.delegate?.heightForCell(for: data[indexPath.row]) ?? UITableView.automaticDimension
-        }
-        
-        return UITableView.automaticDimension
-    }
-    
     /**
      Cell For Row At
      */
@@ -52,6 +39,22 @@ extension JNMentionPickerView: UITableViewDelegate, UITableViewDataSource {
         }
         
         return UITableViewCell()
+    }
+    
+    /**
+     Height for row at
+     */
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // data
+        let data = self.delegate?.pickerViewRetrieveData() ?? []
+        
+        // get cell for pickable item
+        if data.count > indexPath.row {
+            return self.delegate?.heightForCell(for: data[indexPath.row]) ?? UITableView.automaticDimension
+        }
+        
+        return UITableView.automaticDimension
     }
     
     /**

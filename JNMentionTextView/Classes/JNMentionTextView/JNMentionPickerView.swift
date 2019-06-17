@@ -152,7 +152,7 @@ open class JNMentionPickerView: UIView {
     private func drawTrianglePath(options: JNMentionOptions){
         
         // fill the path
-        self.bezierPath.fill()
+        self.bezierPath.close()
         
         // customize the shape apprance
         shapeLayer.frame = self.bounds

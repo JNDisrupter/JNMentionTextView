@@ -11,8 +11,8 @@
 
 ## Preview
 
-<img src="https://github.com/JNDisrupter/JNSegmentedControl/raw/master/Images/mention-1.gif" width="280"/> 
-<img src="https://github.com/JNDisrupter/JNSegmentedControl/raw/master/Images/mention-2.gif" width="280"/> 
+<img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-1.gif" width="280"/> 
+<img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-2.gif" width="280"/> 
 
 ## Requirements:
 

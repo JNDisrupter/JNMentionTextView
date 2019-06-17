@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F8FB46B22B7979500DAD480 /* CustomableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FB46922B7979500DAD480 /* CustomableViewCell.swift */; };
+		1F8FB46C22B7979500DAD480 /* CustomableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8FB46A22B7979500DAD480 /* CustomableViewCell.xib */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F8FB46922B7979500DAD480 /* CustomableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomableViewCell.swift; sourceTree = "<group>"; };
+		1F8FB46A22B7979500DAD480 /* CustomableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomableViewCell.xib; sourceTree = "<group>"; };
 		2F8DD2808BBA1FFB8F30D552 /* Pods-JNMentionTextView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNMentionTextView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JNMentionTextView_Example/Pods-JNMentionTextView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		45EB091C27CBD824783224CB /* JNMentionTextView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JNMentionTextView.podspec; path = ../JNMentionTextView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		484BB84F229E99923D1DD663 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				1F8FB46922B7979500DAD480 /* CustomableViewCell.swift */,
+				1F8FB46A22B7979500DAD480 /* CustomableViewCell.xib */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -197,6 +203,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				1F8FB46C22B7979500DAD480 /* CustomableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8FB46B22B7979500DAD480 /* CustomableViewCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
