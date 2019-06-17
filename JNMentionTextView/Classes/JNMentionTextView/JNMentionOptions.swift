@@ -49,9 +49,6 @@ public struct JNMentionOptions {
     /// Mention Replacements
     var mentionReplacements: [String: [NSAttributedString.Key : Any]]
     
-    /// Normal Attributes
-    var normalAttributes: [NSAttributedString.Key: Any]
-    
     /**
      Initializer
      - Parameter borderColor: Border color.
@@ -60,9 +57,8 @@ public struct JNMentionOptions {
      - Parameter listViewBackgroundColor: List view background color.
      - Parameter viewMode: JNMention View Mode.
      - Parameter mentionReplacements: array of JNMentionReplacement objects.
-     - Parameter normalAttributes: Normal attributes.
      */
-    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor, listViewBackgroundColor: UIColor, viewMode: JNMentionViewMode, mentionReplacements: [String: [NSAttributedString.Key: Any]], normalAttributes: [NSAttributedString.Key: Any]) {
+    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor, listViewBackgroundColor: UIColor, viewMode: JNMentionViewMode, mentionReplacements: [String: [NSAttributedString.Key: Any]]) {
         
         // borderColor
         self.borderColor = borderColor
@@ -81,8 +77,5 @@ public struct JNMentionOptions {
         
         // replacements
         self.mentionReplacements = mentionReplacements
-        
-        // set normal attributes
-        self.normalAttributes = normalAttributes
     }
 }

@@ -16,6 +16,11 @@ extension JNMentionTextView: UITextViewDelegate {
      */
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
+        // set normal attributes
+        if self.normalAttributes.isEmpty {
+            self.normalAttributes = self.typingAttributes
+        }
+        
         // return if delegate indicate that it sohuld not chnage text in the selected range.
         if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {
             return false
@@ -79,7 +84,7 @@ extension JNMentionTextView: UITextViewDelegate {
                             let replacementString = mentionedItem.symbol + mentionedItem.item.getPickableTitle()
                             
                             // replace the mentioned item with (symbol with mentioned title)
-                            self.textStorage.replaceCharacters(in: rangeAttributes, with: NSAttributedString(string: replacementString, attributes: self.options.normalAttributes))
+                            self.textStorage.replaceCharacters(in: rangeAttributes, with: NSAttributedString(string: replacementString, attributes: self.normalAttributes))
                             
                             // move cursor to the end of replacement string
                             self.moveCursor(to: rangeAttributes.location + replacementString.count)

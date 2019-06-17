@@ -35,7 +35,7 @@ extension JNMentionTextView {
         
         // get font size
         var fontSize = CGSize.zero
-        if let font = self.options.normalAttributes[.font] as? UIFont {
+        if let font = self.normalAttributes[.font] as? UIFont {
             fontSize = CGSize(width: font.pointSize, height: font.pointSize)
         }
         

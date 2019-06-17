@@ -67,6 +67,9 @@ open class JNMentionTextView: UITextView {
     /// Mention Delegate
     open weak var mentionDelegate: JNMentionTextViewDelegate?
     
+    /// Normal Attributes
+    var normalAttributes: [NSAttributedString.Key: Any] = [:]
+    
     // MARK:- Initializers
 
     /**

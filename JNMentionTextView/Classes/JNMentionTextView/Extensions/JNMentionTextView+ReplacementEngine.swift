@@ -41,7 +41,7 @@ extension JNMentionTextView {
         // set normal attributes after selection
         let maxRange = replacementRange.location + item.getPickableTitle().count
         if maxRange < self.textStorage.length {
-            self.textStorage.addAttributes(self.options.normalAttributes, range: NSMakeRange(maxRange, 1))
+            self.textStorage.addAttributes(self.normalAttributes, range: NSMakeRange(maxRange, 1))
         }
 
         // move cursor to the end of replacement
@@ -62,7 +62,7 @@ extension JNMentionTextView {
         var difference = 0
         
         /// Attributed String
-        let attributedString = NSMutableAttributedString(string: text, attributes: self.options.normalAttributes)
+        let attributedString = NSMutableAttributedString(string: text, attributes: self.normalAttributes)
         
         // iterate through each symbol
         for (pattern, attributes) in self.options.mentionReplacements {
