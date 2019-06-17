@@ -1,9 +1,8 @@
 //
 //  JNMentionTextView+PickerView.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
@@ -56,7 +55,7 @@ extension JNMentionTextView {
                     switch accessoryView {
                     case .triangle(let length):
                         self.pickerView.frame.size.height += (length * CGFloat(3.0.squareRoot())) / 2.0
-                    case .plain:
+                    case .none:
                         break
                     }
                 
@@ -71,7 +70,7 @@ extension JNMentionTextView {
                         
                         self.pickerView.frame.size.height += accessoryHeight
                         originY -= accessoryHeight
-                    case .plain:
+                    case .none:
                         break
                }
             }

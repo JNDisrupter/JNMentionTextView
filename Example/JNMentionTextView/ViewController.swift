@@ -17,7 +17,7 @@ struct User {
 }
 
 /// JNMentionEntityPickable
-extension User: JNMentionEntityPickable {
+extension User: JNMentionPickable {
     
     /**
      Get Pickable title
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: JNMentionTextView!
     
     /// Data
-    var data: [String: [JNMentionEntityPickable]] = [:]
+    var data: [String: [JNMentionPickable]] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         self.textView.font = UIFont.systemFont(ofSize: 17.0)
         
         // init options
-        let options = JNMentionOptions(borderColor: .gray, borderWitdth: 1.0, backgroundColor: .clear, listViewBackgroundColor: .white, viewMode: JNMentionViewMode.bottom(JNMentionViewMode.accessoryView.triangle(length: 15.0)),
+        let options = JNMentionOptions(borderColor: .gray, borderWitdth: 1.0, backgroundColor: .clear, listViewBackgroundColor: .white, viewMode: JNMentionPickerViePositionwMode.bottom(JNMentionPickerViePositionwMode.accessoryView.triangle(sideLength: 15.0)),
                                        mentionReplacements: ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,
                                                                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]],
                                        normalAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)])
@@ -96,7 +96,7 @@ extension ViewController: JNMentionTextViewDelegate {
      - Parameter id: JNMentionEntityPickable ID.
      - Returns: JNMentionEntityPickable object for the search criteria.
      */
-    func getMentionItemFor(symbol: String, id: String) -> JNMentionEntityPickable? {
+    func getMentionItemFor(symbol: String, id: String) -> JNMentionPickable? {
 
         for item in self.data[symbol] ?? [] {
             if item.getPickableIdentifier() == id {
@@ -113,7 +113,7 @@ extension ViewController: JNMentionTextViewDelegate {
      - Parameter searchString: search string.
      - Returns: list of JNMentionEntityPickable objects for the search criteria.
      */
-    func retrieveDataFor(_ symbole: String, using searchTerm: String) -> [JNMentionEntityPickable] {
+    func retrieveDataFor(_ symbole: String, using searchTerm: String) -> [JNMentionPickable] {
         
         var data = self.data[symbole] ?? []
         if !searchTerm.isEmpty {

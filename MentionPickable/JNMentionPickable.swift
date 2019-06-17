@@ -1,13 +1,12 @@
 //
 //  Pickable.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
-/// Pickable protocol
-public protocol JNMentionEntityPickable {
+/// Mention Pickable Protocol
+public protocol JNMentionPickable {
     
     /**
      Get Pickable title

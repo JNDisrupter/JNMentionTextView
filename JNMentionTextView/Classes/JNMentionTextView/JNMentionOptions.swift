@@ -1,30 +1,29 @@
 //
 //  JNMentionOptions.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
 
-/// JNMention View Mode
-public enum JNMentionViewMode {
+/// JNMention Picker View Position Mode
+public enum JNMentionPickerViePositionwMode {
     
-    // Top
-    case top(JNMentionViewMode.accessoryView)
+    /// Top
+    case top(JNMentionPickerViePositionwMode.accessoryView)
     
-    // Bottom
-    case bottom(JNMentionViewMode.accessoryView)
+    /// Bottom
+    case bottom(JNMentionPickerViePositionwMode.accessoryView)
     
     /// Accessory View
     public enum accessoryView {
         
-        // Plain
-        case plain
+        /// None
+        case none
         
-        // Triangle
-        case triangle(length: CGFloat)
+        /// Triangle
+        case triangle(sideLength: CGFloat)
     }
 }
 
@@ -44,7 +43,7 @@ public struct JNMentionOptions {
     var listViewBackgroundColor: UIColor
 
     /// View Mode
-    var viewMode: JNMentionViewMode
+    var viewMode: JNMentionPickerViePositionwMode
     
     /// Mention Replacements
     var mentionReplacements: [String: [NSAttributedString.Key : Any]]
@@ -58,7 +57,7 @@ public struct JNMentionOptions {
      - Parameter viewMode: JNMention View Mode.
      - Parameter mentionReplacements: array of JNMentionReplacement objects.
      */
-    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor, listViewBackgroundColor: UIColor, viewMode: JNMentionViewMode, mentionReplacements: [String: [NSAttributedString.Key: Any]]) {
+    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor, listViewBackgroundColor: UIColor, viewMode: JNMentionPickerViePositionwMode, mentionReplacements: [String: [NSAttributedString.Key: Any]]) {
         
         // borderColor
         self.borderColor = borderColor

@@ -1,9 +1,8 @@
 //
 //  JNMentionPickerView.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
@@ -108,7 +107,7 @@ open class JNMentionPickerView: UIView {
                 // draw triangle path
                 self.drawTrianglePath(options: options)
                 
-            case .plain:
+            case .none:
                 break
                 
             }
@@ -140,7 +139,7 @@ open class JNMentionPickerView: UIView {
                 // draw triangle path
                 self.drawTrianglePath(options: options)
                 
-            case .plain:
+            case .none:
                 break
             }
         }
@@ -192,7 +191,7 @@ open class JNMentionPickerView: UIView {
             case .triangle(let length):
                 topAnchorConstant = 0.0
                 bottomAnchorConstant = -(length * CGFloat (3.0.squareRoot()) / 2.0)
-            case .plain:
+            case .none:
                 break
             }
         case .bottom(let accessoryView):
@@ -200,7 +199,7 @@ open class JNMentionPickerView: UIView {
             case .triangle(let length):
                 topAnchorConstant = (length * CGFloat (3.0.squareRoot()) / 2.0)
                 bottomAnchorConstant = 0.0
-            case .plain:
+            case .none:
                 break
             }
         }
@@ -222,21 +221,21 @@ public protocol JNMentionPickerViewDelegate: NSObjectProtocol {
      Retrieve Data
      - Returns: Pickable data array.
      */
-    func pickerViewRetrieveData() -> [JNMentionEntityPickable]
+    func pickerViewRetrieveData() -> [JNMentionPickable]
     
     /**
      Cell
      - Parameter item: Pickable item.
      - Returns: UITableViewCell.
      */
-    func cell(for item: JNMentionEntityPickable) -> UITableViewCell
+    func cell(for item: JNMentionPickable) -> UITableViewCell
     
     /**
      Height for cell
      - Parameter item: Pickable item.
      - Returns: UITableViewCell.
      */
-    func heightForCell(for item: JNMentionEntityPickable) -> CGFloat
+    func heightForCell(for item: JNMentionPickable) -> CGFloat
     
     /**
      Did Select Item

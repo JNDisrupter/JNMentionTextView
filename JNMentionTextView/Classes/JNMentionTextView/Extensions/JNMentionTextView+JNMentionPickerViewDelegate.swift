@@ -1,9 +1,8 @@
 //
 //  JNMentionTextView+JNMentionPickerViewDelegate.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
@@ -15,7 +14,7 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
      Retrieve Data
      - Returns: Pickable data array.
      */
-    public func pickerViewRetrieveData() -> [JNMentionEntityPickable] {
+    public func pickerViewRetrieveData() -> [JNMentionPickable] {
         
         // Data
         return self.mentionDelegate?.retrieveDataFor(self.selectedSymbol, using: self.searchString) ?? []
@@ -26,7 +25,7 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
      - Parameter item: Pickable item.
      - Returns: UITableViewCell.
      */
-    public func cell(for item: JNMentionEntityPickable) -> UITableViewCell {
+    public func cell(for item: JNMentionPickable) -> UITableViewCell {
         return self.mentionDelegate?.cell(for: item, tableView: self.pickerView.tableView) ?? UITableViewCell()
     }
     
@@ -35,7 +34,7 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
      - Parameter item: Pickable item.
      - Returns: UITableViewCell.
      */
-    public func heightForCell(for item: JNMentionEntityPickable) -> CGFloat {
+    public func heightForCell(for item: JNMentionPickable) -> CGFloat {
         return self.mentionDelegate?.heightForCell(for: item, tableView: self.pickerView.tableView) ?? 0.0
     }
     

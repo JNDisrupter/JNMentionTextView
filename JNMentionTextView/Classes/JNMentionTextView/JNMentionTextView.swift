@@ -1,9 +1,8 @@
 //
 //  JNMentionTextView.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
@@ -25,14 +24,14 @@ public struct JNMentionEntity {
     var symbol: String
     
     /// Pickable Item
-    var item: JNMentionEntityPickable
+    var item: JNMentionPickable
 
     /**
      Initializer
      - Parameter item: JNMentionEntityPickable Item
      - Parameter symbol: Symbol special character
      */
-    init(item: JNMentionEntityPickable, symbol: String) {
+    init(item: JNMentionPickable, symbol: String) {
         
         self.item = item
         self.symbol = symbol
@@ -189,7 +188,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter id: JNMentionEntityPickable ID.
      - Returns: JNMentionEntityPickable objects for the search criteria.
      */
-    func getMentionItemFor(symbol: String, id: String) -> JNMentionEntityPickable?
+    func getMentionItemFor(symbol: String, id: String) -> JNMentionPickable?
     
     /**
      Retrieve Data For
@@ -197,7 +196,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter searchString: search string.
      - Returns: list of JNMentionEntityPickable objects for the search criteria.
      */
-    func retrieveDataFor(_ symbol: String, using searchString: String) -> [JNMentionEntityPickable]
+    func retrieveDataFor(_ symbol: String, using searchString: String) -> [JNMentionPickable]
     
     /**
      Cell For
@@ -205,7 +204,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: UITableViewCell.
      */
-    func cell(for item: JNMentionEntityPickable, tableView: UITableView) -> UITableViewCell
+    func cell(for item: JNMentionPickable, tableView: UITableView) -> UITableViewCell
     
     /**
      Height for cell
@@ -213,7 +212,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: cell height.
      */
-    func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) -> CGFloat
+    func heightForCell(for item: JNMentionPickable, tableView: UITableView) -> CGFloat
     
     /**
      Super View For Picker View
@@ -238,7 +237,7 @@ public extension JNMentionTextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: UITableViewCell.
      */
-    func cell(for item: JNMentionEntityPickable, tableView: UITableView) -> UITableViewCell {
+    func cell(for item: JNMentionPickable, tableView: UITableView) -> UITableViewCell {
         
         let cell = UITableViewCell()
         cell.textLabel?.text = item.getPickableTitle()
@@ -251,7 +250,7 @@ public extension JNMentionTextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: cell height.
      */
-    func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) -> CGFloat {
+    func heightForCell(for item: JNMentionPickable, tableView: UITableView) -> CGFloat {
         return ComponentValues.defaultCellHeight
     }
 }

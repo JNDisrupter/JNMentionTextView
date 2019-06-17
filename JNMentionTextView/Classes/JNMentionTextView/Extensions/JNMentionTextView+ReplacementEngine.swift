@@ -1,9 +1,8 @@
 //
 //  JNMentionTextView+ReplacementEngine.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
@@ -16,7 +15,7 @@ extension JNMentionTextView {
      - Parameter item: selected pickable item.
      - Parameter selectedLocation: selected location.
      */
-    func replaceCharacters(with item: JNMentionEntityPickable, in selectedLocation: Int) {
+    func replaceCharacters(with item: JNMentionPickable, in selectedLocation: Int) {
         
         // replacement Range
         let replacementRange = NSRange(location: self.selectedSymbolLocation, length: selectedLocation - self.selectedSymbolLocation)
