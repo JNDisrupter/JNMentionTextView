@@ -16,9 +16,7 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // set normal attributes
-        if self.normalAttributes.isEmpty {
-            self.normalAttributes = self.typingAttributes
-        }
+        self.normalAttributes = self.typingAttributes
         
         // return if delegate indicate that it sohuld not chnage text in the selected range.
         if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {

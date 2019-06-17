@@ -55,8 +55,7 @@ class ViewController: UIViewController {
         // init options
         let options = JNMentionOptions(borderColor: .gray, borderWitdth: 1.0, backgroundColor: .clear, listViewBackgroundColor: .white, viewMode: JNMentionPickerViePositionwMode.bottom(JNMentionPickerViePositionwMode.accessoryView.triangle(sideLength: 15.0)),
                                        mentionReplacements: ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,
-                                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]],
-                                       normalAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)])
+                                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]])
 
         
         // build data
