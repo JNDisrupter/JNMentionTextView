@@ -15,9 +15,6 @@ extension JNMentionTextView: UITextViewDelegate {
      */
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        // set normal attributes
-        self.normalAttributes = self.typingAttributes
-        
         // return if delegate indicate that it sohuld not chnage text in the selected range.
         if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {
             return false
@@ -53,10 +50,15 @@ extension JNMentionTextView: UITextViewDelegate {
             }
             
             // Calculate range
-            let filterRange = NSRange(location: range.location - self.searchString.count , length: self.searchString.count)
+            let filterRange = NSRange(location: range.location - self.searchString.count , length: self.searchString.count)            
+            self.postFilteringProcess(in: filterRange, completion: {
+                
+                // end mention process
+                if self.pickerView.tableView.visibleCells.count == 0 {
+                    self.endMentionProcess()
+                }
+            })
             
-            // post filter process
-            self.postFilteringProcess(in: filterRange)
             
         } else {
             
@@ -93,13 +95,36 @@ extension JNMentionTextView: UITextViewDelegate {
                             // start mention process with search string for item title
                             self.searchString = mentionedItem.item.getPickableTitle()
                             self.startMentionProcess()
-                            self.postFilteringProcess(in: rangeAttributes)
+                            
+                            
+                            self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
+                                
+                                guard let strongSelf = self else { return }
+                                let rect: CGRect = strongSelf.caretRect(for: strongSelf.selectedTextRange?.start ?? strongSelf.beginningOfDocument)
+                                
+                                
+                                strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
+                                
+                                strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
+                                
+                                DispatchQueue.main.async {
+                                    let textPosition = self?.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedRange.location)
+                                    let rect1: CGRect = strongSelf.caretRect(for: textPosition ?? strongSelf.beginningOfDocument)
+                                    strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: rect1.origin.y - strongSelf.bounds.size.height + rect1.size.height), animated: false)
+                                }
+                                
+                            })
+                            
                                                         
                             // skip this change in text
                             shouldChangeText = false
                         }
                     }
                 }
+            } else {
+                
+                // set normal attributes
+                self.normalAttributes = self.typingAttributes
             }
         }
         
@@ -144,6 +169,9 @@ extension JNMentionTextView: UITextViewDelegate {
      Text View Did end editing
      */
     public func textViewDidEndEditing(_ textView: UITextView) {
+        
+        // end mention process
+        self.endMentionProcess()
         self.mentionDelegate?.textViewDidEndEditing?(textView)
     }
     

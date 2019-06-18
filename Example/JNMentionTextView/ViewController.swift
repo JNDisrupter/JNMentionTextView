@@ -69,6 +69,9 @@ class ViewController: UIViewController {
         self.data = ["@": [firstUser, secondUser, thirdUser, fourthUser, fifthUser]]
         
         // etup text view
+        self.textView.returnKeyType = .done
+        
+        // etup text view
         self.textView.setup(options: options)
         
         // set mention delegate

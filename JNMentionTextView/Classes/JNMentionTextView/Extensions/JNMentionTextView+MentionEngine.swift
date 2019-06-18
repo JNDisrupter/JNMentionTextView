@@ -14,33 +14,30 @@ extension JNMentionTextView {
      Start Mention Process
      */
     func startMentionProcess() {
+        
+        // unhide the picker view
         self.pickerView.isHidden = false
-        
-        // super view
-        let superView = self.mentionDelegate?.superViewForPickerView()
-        
-        if self.pickerView.superview != superView {
-            
-            // remove picker view from super view
-            self.pickerView.removeFromSuperview()
-            
-            // add picker view
-            superView?.addSubview(self.pickerView)
-        }
-
-        // set picker view frame
-        self.pickerView.frame.size.height = self.mentionDelegate?.heightForPickerView() ?? 0.0
-        
-        // Add Arrow
-        let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
-        self.pickerView.drawTriangle(options: self.options, cursorOffset: rect.origin.x + rect.width)
     }
     
     /**
      End Mention Process
      */
     func endMentionProcess() {
+        
+        self.searchString = ""
+        self.selectedSymbol = ""
+        self.selectedSymbolLocation = 0
+        self.selectedSymbolAttributes = [:]
         self.pickerView.isHidden = true
+        
+        self.resetConentOffset()
+    }
+    
+    func resetConentOffset(){
+        
+        DispatchQueue.main.async {
+            self.setContentOffset(self.previousOffset, animated: false)
+        }
     }
     
     /**
@@ -75,8 +72,24 @@ extension JNMentionTextView {
 
                         // start mention process
                         self.startMentionProcess()
-                        self.postFilteringProcess(in: matchRange)
                         
+                       self.postFilteringProcess(in: matchRange, completion: { [weak self] in
+                        
+                        guard let strongSelf = self else { return }
+                        let rect: CGRect = strongSelf.caretRect(for: strongSelf.selectedTextRange?.start ?? strongSelf.beginningOfDocument)
+                        
+                        
+                        strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
+                        
+                        strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
+                        
+                        DispatchQueue.main.async {
+                            let textPosition = self?.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedRange.location)
+                            let rect1: CGRect = strongSelf.caretRect(for: textPosition ?? strongSelf.beginningOfDocument)
+                            strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: rect1.origin.y - strongSelf.bounds.size.height + rect1.size.height), animated: false)
+                        }
+                        
+                       })
                     }
                 }
             }

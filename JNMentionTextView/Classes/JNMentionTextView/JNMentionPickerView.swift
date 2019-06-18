@@ -154,7 +154,7 @@ public class JNMentionPickerView: UIView {
         // customize the shape apprance
         shapeLayer.frame = self.bounds
         shapeLayer.path = self.bezierPath.cgPath
-        shapeLayer.fillColor = options.backgroundColor.cgColor
+        shapeLayer.fillColor = UIColor.yellow.cgColor//options.backgroundColor.cgColor
         self.layer.addSublayer(shapeLayer)
     }
     

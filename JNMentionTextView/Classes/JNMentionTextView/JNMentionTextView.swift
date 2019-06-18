@@ -72,6 +72,9 @@ open class JNMentionTextView: UITextView {
     /// Normal Attributes
     internal var normalAttributes: [NSAttributedString.Key: Any] = [:]
     
+    /// Tap Gesture
+    var previousOffset: CGPoint = CGPoint.zero
+    
     // MARK:- Initializers
 
     /**
@@ -101,6 +104,7 @@ open class JNMentionTextView: UITextView {
         self.selectedSymbolLocation = 0
         self.selectedSymbolAttributes = [:]
         self.searchString = ""
+        
         self.delegate = self
     }
     
@@ -162,12 +166,14 @@ open class JNMentionTextView: UITextView {
      Move cursor to
      - Parameter location: Location.
      */
-    func moveCursor(to location: Int) {
+    func moveCursor(to location: Int, completion:(() -> ())? = nil) {
         
         // get cursor position
         if let newPosition = self.position(from: self.beginningOfDocument, offset: location) {
             DispatchQueue.main.async {
                 self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
+                
+                completion?()
             }
         }
     }
@@ -176,9 +182,11 @@ open class JNMentionTextView: UITextView {
      post filtering process
      - Parameter selectedRange: NSRange.
      */
-    func postFilteringProcess(in selectedRange: NSRange) {
+    func postFilteringProcess(in selectedRange: NSRange, completion:(() -> ())? = nil) {
         self.pickerView.tableView.reloadData()
-        self.updatePickerViewFrame(selectedRange: selectedRange)
+        self.setPickerViewFrame(completion: {
+                completion?()
+        })
     }
 }
 
@@ -216,18 +224,6 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Returns: cell height.
      */
     func heightForCell(for item: JNMentionPickable, tableView: UITableView) -> CGFloat
-    
-    /**
-     Super View For Picker View
-     - Returns: the super view for the picker view.
-     */
-    func superViewForPickerView() -> UIView
-    
-    /**
-     height for picker view
-     - Returns: picker view height.
-     */
-    func heightForPickerView() -> CGFloat
 }
 
 

@@ -63,8 +63,5 @@ extension JNMentionPickerView: UITableViewDelegate, UITableViewDataSource {
         
         // did select item
         self.delegate?.didSelectItem(at: indexPath)
-        
-        // set is hidden
-        self.isHidden = true
     }
 }

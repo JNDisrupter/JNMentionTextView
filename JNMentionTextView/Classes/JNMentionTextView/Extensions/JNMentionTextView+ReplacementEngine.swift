@@ -31,11 +31,10 @@ extension JNMentionTextView {
         // create mention attributed string with item title and symbol attributes
         let mentionAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: item.getPickableTitle(), attributes: updatedAttributes))
         
+        mentionAttributedString.append(NSAttributedString(string: " "))
+        
         // replace the replacement range with mention item
         self.textStorage.replaceCharacters(in: replacementRange, with: mentionAttributedString)
-        
-        // append empty string after selection and replacement
-        self.textStorage.append(NSAttributedString(string: " "))
         
         // set normal attributes after selection
         let maxRange = replacementRange.location + item.getPickableTitle().count
@@ -44,10 +43,12 @@ extension JNMentionTextView {
         }
 
         // move cursor to the end of replacement
-        self.moveCursor(to: replacementRange.location + item.getPickableTitle().count + 1)
-        
-        // empty the search string
-        self.searchString = ""
+        self.moveCursor(to: replacementRange.location + item.getPickableTitle().count + 1, completion: {
+            self.endMentionProcess()
+            
+            // empty the search string
+            self.searchString = ""
+        })
     }
 
     /**
