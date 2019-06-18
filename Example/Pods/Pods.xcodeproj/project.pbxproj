@@ -19,7 +19,7 @@
 		AA129A253162AC3653CD4821AA7C0E4C /* JNMentionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431C0718F0F602CBA096E90130A8ACDD /* JNMentionPickerView.swift */; };
 		B153D85B08B27E32FBAD822EBB86D283 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		BC347FF4ED7E01A0D1EFBC2D613958B0 /* JNMentionTextView+PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E8D9279C207198894375F515296E26 /* JNMentionTextView+PickerView.swift */; };
-		C53908573D9450D090D0FC8D2DD91ADD /* JNMentionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72C3118690BB2ABFA694F731CACA22 /* JNMentionOptions.swift */; };
+		C53908573D9450D090D0FC8D2DD91ADD /* JNMentionPickerViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */; };
 		CFD7539AEF511F4C2EADF9B8A0F2C491 /* JNMentionPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF060858C9DA8BCA50E54E05CEDD74 /* JNMentionPickable.swift */; };
 		D2C6D85CE5D8876A93CAF09C0877CF5D /* JNMentionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */; };
 		D522507BA3E686CE7C4235A4DC8FB1B3 /* JNMentionTextView+MentionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DC7145A54DD1834DB76DBC6352156 /* JNMentionTextView+MentionEngine.swift */; };
@@ -56,7 +56,7 @@
 		80CF060858C9DA8BCA50E54E05CEDD74 /* JNMentionPickable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickable.swift; sourceTree = "<group>"; };
 		8FD581F3B08492F82E7FD54420CB1436 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9C72C3118690BB2ABFA694F731CACA22 /* JNMentionOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionOptions.swift; sourceTree = "<group>"; };
+		9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewOptions.swift; sourceTree = "<group>"; };
 		B14592B88FD6995492D6D6DD4520D29F /* Pods-JNMentionTextView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JNMentionTextView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		B266D62450799B572558AD540704C44C /* JNMentionTextView+ReplacementEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+ReplacementEngine.swift"; sourceTree = "<group>"; };
 		C07F1ABB003406BB51333496B6F6605A /* JNMentionTextView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNMentionTextView-prefix.pch"; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		321F9AB1727075F329103259B562CDA9 /* JNMentionTextView */ = {
 			isa = PBXGroup;
 			children = (
-				9C72C3118690BB2ABFA694F731CACA22 /* JNMentionOptions.swift */,
+				9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */,
 				431C0718F0F602CBA096E90130A8ACDD /* JNMentionPickerView.swift */,
 				FC3780B864CC950EECA637B5A066AA07 /* JNMentionPickerView+TableDelegate.swift */,
 				31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */,
@@ -360,7 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD7539AEF511F4C2EADF9B8A0F2C491 /* JNMentionPickable.swift in Sources */,
-				C53908573D9450D090D0FC8D2DD91ADD /* JNMentionOptions.swift in Sources */,
+				C53908573D9450D090D0FC8D2DD91ADD /* JNMentionPickerViewOptions.swift in Sources */,
 				A5598D0E4048FA728D82A57B0FF6D0A5 /* JNMentionPickerView+TableDelegate.swift in Sources */,
 				AA129A253162AC3653CD4821AA7C0E4C /* JNMentionPickerView.swift in Sources */,
 				E230216598264BA1272DC180B1D81B08 /* JNMentionTextView+JNMentionPickerViewDelegate.swift in Sources */,

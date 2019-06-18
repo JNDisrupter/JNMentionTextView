@@ -51,11 +51,11 @@ class ViewController: UIViewController {
         
         // customize text view apperance
         self.textView.font = UIFont.systemFont(ofSize: 17.0)
+        self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
         
         // init options
-        let options = JNMentionOptions(borderColor: .gray, borderWitdth: 1.0, backgroundColor: .clear, listViewBackgroundColor: .white, viewMode: JNMentionPickerViePositionwMode.bottom(JNMentionPickerViePositionwMode.accessoryView.triangle(sideLength: 15.0)),
-                                       mentionReplacements: ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,
-                                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]])
+        let options = JNMentionPickerViewOptions(borderColor: .gray, borderWitdth: 1.0, viewPositionMode: JNMentionPickerViePositionwMode.top(JNMentionPickerViePositionwMode.accessoryView.triangle(sideLength: 15.0)))
 
         
         // build data
@@ -116,7 +116,7 @@ extension ViewController: JNMentionTextViewDelegate {
         
         var data = self.data[symbole] ?? []
         if !searchTerm.isEmpty {
-            data = data.filter({ $0.getPickableTitle().contains(searchTerm)})
+            data = data.filter({ $0.getPickableTitle().lowercased().contains(searchTerm.lowercased())})
         }
 
         return data

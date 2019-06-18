@@ -58,7 +58,6 @@ extension JNMentionTextView: UITextViewDelegate {
             // post filter process
             self.postFilteringProcess(in: filterRange)
             
-            
         } else {
             
             // check if delete already mentioned item
@@ -95,7 +94,7 @@ extension JNMentionTextView: UITextViewDelegate {
                             self.searchString = mentionedItem.item.getPickableTitle()
                             self.startMentionProcess()
                             self.postFilteringProcess(in: rangeAttributes)
-                            
+                                                        
                             // skip this change in text
                             shouldChangeText = false
                         }

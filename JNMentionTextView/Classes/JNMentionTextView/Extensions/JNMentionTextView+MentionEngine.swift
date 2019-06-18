@@ -30,6 +30,10 @@ extension JNMentionTextView {
 
         // set picker view frame
         self.pickerView.frame.size.height = self.mentionDelegate?.heightForPickerView() ?? 0.0
+        
+        // Add Arrow
+        let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
+        self.pickerView.drawTriangle(options: self.options, cursorOffset: rect.origin.x + rect.width)
     }
     
     /**
@@ -49,7 +53,7 @@ extension JNMentionTextView {
         guard !self.isInFilterProcess() else { return }
         
         // iterate through each replacement symbol
-        for (pattern, attributes) in self.options?.mentionReplacements ?? [:] {
+        for (pattern, attributes) in self.mentionReplacements {
             
             do {
                 let regex = try NSRegularExpression(pattern: pattern)

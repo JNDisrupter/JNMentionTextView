@@ -23,21 +23,11 @@ extension JNMentionTextView {
      Update Picker View Frame
      - Parameter selectedRange: Selected Range.
      */
-    func uppdatePickerViewFrame(selectedRange: NSRange) {
+    func updatePickerViewFrame(selectedRange: NSRange) {
         
         // get position in text view
-        let beginning: UITextPosition? = self.beginningOfDocument
-        let start: UITextPosition? = self.position(from: beginning!, offset: selectedRange.location)
-        let end: UITextPosition? = self.position(from: start!, offset: selectedRange.length)
-        let textRange: UITextRange? = self.textRange(from: start!, to: end!)
-        let rect: CGRect = self.firstRect(for: textRange!)
-        
-        // get font size
-        var fontSize = CGSize.zero
-        if let font = self.normalAttributes[.font] as? UIFont {
-            fontSize = CGSize(width: font.pointSize, height: font.pointSize)
-        }
-        
+        let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
+                
         DispatchQueue.main.async {
             
             // make the table view height equal to content height
@@ -46,11 +36,11 @@ extension JNMentionTextView {
             var originY: CGFloat = 0
             let contentOffset = self.contentOffset
 
-            switch self.options.viewMode {
+            switch self.options.viewPositionMode {
                 
                 case .bottom(let accessoryView):
                     
-                    originY = self.frame.origin.y + rect.origin.y + 10.0 + fontSize.height - contentOffset.y
+                    originY = self.frame.origin.y + rect.origin.y + rect.height - contentOffset.y
                     
                     switch accessoryView {
                     case .triangle(let length):
@@ -61,7 +51,7 @@ extension JNMentionTextView {
                 
                 case .top(let accessoryView):
                     
-                    originY = self.frame.origin.y + rect.origin.y - contentOffset.y - self.pickerView.frame.size.height
+                    originY = self.frame.origin.y + rect.origin.y  - contentOffset.y - self.pickerView.frame.size.height
                     
                     switch accessoryView {
                     case .triangle(let length):
@@ -76,11 +66,7 @@ extension JNMentionTextView {
             }
             
             // update picker view y origin
-            self.pickerView.frame.origin.y = originY
-            
-            // redraw the triangle
-            let difference = rect.origin.x + rect.width
-            self.pickerView.drawTriangle(options: self.options, cursorOffset: difference)
+            self.pickerView.frame.origin.y = ceil(originY)
         }
     }
     

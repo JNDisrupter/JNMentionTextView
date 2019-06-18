@@ -58,16 +58,19 @@ open class JNMentionTextView: UITextView {
     var searchString: String!
     
     /// Options
-    var options: JNMentionOptions!
+    var options: JNMentionPickerViewOptions!
     
     /// Picker View
     var pickerView: JNMentionPickerView!
     
     /// Mention Delegate
-    open weak var mentionDelegate: JNMentionTextViewDelegate?
+    public weak var mentionDelegate: JNMentionTextViewDelegate?
+    
+    /// Mention Replacements
+    public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
     
     /// Normal Attributes
-    var normalAttributes: [NSAttributedString.Key: Any] = [:]
+    internal var normalAttributes: [NSAttributedString.Key: Any] = [:]
     
     // MARK:- Initializers
 
@@ -105,7 +108,7 @@ open class JNMentionTextView: UITextView {
      Setup
      - Parameter options: JNMentionOptions Object.
      */
-    open func setup(options: JNMentionOptions) {
+    open func setup(options: JNMentionPickerViewOptions) {
         
         // set options
         self.options = options
@@ -175,7 +178,7 @@ open class JNMentionTextView: UITextView {
      */
     func postFilteringProcess(in selectedRange: NSRange) {
         self.pickerView.tableView.reloadData()
-        self.uppdatePickerViewFrame(selectedRange: selectedRange)
+        self.updatePickerViewFrame(selectedRange: selectedRange)
     }
 }
 

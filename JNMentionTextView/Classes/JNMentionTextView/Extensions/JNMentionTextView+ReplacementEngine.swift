@@ -64,7 +64,7 @@ extension JNMentionTextView {
         let attributedString = NSMutableAttributedString(string: text, attributes: self.normalAttributes)
         
         // iterate through each symbol
-        for (pattern, attributes) in self.options.mentionReplacements {
+        for (pattern, attributes) in self.mentionReplacements {
             
             // build pattern
             let updatedPattern = "(\\" + pattern + "([A-Za-z0-9]{0,}))\\s"

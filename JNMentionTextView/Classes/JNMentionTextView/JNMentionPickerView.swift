@@ -8,7 +8,7 @@
 import UIKit
 
 /// JNMention Picker View
-open class JNMentionPickerView: UIView {
+public class JNMentionPickerView: UIView {
     
     /// Path
     var bezierPath: UIBezierPath!
@@ -20,7 +20,7 @@ open class JNMentionPickerView: UIView {
     var tableView: UITableView!
     
     /// Delegate
-    weak open var delegate: JNMentionPickerViewDelegate?
+    weak var delegate: JNMentionPickerViewDelegate?
     
     /**
      Initializer
@@ -60,6 +60,7 @@ open class JNMentionPickerView: UIView {
         // init shape and draw paths
         self.bezierPath = UIBezierPath()
         self.shapeLayer = CAShapeLayer()
+        self.backgroundColor = UIColor.red
         
         // set is hidden
         self.isHidden = true
@@ -67,12 +68,9 @@ open class JNMentionPickerView: UIView {
     
     /**
      Setup
-     - Parameter options: JNMentionOptions
+     - Parameter options: JNMention Picker View Options
      */
-    func setup(options: JNMentionOptions) {
-        
-        // set background color
-        self.backgroundColor = options.backgroundColor
+    func setup(options: JNMentionPickerViewOptions) {
         
         // init table view
         self.initTableView(with: options)
@@ -80,10 +78,10 @@ open class JNMentionPickerView: UIView {
     
     /**
      Draw Triangle
-     - Parameter mode: JNMention View Mode.
+     - Parameter options: JNMention Picker View Options
      - Parameter cursorOffset: Cursor offset value.
      */
-    func drawTriangle(options: JNMentionOptions, cursorOffset: CGFloat) {
+    func drawTriangle(options: JNMentionPickerViewOptions, cursorOffset: CGFloat) {
         
         // remove all previous drawing
         self.bezierPath.removeAllPoints()
@@ -92,7 +90,7 @@ open class JNMentionPickerView: UIView {
         // skip if the parent view is hidden
         guard !self.tableView.visibleCells.isEmpty else { return }
 
-        switch options.viewMode {
+        switch options.viewPositionMode {
         case .bottom(let accessoryView):
             switch accessoryView {
             case .triangle(let length):
@@ -148,7 +146,7 @@ open class JNMentionPickerView: UIView {
     /**
      Draw Triangle Path
      */
-    private func drawTrianglePath(options: JNMentionOptions){
+    private func drawTrianglePath(options: JNMentionPickerViewOptions){
         
         // fill the path
         self.bezierPath.close()
@@ -156,26 +154,25 @@ open class JNMentionPickerView: UIView {
         // customize the shape apprance
         shapeLayer.frame = self.bounds
         shapeLayer.path = self.bezierPath.cgPath
-        shapeLayer.fillColor = options.listViewBackgroundColor.cgColor
-        
+        shapeLayer.fillColor = options.backgroundColor.cgColor
         self.layer.addSublayer(shapeLayer)
     }
     
     /**
      Init Table View
-     - Parameter options: JNMentionOptions
+     - Parameter options: JNMentionPickerViewOptions
      */
-    private func initTableView(with options: JNMentionOptions) {
+    private func initTableView(with options: JNMentionPickerViewOptions) {
 
         // init table view
-        self.tableView = UITableView(frame: self.bounds)
+        self.tableView = UITableView(frame: CGRect.zero)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         self.tableView.layer.borderColor = options.borderColor.cgColor
         self.tableView.layer.borderWidth = options.borderWitdth
-        self.tableView.backgroundColor = options.listViewBackgroundColor
+        self.tableView.backgroundColor = options.backgroundColor
         
         self.addSubview(self.tableView)
         
@@ -183,9 +180,8 @@ open class JNMentionPickerView: UIView {
         var topAnchorConstant: CGFloat = 0.0
         var bottomAnchorConstant: CGFloat = 0.0
         
-        // update the constants according to view mode
-        
-        switch options.viewMode {
+        // update the constants according to view position mode
+        switch options.viewPositionMode {
         case .top(let accessoryView):
             switch accessoryView {
             case .triangle(let length):
@@ -212,6 +208,8 @@ open class JNMentionPickerView: UIView {
             self.tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomAnchorConstant)
             ])
     }
+    
+
 }
 
 // JNMention Picker View Delegate
