@@ -155,6 +155,7 @@
 		321F9AB1727075F329103259B562CDA9 /* JNMentionTextView */ = {
 			isa = PBXGroup;
 			children = (
+				4828A56B22B7BE17007E5A60 /* MentionPickable */,
 				9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */,
 				431C0718F0F602CBA096E90130A8ACDD /* JNMentionPickerView.swift */,
 				FC3780B864CC950EECA637B5A066AA07 /* JNMentionPickerView+TableDelegate.swift */,
@@ -208,7 +209,6 @@
 		675C9D8C90DE581B81102CA1FF7F4BA1 /* JNMentionTextView */ = {
 			isa = PBXGroup;
 			children = (
-				4828A56B22B7BE17007E5A60 /* MentionPickable */,
 				4828A54A22B7B7EC007E5A60 /* Resources */,
 				321F9AB1727075F329103259B562CDA9 /* JNMentionTextView */,
 				0D26BCEAC8116CFFC4BA14BC6C14B476 /* Pod */,
