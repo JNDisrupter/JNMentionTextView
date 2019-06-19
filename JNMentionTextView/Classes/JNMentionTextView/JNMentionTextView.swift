@@ -31,7 +31,7 @@ public struct JNMentionEntity {
      - Parameter item: JNMentionEntityPickable Item
      - Parameter symbol: Symbol special character
      */
-    init(item: JNMentionPickable, symbol: String) {
+    public init(item: JNMentionPickable, symbol: String) {
         
         self.item = item
         self.symbol = symbol
@@ -70,7 +70,7 @@ open class JNMentionTextView: UITextView {
     public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
     
     /// Normal Attributes
-    internal var normalAttributes: [NSAttributedString.Key: Any] = [:]
+    var normalAttributes: [NSAttributedString.Key: Any] = [:]
     
     /// Tap Gesture
     var previousOffset: CGPoint = CGPoint.zero
@@ -80,7 +80,7 @@ open class JNMentionTextView: UITextView {
     /**
      Initializer
      */
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         
         self.initView()
@@ -112,7 +112,7 @@ open class JNMentionTextView: UITextView {
      Setup
      - Parameter options: JNMentionOptions Object.
      */
-    open func setup(options: JNMentionPickerViewOptions) {
+    public func setup(options: JNMentionPickerViewOptions) {
         
         // set options
         self.options = options
@@ -128,7 +128,7 @@ open class JNMentionTextView: UITextView {
      Register Table View Cells
      - Parameter cells: list of Table View Cells.
      */
-    open func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+    public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         self.pickerView.tableView.register(nib, forCellReuseIdentifier: identifier)
     }
     

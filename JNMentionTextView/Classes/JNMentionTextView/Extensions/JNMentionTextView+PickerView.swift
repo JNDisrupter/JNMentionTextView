@@ -29,38 +29,21 @@ extension JNMentionTextView {
         
         // get position in text view
         let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
-                var originY: CGFloat = 0.0
-        var height = self.frame.height - rect.height - 10.0
+        
+        var originY: CGFloat = self.frame.origin.y
+        let height = self.frame.height - rect.height - 10.0
  
         switch self.options.viewPositionMode {
             
-        case .bottom(let accessoryView):
-            
-            originY = rect.height
-            
-//            switch accessoryView {
-//            case .triangle(let length):
-//                height -= (length * CGFloat(3.0.squareRoot())) / 2.0
-//            case .none:
-//                break
-//            }
-            
-        case .top(let accessoryView):
-            
-            originY = 0
-            
-//            switch accessoryView {
-//            case .triangle(let length):
-//                height += length * CGFloat(3.0.squareRoot()) / 2.0
-//            case .none:
-//                break
-//            }
+        case .bottom(_):
+            originY += rect.height
+        default:
+            break
         }
         
         var pickerViewFrame = self.frame
-//        pickerViewFrame.origin.y = originY
         pickerViewFrame.size.height = height
-        
+        pickerViewFrame.origin.y = originY
         self.pickerView.frame = pickerViewFrame
         
             completion?()
