@@ -31,7 +31,7 @@ extension JNMentionTextView {
         let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
         
         var originY: CGFloat = self.frame.origin.y
-        let height = self.frame.height - rect.height - 10.0
+        let height = self.frame.height - rect.height
  
         switch self.options.viewPositionMode {
             

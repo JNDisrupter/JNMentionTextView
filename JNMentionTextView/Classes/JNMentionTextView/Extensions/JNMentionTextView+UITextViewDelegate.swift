@@ -100,17 +100,25 @@ extension JNMentionTextView: UITextViewDelegate {
                             self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
                                 
                                 guard let strongSelf = self else { return }
-                                let rect: CGRect = strongSelf.caretRect(for: strongSelf.selectedTextRange?.start ?? strongSelf.beginningOfDocument)
+                
+                                let textPosition = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedRange.location) ?? strongSelf.beginningOfDocument
                                 
-                                
-                                strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-                                
-                                strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
+                                let conentOffsetRect = strongSelf.caretRect(for: textPosition)
                                 
                                 DispatchQueue.main.async {
-                                    let textPosition = self?.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedRange.location)
-                                    let rect1: CGRect = strongSelf.caretRect(for: textPosition ?? strongSelf.beginningOfDocument)
-                                    strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: rect1.origin.y - strongSelf.bounds.size.height + rect1.size.height), animated: false)
+                                    
+                                    
+                                    switch strongSelf.options.viewPositionMode {
+                                        
+                                    case .top(_):
+                                        
+                                        strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: conentOffsetRect.origin.y - strongSelf.bounds.size.height + conentOffsetRect.size.height), animated: false)
+                                        
+                                    case .bottom(_):
+                                        
+                                        strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: conentOffsetRect.origin.y), animated: false)
+                                        
+                                    }
                                 }
                                 
                             })
