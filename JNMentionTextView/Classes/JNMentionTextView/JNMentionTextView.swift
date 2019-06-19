@@ -18,20 +18,20 @@ private struct ComponentValues {
 public struct JNMentionEntity {
     
     /// Ranage
-    var range: NSRange
+    public var range: NSRange
     
     /// Symbol
-    var symbol: String
+    public var symbol: String
     
     /// Pickable Item
-    var item: JNMentionPickable
+     public var item: JNMentionPickable
 
     /**
      Initializer
      - Parameter item: JNMentionEntityPickable Item
      - Parameter symbol: Symbol special character
      */
-    public init(item: JNMentionPickable, symbol: String) {
+    init(item: JNMentionPickable, symbol: String) {
         
         self.item = item
         self.symbol = symbol
@@ -72,7 +72,7 @@ open class JNMentionTextView: UITextView {
     /// Normal Attributes
     var normalAttributes: [NSAttributedString.Key: Any] = [:]
     
-    /// Tap Gesture
+    /// previous offset
     var previousOffset: CGPoint = CGPoint.zero
     
     // MARK:- Initializers

@@ -60,7 +60,7 @@ public class JNMentionPickerView: UIView {
         // init shape and draw paths
         self.bezierPath = UIBezierPath()
         self.shapeLayer = CAShapeLayer()
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.clear
         
         // set is hidden
         self.isHidden = true
@@ -86,9 +86,6 @@ public class JNMentionPickerView: UIView {
         // remove all previous drawing
         self.bezierPath.removeAllPoints()
         self.shapeLayer.removeFromSuperlayer()
-        
-        // skip if the parent view is hidden
-        guard !self.tableView.visibleCells.isEmpty else { return }
 
         switch options.viewPositionMode {
         case .bottom(let accessoryView):
@@ -154,7 +151,7 @@ public class JNMentionPickerView: UIView {
         // customize the shape apprance
         shapeLayer.frame = self.bounds
         shapeLayer.path = self.bezierPath.cgPath
-        shapeLayer.fillColor = UIColor.yellow.cgColor//options.backgroundColor.cgColor
+        shapeLayer.fillColor = options.backgroundColor.cgColor
         self.layer.addSublayer(shapeLayer)
     }
     

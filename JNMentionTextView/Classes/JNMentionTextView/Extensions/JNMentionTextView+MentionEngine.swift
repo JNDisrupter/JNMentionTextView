@@ -33,6 +33,34 @@ extension JNMentionTextView {
         self.resetConentOffset()
     }
     
+    /**
+     Set content offset on
+     - Parameter position: UITextPosition.
+     */
+    func setContentOffset() {
+        
+        // get text position
+        let textPosition = self.position(from: self.beginningOfDocument, offset: self.selectedRange.location) ?? self.beginningOfDocument
+        
+        // content offset
+        let conentOffsetRect = self.caretRect(for: textPosition)
+        
+        DispatchQueue.main.async {
+            
+            // scroll to content offset accroding to view position mode
+            switch self.options.viewPositionMode {
+                
+            case .top(_):
+                self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y - self.bounds.size.height + conentOffsetRect.size.height), animated: false)
+            case .bottom(_):
+                self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y), animated: false)
+            }
+        }
+    }
+    
+    /**
+     Reset Content Offset
+     */
     func resetConentOffset(){
         
         DispatchQueue.main.async {
@@ -69,42 +97,28 @@ extension JNMentionTextView {
                         self.selectedSymbol = String((self.textStorage.string as NSString).substring(with: matchRange).first ?? Character(""))
                         self.selectedSymbolLocation = matchRange.location
                         self.selectedSymbolAttributes = attributes
-
+                        
                         // start mention process
                         self.startMentionProcess()
                         
-                       self.postFilteringProcess(in: matchRange, completion: { [weak self] in
-                        
-                        guard let strongSelf = self else { return }
-                        let rect: CGRect = strongSelf.caretRect(for: strongSelf.selectedTextRange?.start ?? strongSelf.beginningOfDocument)
-                        
-                        
-                        strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-                        
-                        strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
-                        
-                        
-                        let textPosition = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedRange.location) ?? strongSelf.beginningOfDocument
-
-                        let conentOffsetRect = strongSelf.caretRect(for: textPosition)
-
-                        DispatchQueue.main.async {
+                        // post filtering process
+                        self.postFilteringProcess(in: matchRange, completion: { [weak self] in
                             
+                            // strong self
+                            guard let strongSelf = self else { return }
                             
-                            switch strongSelf.options.viewPositionMode {
-                                
-                            case .top(_):
-                                
-                                strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: conentOffsetRect.origin.y - strongSelf.bounds.size.height + conentOffsetRect.size.height), animated: false)
-                                
-                            case .bottom(_):
-                                
-                                strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: conentOffsetRect.origin.y), animated: false)
+                            // create CGRect for current position
+                            let rect: CGRect = strongSelf.caretRect(for: strongSelf.selectedTextRange?.start ?? strongSelf.beginningOfDocument)
+                            
+                            // draw triangle in current position
+                            strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
+                            
+                            // save previous offset
+                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
 
-                            }
-                        }
-                        
-                       })
+                            // set content offset
+                            strongSelf.setContentOffset()
+                        })
                     }
                 }
             }

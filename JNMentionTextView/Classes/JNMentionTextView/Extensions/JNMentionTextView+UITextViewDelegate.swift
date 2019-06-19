@@ -97,30 +97,26 @@ extension JNMentionTextView: UITextViewDelegate {
                             self.startMentionProcess()
                             
                             
+                            // post filtering process
                             self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
                                 
+                                // strong self
                                 guard let strongSelf = self else { return }
-                
-                                let textPosition = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedRange.location) ?? strongSelf.beginningOfDocument
                                 
-                                let conentOffsetRect = strongSelf.caretRect(for: textPosition)
+                                // get position
+                                let position = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedSymbolLocation)
                                 
-                                DispatchQueue.main.async {
-                                    
-                                    
-                                    switch strongSelf.options.viewPositionMode {
-                                        
-                                    case .top(_):
-                                        
-                                        strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: conentOffsetRect.origin.y - strongSelf.bounds.size.height + conentOffsetRect.size.height), animated: false)
-                                        
-                                    case .bottom(_):
-                                        
-                                        strongSelf.setContentOffset(CGPoint(x: strongSelf.contentOffset.x, y: conentOffsetRect.origin.y), animated: false)
-                                        
-                                    }
-                                }
+                                // create CGRect for current position
+                                let rect: CGRect = strongSelf.caretRect(for: position ?? strongSelf.beginningOfDocument)
                                 
+                                // draw triangle in current position
+                                strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
+                                
+                                // save previous offset
+                                strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
+                                
+                                // set content offset
+                                 strongSelf.setContentOffset()
                             })
                             
                                                         
