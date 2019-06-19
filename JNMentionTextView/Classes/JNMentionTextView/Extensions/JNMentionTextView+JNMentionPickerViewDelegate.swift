@@ -55,6 +55,9 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
             
             // replace characters with pickable item
             self.replaceCharacters(with: selectedItem, in: location)
+            
+            // Trigger text did change
+            self.textViewDidChange(self)
         }
     }
 }
