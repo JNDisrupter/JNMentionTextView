@@ -17,6 +17,25 @@ extension JNMentionTextView {
         
         // unhide the picker view
         self.pickerView.isHidden = false
+        
+        // super view
+        var superView = self.superview
+        
+        switch self.options.viewPositionMode {
+        case .top(_), .bottom(_):
+            superView = self.mentionDelegate?.containerViewForPickerView() ?? self.superview
+        default:
+            break
+        }
+        
+        if self.pickerView.superview != superView {
+            
+            // remove picker view from super view
+            self.pickerView.removeFromSuperview()
+            
+            // add picker view
+            superView?.addSubview(self.pickerView)
+        }
     }
     
     /**
@@ -50,9 +69,9 @@ extension JNMentionTextView {
             // scroll to content offset accroding to view position mode
             switch self.options.viewPositionMode {
                 
-            case .top(_):
+            case .top(_), .enclosedTop(_):
                 self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y - self.bounds.size.height + conentOffsetRect.size.height), animated: false)
-            case .bottom(_):
+            case .bottom(_), .enclosedBottom(_):
                 self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y), animated: false)
             }
         }

@@ -100,7 +100,6 @@ extension JNMentionTextView: UITextViewDelegate {
                         self.searchString = mentionedItem.item.getPickableTitle()
                         self.startMentionProcess()
                         
-                        
                         // post filtering process
                         self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
                             

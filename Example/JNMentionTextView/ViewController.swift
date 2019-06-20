@@ -52,10 +52,11 @@ class ViewController: UIViewController {
         // customize text view apperance
         self.textView.font = UIFont.systemFont(ofSize: 17.0)
         self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
+                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)], "#": [NSAttributedString.Key.foregroundColor: UIColor.red,
+                                                                                                                        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
         
         // init options
-        let options = JNMentionPickerViewOptions(borderColor: .gray, borderWitdth: 1.0, viewPositionMode: JNMentionPickerViePositionwMode.top(JNMentionPickerViePositionwMode.accessoryView.none))
+        let options = JNMentionPickerViewOptions(borderColor: .gray, borderWitdth: 1.0, viewPositionMode: JNMentionPickerViePositionwMode.top(JNMentionPickerViePositionwMode.accessoryView.triangle(sideLength: 12.0)))
 
         
         // build data
@@ -66,7 +67,7 @@ class ViewController: UIViewController {
         let fifthUser  = User(id: 5, name: "Tom Cruise")
 
         // set data
-        self.data = ["@": [firstUser, secondUser, thirdUser, fourthUser, fifthUser]]
+        self.data = ["@": [firstUser, secondUser, thirdUser], "#": [fourthUser, fifthUser]]
         
         // etup text view
         self.textView.returnKeyType = .done
@@ -84,7 +85,7 @@ class ViewController: UIViewController {
      */
     @IBAction func getMentionedItems(_ sender: Any) {
         
-        let items = self.textView.getMentionedItems(for: "@")
+        let items = JNMentionTextView.getMentionedItems(from: self.textView.attributedText, symbol: "@")
         print(items)
     }
     
@@ -109,7 +110,7 @@ extension ViewController: JNMentionTextViewDelegate {
      - Parameter id: JNMentionEntityPickable ID.
      - Returns: JNMentionEntityPickable object for the search criteria.
      */
-    func getMentionItemFor(symbol: String, id: String) -> JNMentionPickable? {
+    func jnMentionTextView(getMentionItemFor symbol: String, id: String) -> JNMentionPickable? {
 
         for item in self.data[symbol] ?? [] {
             if item.getPickableIdentifier() == id {
@@ -126,11 +127,11 @@ extension ViewController: JNMentionTextViewDelegate {
      - Parameter searchString: search string.
      - Returns: list of JNMentionEntityPickable objects for the search criteria.
      */
-    func retrieveDataFor(_ symbole: String, using searchTerm: String) -> [JNMentionPickable] {
+    func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) -> [JNMentionPickable] {
         
-        var data = self.data[symbole] ?? []
-        if !searchTerm.isEmpty {
-            data = data.filter({ $0.getPickableTitle().lowercased().contains(searchTerm.lowercased())})
+        var data = self.data[symbol] ?? []
+        if !searchString.isEmpty {
+            data = data.filter({ $0.getPickableTitle().lowercased().contains(searchString.lowercased())})
         }
 
         return data
@@ -140,7 +141,7 @@ extension ViewController: JNMentionTextViewDelegate {
      Super View For Picker View
      - Returns: the super view for the picker view.
      */
-    func superViewForPickerView() -> UIView {
+    func containerViewForPickerView() -> UIView {
         return self.view
     }
     
@@ -149,6 +150,6 @@ extension ViewController: JNMentionTextViewDelegate {
      - Returns: picker view height.
      */
     func heightForPickerView() -> CGFloat {
-        return 100.0
+        return 200.0
     }
 }

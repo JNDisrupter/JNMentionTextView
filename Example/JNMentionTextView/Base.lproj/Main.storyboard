@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zo-Cw-3FJ" customClass="JNMentionTextView" customModule="JNMentionTextView">
-                                <rect key="frame" x="20" y="200" width="335" height="154"/>
+                                <rect key="frame" x="20" y="284" width="335" height="70"/>
                                 <color key="backgroundColor" red="0.46477683616866644" green="0.97680455450000003" blue="0.61770036808602613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="154" id="eOi-oP-Ow0"/>
+                                    <constraint firstAttribute="height" constant="70" id="eOi-oP-Ow0"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wU-tp-uMI">
@@ -57,7 +57,7 @@
                             <constraint firstItem="9wU-tp-uMI" firstAttribute="top" secondItem="3zo-Cw-3FJ" secondAttribute="bottom" constant="23" id="9PK-6J-oFP"/>
                             <constraint firstItem="3zo-Cw-3FJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="ZbU-dJ-lF0"/>
                             <constraint firstItem="roj-sX-V4n" firstAttribute="top" secondItem="3zo-Cw-3FJ" secondAttribute="bottom" constant="23" id="aWq-Pj-7KL"/>
-                            <constraint firstItem="3zo-Cw-3FJ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="200" id="k5t-Lp-kug"/>
+                            <constraint firstItem="3zo-Cw-3FJ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="284" id="k5t-Lp-kug"/>
                             <constraint firstAttribute="trailing" secondItem="3zo-Cw-3FJ" secondAttribute="trailing" constant="20" id="zOL-a9-WeS"/>
                         </constraints>
                     </view>

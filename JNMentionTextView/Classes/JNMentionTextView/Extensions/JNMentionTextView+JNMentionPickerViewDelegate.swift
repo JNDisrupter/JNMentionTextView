@@ -17,7 +17,7 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
     public func pickerViewRetrieveData() -> [JNMentionPickable] {
         
         // Data
-        return self.mentionDelegate?.retrieveDataFor(self.selectedSymbol, using: self.searchString) ?? []
+        return self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) ?? []
     }
     
     /**
@@ -26,7 +26,7 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
      - Returns: UITableViewCell.
      */
     public func cell(for item: JNMentionPickable) -> UITableViewCell {
-        return self.mentionDelegate?.cell(for: item, tableView: self.pickerView.tableView) ?? UITableViewCell()
+        return self.mentionDelegate?.jnMentionTextView(cellFor: item, tableView: self.pickerView.tableView) ?? UITableViewCell()
     }
     
     /**
@@ -35,7 +35,7 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
      - Returns: UITableViewCell.
      */
     public func heightForCell(for item: JNMentionPickable) -> CGFloat {
-        return self.mentionDelegate?.heightForCell(for: item, tableView: self.pickerView.tableView) ?? 0.0
+        return self.mentionDelegate?.jnMentionTextView(heightfor: item, tableView: self.pickerView.tableView) ?? 0.0
     }
     
     /**
@@ -44,7 +44,7 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
      */
     public func didSelectItem(at indexPath: IndexPath) {
         
-        if let data = self.mentionDelegate?.retrieveDataFor(self.selectedSymbol, using: self.searchString) {
+        if let data = self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) {
             
             // selected item & range
             let selectedItem = data[indexPath.row]

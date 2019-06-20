@@ -16,8 +16,6 @@ extension JNMentionTextView {
     func initPickerView() {
         
         self.pickerView = JNMentionPickerView(frame: CGRect.zero)
-
-        self.superview?.addSubview(self.pickerView)
         self.pickerView.setup(options: self.options)
         
     }
@@ -31,12 +29,18 @@ extension JNMentionTextView {
         let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
         
         var originY: CGFloat = self.frame.origin.y
-        let height = self.frame.height - rect.height
+        var height = self.frame.height - rect.height
  
         switch self.options.viewPositionMode {
             
+        case .enclosedBottom(_):
+            originY += rect.height
         case .bottom(_):
             originY += rect.height
+            height = self.mentionDelegate?.heightForPickerView() ?? height
+        case .top(_):
+            height = self.mentionDelegate?.heightForPickerView() ?? height
+            originY = self.frame.origin.y - (height - self.frame.height) - rect.height
         default:
             break
         }

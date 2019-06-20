@@ -89,7 +89,7 @@ extension JNMentionTextView {
                         let searchID = String((attributedString.string as NSString).substring(with: updatedRange).dropFirst())
                         
                         // get mention item for ID
-                        if let item = self.mentionDelegate?.getMentionItemFor(symbol: pattern, id: searchID) {
+                        if let item = self.mentionDelegate?.jnMentionTextView(getMentionItemFor: pattern, id: searchID) {
                             
                             // create mention entity
                             let mentionItem = JNMentionEntity(item: item, symbol: pattern)

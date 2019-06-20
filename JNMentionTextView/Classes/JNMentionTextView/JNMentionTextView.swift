@@ -137,13 +137,17 @@ open class JNMentionTextView: UITextView {
      - Parameter symbol: Symbol string value.
      - Returns [JNMentionEntity]: list of mentioned (JNMentionEntity)
      */
-    open func getMentionedItems(for symbol: String) -> [JNMentionEntity] {
+    public class func getMentionedItems(from attributedString: NSAttributedString, symbol: String = "") -> [JNMentionEntity] {
         
         var mentionedItems: [JNMentionEntity] = []
         
-        self.attributedText.enumerateAttributes(in: NSRange(0..<self.textStorage.length), options: [], using:{ attrs, range, stop in
+        attributedString.enumerateAttributes(in: NSRange(0..<attributedString.length), options: [], using:{ attrs, range, stop in
             
-            if let item = (attrs[JNMentionTextView.JNMentionAttributeName] as AnyObject) as? JNMentionEntity, item.symbol == symbol {
+            if let item = (attrs[JNMentionTextView.JNMentionAttributeName] as AnyObject) as? JNMentionEntity {
+                
+                if !symbol.isEmpty, symbol != item.symbol {
+                    return
+                }
                 
                 var mentionedItem = item
                 mentionedItem.range = range
@@ -199,7 +203,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter id: JNMentionEntityPickable ID.
      - Returns: JNMentionEntityPickable objects for the search criteria.
      */
-    func getMentionItemFor(symbol: String, id: String) -> JNMentionPickable?
+    func jnMentionTextView(getMentionItemFor symbol: String, id: String) -> JNMentionPickable?
     
     /**
      Retrieve Data For
@@ -207,7 +211,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter searchString: search string.
      - Returns: list of JNMentionEntityPickable objects for the search criteria.
      */
-    func retrieveDataFor(_ symbol: String, using searchString: String) -> [JNMentionPickable]
+    func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) -> [JNMentionPickable]
     
     /**
      Cell For
@@ -215,7 +219,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: UITableViewCell.
      */
-    func cell(for item: JNMentionPickable, tableView: UITableView) -> UITableViewCell
+    func jnMentionTextView(cellFor item: JNMentionPickable, tableView: UITableView) -> UITableViewCell
     
     /**
      Height for cell
@@ -223,7 +227,19 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: cell height.
      */
-    func heightForCell(for item: JNMentionPickable, tableView: UITableView) -> CGFloat
+    func jnMentionTextView(heightfor item: JNMentionPickable, tableView: UITableView) -> CGFloat
+    
+    /**
+     Container View For Picker View
+     - Returns: the super view for the picker view.
+     */
+    func containerViewForPickerView() -> UIView
+    
+    /**
+     height for picker view
+     - Returns: picker view height.
+     */
+    func heightForPickerView() -> CGFloat
 }
 
 
@@ -236,7 +252,7 @@ public extension JNMentionTextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: UITableViewCell.
      */
-    func cell(for item: JNMentionPickable, tableView: UITableView) -> UITableViewCell {
+    func jnMentionTextView(cellFor item: JNMentionPickable, tableView: UITableView) -> UITableViewCell {
         
         let cell = UITableViewCell()
         cell.textLabel?.text = item.getPickableTitle()
@@ -249,7 +265,7 @@ public extension JNMentionTextViewDelegate {
      - Parameter tableView: The data list UITableView.
      - Returns: cell height.
      */
-    func heightForCell(for item: JNMentionPickable, tableView: UITableView) -> CGFloat {
+     func jnMentionTextView(heightfor item: JNMentionPickable, tableView: UITableView) -> CGFloat {
         return ComponentValues.defaultCellHeight
     }
 }

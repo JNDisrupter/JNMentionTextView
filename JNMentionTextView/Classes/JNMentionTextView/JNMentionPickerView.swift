@@ -88,7 +88,7 @@ public class JNMentionPickerView: UIView {
         self.shapeLayer.removeFromSuperlayer()
 
         switch options.viewPositionMode {
-        case .bottom(let accessoryView):
+        case .bottom(let accessoryView), .enclosedBottom(let accessoryView):
             switch accessoryView {
             case .triangle(let length):
                 
@@ -107,7 +107,7 @@ public class JNMentionPickerView: UIView {
                 
             }
             
-        case .top(let accessoryView):
+        case .top(let accessoryView), .enclosedTop(let accessoryView):
             switch accessoryView {
             case .triangle(let length):
                 
@@ -179,7 +179,7 @@ public class JNMentionPickerView: UIView {
         
         // update the constants according to view position mode
         switch options.viewPositionMode {
-        case .top(let accessoryView):
+        case .top(let accessoryView), .enclosedTop(let accessoryView):
             switch accessoryView {
             case .triangle(let length):
                 topAnchorConstant = 0.0
@@ -187,7 +187,7 @@ public class JNMentionPickerView: UIView {
             case .none:
                 break
             }
-        case .bottom(let accessoryView):
+        case .bottom(let accessoryView), .enclosedBottom(let accessoryView):
             switch accessoryView {
             case .triangle(let length):
                 topAnchorConstant = (length * CGFloat (3.0.squareRoot()) / 2.0)

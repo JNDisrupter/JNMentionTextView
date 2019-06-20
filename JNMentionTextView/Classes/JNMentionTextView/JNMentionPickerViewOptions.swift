@@ -16,6 +16,12 @@ public enum JNMentionPickerViePositionwMode {
     /// Bottom
     case bottom(JNMentionPickerViePositionwMode.accessoryView)
     
+    /// Enclosed Top
+    case enclosedTop(JNMentionPickerViePositionwMode.accessoryView)
+    
+    /// Enclosed Bottom
+    case enclosedBottom(JNMentionPickerViePositionwMode.accessoryView)
+    
     /// Accessory View
     public enum accessoryView {
         
