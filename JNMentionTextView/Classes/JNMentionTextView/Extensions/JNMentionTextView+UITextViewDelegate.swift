@@ -33,13 +33,19 @@ extension JNMentionTextView: UITextViewDelegate {
                 if range.location == self.selectedSymbolLocation {
                     
                     // end mention process
-                    self.searchString = ""
                     self.endMentionProcess()
                     
                 } else {
                     
                     // deleted index
                     let deletedIndex = range.location - self.selectedSymbolLocation - 1
+                    
+                    // deleted index greter than 0
+                    guard deletedIndex > 0
+                        else {
+                            self.endMentionProcess()
+                            return true
+                    }
                     
                     let index = self.searchString.index(self.searchString.startIndex, offsetBy: deletedIndex)
                     self.searchString.remove(at: index)
@@ -63,72 +69,70 @@ extension JNMentionTextView: UITextViewDelegate {
         } else {
             
             // check if delete already mentioned item
-            if text.isEmpty {
+            if let selectedRange = self.selectedTextRange {
                 
-                if let selectedRange = self.selectedTextRange {
+                // cursor position
+                let cursorPosition = self.offset(from: self.beginningOfDocument, to: selectedRange.start)
+                guard cursorPosition > 0 else { return true }
+                
+                // iterate through all range
+                self.attributedText.enumerateAttributes(in: NSRange(0..<self.textStorage.length), options: []) { (attributes, rangeAttributes, stop) in
                     
-                    // cursor position
-                    let cursorPosition = self.offset(from: self.beginningOfDocument, to: selectedRange.start)
-                    guard cursorPosition > 0 else { return true }
-                    
-                    // iterate through all range
-                    self.attributedText.enumerateAttributes(in: NSRange(0..<self.textStorage.length), options: []) { (attributes, rangeAttributes, stop) in
+                    // get value for JNMentionNSAttribute
+                    if let mentionedItem = attributes[JNMentionTextView.JNMentionAttributeName] as? JNMentionEntity,
+                        cursorPosition > rangeAttributes.location && (text.isEmpty ? cursorPosition - 1 : cursorPosition) <= rangeAttributes.location + rangeAttributes.length {
                         
-                        // get value for JNMentionNSAttribute
-                        if let mentionedItem = attributes[JNMentionTextView.JNMentionAttributeName] as? JNMentionEntity,
-                            cursorPosition > rangeAttributes.location && cursorPosition <= rangeAttributes.location + rangeAttributes.length {
+                        // init replacement string
+                        let replacementString = mentionedItem.symbol + mentionedItem.item.getPickableTitle()
+                        
+                        // replace the mentioned item with (symbol with mentioned title)
+                        self.textStorage.replaceCharacters(in: rangeAttributes, with: NSAttributedString(string: replacementString, attributes: self.normalAttributes))
+                        
+                        // move cursor to the end of replacement string
+                        self.moveCursor(to: rangeAttributes.location + replacementString.count)
+                        
+                        // set selected symbol information
+                        self.selectedSymbol = mentionedItem.symbol
+                        self.selectedSymbolLocation = rangeAttributes.location
+                        self.selectedSymbolAttributes = attributes
+                        
+                        // start mention process with search string for item title
+                        self.searchString = mentionedItem.item.getPickableTitle()
+                        self.startMentionProcess()
+                        
+                        
+                        // post filtering process
+                        self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
                             
-                            // init replacement string
-                            let replacementString = mentionedItem.symbol + mentionedItem.item.getPickableTitle()
+                            // strong self
+                            guard let strongSelf = self else { return }
                             
-                            // replace the mentioned item with (symbol with mentioned title)
-                            self.textStorage.replaceCharacters(in: rangeAttributes, with: NSAttributedString(string: replacementString, attributes: self.normalAttributes))
+                            // get position
+                            let position = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedSymbolLocation)
                             
-                            // move cursor to the end of replacement string
-                            self.moveCursor(to: rangeAttributes.location + replacementString.count)
+                            // create CGRect for current position
+                            let rect: CGRect = strongSelf.caretRect(for: position ?? strongSelf.beginningOfDocument)
                             
-                            // set selected symbol information
-                            self.selectedSymbol = mentionedItem.symbol
-                            self.selectedSymbolLocation = rangeAttributes.location
-                            self.selectedSymbolAttributes = attributes
+                            // draw triangle in current position
+                            strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
                             
-                            // start mention process with search string for item title
-                            self.searchString = mentionedItem.item.getPickableTitle()
-                            self.startMentionProcess()
+                            // save previous offset
+                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
                             
-                            
-                            // post filtering process
-                            self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
-                                
-                                // strong self
-                                guard let strongSelf = self else { return }
-                                
-                                // get position
-                                let position = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedSymbolLocation)
-                                
-                                // create CGRect for current position
-                                let rect: CGRect = strongSelf.caretRect(for: position ?? strongSelf.beginningOfDocument)
-                                
-                                // draw triangle in current position
-                                strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-                                
-                                // save previous offset
-                                strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
-                                
-                                // set content offset
-                                 strongSelf.setContentOffset()
-                            })
-                            
-                                                        
-                            // skip this change in text
-                            shouldChangeText = false
-                        }
+                            // set content offset
+                            strongSelf.setContentOffset()
+                        })
+                        
+                        
+                        // skip this change in text
+                        shouldChangeText = false
                     }
                 }
-            } else {
-                
-                // set normal attributes
-                self.normalAttributes = self.typingAttributes
+            }
+            
+            // set normal attributes
+            if !text.isEmpty {
+             self.normalAttributes = self.typingAttributes
             }
         }
         

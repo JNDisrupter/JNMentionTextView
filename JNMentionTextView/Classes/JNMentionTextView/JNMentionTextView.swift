@@ -45,26 +45,11 @@ open class JNMentionTextView: UITextView {
     /// JNMentionAttributeName
     static let JNMentionAttributeName: NSAttributedString.Key = (NSString("JNMENTIONITEM")) as NSAttributedString.Key
 
-    /// Selected Symbol
-    var selectedSymbol: String!
-    
-    /// Selected Symbol Location
-    var selectedSymbolLocation: Int!
-    
-    /// Selected Symbol Attributes
-    var selectedSymbolAttributes: [NSAttributedString.Key : Any]!
-    
-    /// Search String
-    var searchString: String!
-    
-    /// Options
-    var options: JNMentionPickerViewOptions!
-    
     /// Picker View
     var pickerView: JNMentionPickerView!
     
-    /// Mention Delegate
-    public weak var mentionDelegate: JNMentionTextViewDelegate?
+    /// Options
+    var options: JNMentionPickerViewOptions!
     
     /// Mention Replacements
     public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
@@ -74,6 +59,21 @@ open class JNMentionTextView: UITextView {
     
     /// previous offset
     var previousOffset: CGPoint = CGPoint.zero
+    
+    /// Search String
+    var searchString: String!
+    
+    /// Selected Symbol
+    var selectedSymbol: String!
+    
+    /// Selected Symbol Location
+    var selectedSymbolLocation: Int!
+    
+    /// Selected Symbol Attributes
+    var selectedSymbolAttributes: [NSAttributedString.Key : Any]!
+    
+    /// Mention Delegate
+    public weak var mentionDelegate: JNMentionTextViewDelegate?
     
     // MARK:- Initializers
 

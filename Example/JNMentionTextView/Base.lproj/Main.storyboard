@@ -38,12 +38,25 @@
                                     <action selector="getMentionedItems:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ouy-4c-nLG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roj-sX-V4n">
+                                <rect key="frame" x="250" y="377" width="105" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kaE-vs-Mu5"/>
+                                </constraints>
+                                <state key="normal" title="Set Smart Field"/>
+                                <connections>
+                                    <action selector="getMentionedItems:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WlC-P7-YQH"/>
+                                    <action selector="setSmartField:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ut6-1K-lFs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="roj-sX-V4n" firstAttribute="trailing" secondItem="3zo-Cw-3FJ" secondAttribute="trailing" id="1wc-pm-xpA"/>
                             <constraint firstItem="9wU-tp-uMI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="2A0-B7-Uk0"/>
                             <constraint firstItem="9wU-tp-uMI" firstAttribute="top" secondItem="3zo-Cw-3FJ" secondAttribute="bottom" constant="23" id="9PK-6J-oFP"/>
                             <constraint firstItem="3zo-Cw-3FJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="ZbU-dJ-lF0"/>
+                            <constraint firstItem="roj-sX-V4n" firstAttribute="top" secondItem="3zo-Cw-3FJ" secondAttribute="bottom" constant="23" id="aWq-Pj-7KL"/>
                             <constraint firstItem="3zo-Cw-3FJ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="200" id="k5t-Lp-kug"/>
                             <constraint firstAttribute="trailing" secondItem="3zo-Cw-3FJ" secondAttribute="trailing" constant="20" id="zOL-a9-WeS"/>
                         </constraints>

@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
         
         // init options
-        let options = JNMentionPickerViewOptions(borderColor: .gray, borderWitdth: 1.0, viewPositionMode: JNMentionPickerViePositionwMode.top(JNMentionPickerViePositionwMode.accessoryView.triangle(sideLength: 15.0)))
+        let options = JNMentionPickerViewOptions(borderColor: .gray, borderWitdth: 1.0, viewPositionMode: JNMentionPickerViePositionwMode.top(JNMentionPickerViePositionwMode.accessoryView.none))
 
         
         // build data
@@ -76,6 +76,7 @@ class ViewController: UIViewController {
         
         // set mention delegate
         self.textView.mentionDelegate = self
+        
     }
     
     /**
@@ -85,6 +86,16 @@ class ViewController: UIViewController {
         
         let items = self.textView.getMentionedItems(for: "@")
         print(items)
+    }
+    
+    /**
+     Set Smart Field
+     */
+    @IBAction func setSmartField(_ sender: Any) {
+
+        let attributedString = JNMentionTextView.getSmartReplacement(text: "hi @1 and @2", data: self.data, normalAttributes: [NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)], mentionReplacements: ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]])
+        
+        self.textView.attributedText = attributedString
         
     }
 }
