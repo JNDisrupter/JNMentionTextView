@@ -8,7 +8,7 @@
 import UIKit
 
 /// JNMentionPickerViewDelegate
-extension JNMentionTextView: JNMentionPickerViewDelegate {
+extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
     
     /**
      Retrieve Data
@@ -17,7 +17,17 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
     public func pickerViewRetrieveData() -> [JNMentionPickable] {
         
         // Data
-        return self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) ?? []
+        let data =  self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) ?? []
+        if data.isEmpty {
+            if let pickerView = self.pickerViewController {
+                pickerView.dismiss(animated: true, completion: {
+                     self.pickerViewController = nil
+                    self.endMentionProcess()
+                })
+            }
+           
+        }
+        return data
     }
     
     /**

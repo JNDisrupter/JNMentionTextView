@@ -75,6 +75,9 @@ open class JNMentionTextView: UITextView {
     /// Mention Delegate
     public weak var mentionDelegate: JNMentionTextViewDelegate?
     
+    //
+    var pickerViewController: JNMentionPickerViewController!
+    
     // MARK:- Initializers
 
     /**
@@ -121,7 +124,7 @@ open class JNMentionTextView: UITextView {
         self.initPickerView()
         
         // set picker view delegate
-        self.pickerView.delegate = self
+       // self.pickerView.delegate = self
     }
 
     /**
@@ -163,7 +166,7 @@ open class JNMentionTextView: UITextView {
      - Returns Bool: Bool value to indicate if the mention is in filter process.
      */
     func isInFilterProcess() -> Bool {
-        return !self.pickerView.isHidden
+        return self.pickerViewController != nil
     }
     
     /**
@@ -187,7 +190,9 @@ open class JNMentionTextView: UITextView {
      - Parameter selectedRange: NSRange.
      */
     func postFilteringProcess(in selectedRange: NSRange, completion:(() -> ())? = nil) {
-        self.pickerView.tableView.reloadData()
+        if let tableview = self.pickerViewController?.tableView {
+            tableview.reloadData()
+        }
         self.setPickerViewFrame(completion: {
                 completion?()
         })
@@ -230,10 +235,16 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
     func jnMentionTextView(heightfor item: JNMentionPickable, tableView: UITableView) -> CGFloat
     
     /**
-     Container View For Picker View
+     Source View For Picker View
      - Returns: the super view for the picker view.
      */
-    func containerViewForPickerView() -> UIView
+    func sourceViewForPickerView() -> UIViewController
+    
+    /**
+     Source Rect For Picker View
+     - Returns: the super view for the picker view.
+     */
+    func sourceRectForPickerView() -> CGRect
     
     /**
      height for picker view
@@ -256,6 +267,9 @@ public extension JNMentionTextViewDelegate {
         
         let cell = UITableViewCell()
         cell.textLabel?.text = item.getPickableTitle()
+        cell.contentView.backgroundColor = .clear
+        cell.textLabel?.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     

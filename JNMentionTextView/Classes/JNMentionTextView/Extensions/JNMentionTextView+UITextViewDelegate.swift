@@ -60,8 +60,8 @@ extension JNMentionTextView: UITextViewDelegate {
             self.postFilteringProcess(in: filterRange, completion: {
                 
                 // end mention process
-                if self.pickerView.tableView.visibleCells.count == 0 {
-                    self.endMentionProcess()
+                if let tableView = self.pickerViewController?.tableView, tableView.visibleCells.count == 0 {
+                    //self.endMentionProcess()
                 }
             })
             
@@ -96,30 +96,30 @@ extension JNMentionTextView: UITextViewDelegate {
                         self.selectedSymbolLocation = rangeAttributes.location
                         self.selectedSymbolAttributes = attributes
                         
-                        // start mention process with search string for item title
+                        // start mention process with search string for tem title
                         self.searchString = mentionedItem.item.getPickableTitle()
                         self.startMentionProcess()
                         
                         // post filtering process
                         self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
                             
-                            // strong self
-                            guard let strongSelf = self else { return }
-                            
-                            // get position
-                            let position = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedSymbolLocation)
-                            
-                            // create CGRect for current position
-                            let rect: CGRect = strongSelf.caretRect(for: position ?? strongSelf.beginningOfDocument)
-                            
-                            // draw triangle in current position
-                            strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-                            
-                            // save previous offset
-                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
-                            
-                            // set content offset
-                            strongSelf.setContentOffset()
+//                            // strong self
+//                            guard let strongSelf = self else { return }
+//                            
+//                            // get position
+//                            let position = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedSymbolLocation)
+//                            
+//                            // create CGRect for current position
+//                            let rect: CGRect = strongSelf.caretRect(for: position ?? strongSelf.beginningOfDocument)
+//                            
+//                            // draw triangle in current position
+//                            strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
+//                            
+//                            // save previous offset
+//                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
+//                            
+//                            // set content offset
+//                            strongSelf.setContentOffset()
                         })
                         
                         
@@ -178,7 +178,7 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textViewDidEndEditing(_ textView: UITextView) {
         
         // end mention process
-        self.endMentionProcess()
+        //self.endMentionProcess()
         self.mentionDelegate?.textViewDidEndEditing?(textView)
     }
     

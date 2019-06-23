@@ -103,6 +103,15 @@ class ViewController: UIViewController {
 
 /// JNMentionTextViewDelegate
 extension ViewController: JNMentionTextViewDelegate {
+    func sourceViewForPickerView() -> UIViewController {
+        return self
+    }
+    
+    func sourceRectForPickerView() -> CGRect {
+        print(self.textView.frame)
+        return self.textView.bounds
+    }
+    
  
     /**
      Get Mention Item For
@@ -141,7 +150,7 @@ extension ViewController: JNMentionTextViewDelegate {
      Super View For Picker View
      - Returns: the super view for the picker view.
      */
-    func containerViewForPickerView() -> UIView {
+    func sourceViewForPickerView() -> UIView {
         return self.view
     }
     

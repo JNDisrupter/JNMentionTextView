@@ -11,6 +11,7 @@
 		22EDE79ADBDF1F89C2FDF90E59A4DA99 /* Pods-JNMentionTextView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEA2239557FAF65682127F92F474CD6 /* Pods-JNMentionTextView_Example-dummy.m */; };
 		2CDA9C2ACBEB72694FFC1E2D542460EC /* JNMentionTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D28C51DE663298B33FA213748C8E0732 /* JNMentionTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4828A54D22B7B834007E5A60 /* IDETemplateMacros.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4828A54C22B7B834007E5A60 /* IDETemplateMacros.plist */; };
+		4828A56D22BD112C007E5A60 /* JNMentionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */; };
 		50ACD654317FCECC85976AE80CE01371 /* Pods-JNMentionTextView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52265CE32EAB88AECADD40E03476AEA4 /* Pods-JNMentionTextView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6366A200F3F1EFE9C43D1299673CE154 /* JNMentionTextView+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360B14EB71E674B92878E2BFFE081B6 /* JNMentionTextView+UITextViewDelegate.swift */; };
 		6A7F8170AD4B53BF73C0570449F31B37 /* JNMentionTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E27EEB7C8B38691161E2988D317EC6B /* JNMentionTextView-dummy.m */; };
@@ -45,6 +46,7 @@
 		3F4752D4F28C90ACAF74F3246CE96EAA /* Pods-JNMentionTextView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNMentionTextView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		431C0718F0F602CBA096E90130A8ACDD /* JNMentionPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickerView.swift; sourceTree = "<group>"; };
 		4828A54C22B7B834007E5A60 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IDETemplateMacros.plist; sourceTree = "<group>"; };
+		4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewController.swift; sourceTree = "<group>"; };
 		4E27EEB7C8B38691161E2988D317EC6B /* JNMentionTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JNMentionTextView-dummy.m"; sourceTree = "<group>"; };
 		52265CE32EAB88AECADD40E03476AEA4 /* Pods-JNMentionTextView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNMentionTextView_Example-umbrella.h"; sourceTree = "<group>"; };
 		5239BC37BA26488050EEAC34AE7A484B /* JNMentionTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JNMentionTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +163,7 @@
 				FC3780B864CC950EECA637B5A066AA07 /* JNMentionPickerView+TableDelegate.swift */,
 				31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */,
 				AB777D32A02B9167E91EE43A2E987A75 /* Extensions */,
+				4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */,
 			);
 			name = JNMentionTextView;
 			path = JNMentionTextView/Classes/JNMentionTextView;
@@ -364,6 +367,7 @@
 				A5598D0E4048FA728D82A57B0FF6D0A5 /* JNMentionPickerView+TableDelegate.swift in Sources */,
 				AA129A253162AC3653CD4821AA7C0E4C /* JNMentionPickerView.swift in Sources */,
 				E230216598264BA1272DC180B1D81B08 /* JNMentionTextView+JNMentionPickerViewDelegate.swift in Sources */,
+				4828A56D22BD112C007E5A60 /* JNMentionPickerViewController.swift in Sources */,
 				D522507BA3E686CE7C4235A4DC8FB1B3 /* JNMentionTextView+MentionEngine.swift in Sources */,
 				BC347FF4ED7E01A0D1EFBC2D613958B0 /* JNMentionTextView+PickerView.swift in Sources */,
 				A1CE85218119583E5D1A5A5BCFFF8316 /* JNMentionTextView+ReplacementEngine.swift in Sources */,
