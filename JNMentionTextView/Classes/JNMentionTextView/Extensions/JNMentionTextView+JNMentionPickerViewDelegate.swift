@@ -19,13 +19,7 @@ extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
         // Data
         let data =  self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) ?? []
         if data.isEmpty {
-            if let pickerView = self.pickerViewController {
-                pickerView.dismiss(animated: true, completion: {
-                     self.pickerViewController = nil
-                    self.endMentionProcess()
-                })
-            }
-           
+           self.endMentionProcess()
         }
         return data
     }
@@ -36,7 +30,7 @@ extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
      - Returns: UITableViewCell.
      */
     public func cell(for item: JNMentionPickable) -> UITableViewCell {
-        return self.mentionDelegate?.jnMentionTextView(cellFor: item, tableView: self.pickerView.tableView) ?? UITableViewCell()
+        return self.mentionDelegate?.jnMentionTextView(cellFor: item, tableView: self.pickerViewController.tableView) ?? UITableViewCell()
     }
     
     /**
@@ -45,7 +39,7 @@ extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
      - Returns: UITableViewCell.
      */
     public func heightForCell(for item: JNMentionPickable) -> CGFloat {
-        return self.mentionDelegate?.jnMentionTextView(heightfor: item, tableView: self.pickerView.tableView) ?? 0.0
+        return self.mentionDelegate?.jnMentionTextView(heightfor: item, tableView: self.pickerViewController.tableView) ?? 0.0
     }
     
     /**

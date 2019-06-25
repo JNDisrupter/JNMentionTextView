@@ -120,7 +120,6 @@ extension JNMentionTextView {
         
         // set attributed text
         self.attributedText = attributedString
-        
     }
     
     /**

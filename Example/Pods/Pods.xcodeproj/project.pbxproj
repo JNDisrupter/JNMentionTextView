@@ -16,10 +16,7 @@
 		6366A200F3F1EFE9C43D1299673CE154 /* JNMentionTextView+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360B14EB71E674B92878E2BFFE081B6 /* JNMentionTextView+UITextViewDelegate.swift */; };
 		6A7F8170AD4B53BF73C0570449F31B37 /* JNMentionTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E27EEB7C8B38691161E2988D317EC6B /* JNMentionTextView-dummy.m */; };
 		A1CE85218119583E5D1A5A5BCFFF8316 /* JNMentionTextView+ReplacementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B266D62450799B572558AD540704C44C /* JNMentionTextView+ReplacementEngine.swift */; };
-		A5598D0E4048FA728D82A57B0FF6D0A5 /* JNMentionPickerView+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3780B864CC950EECA637B5A066AA07 /* JNMentionPickerView+TableDelegate.swift */; };
-		AA129A253162AC3653CD4821AA7C0E4C /* JNMentionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431C0718F0F602CBA096E90130A8ACDD /* JNMentionPickerView.swift */; };
 		B153D85B08B27E32FBAD822EBB86D283 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		BC347FF4ED7E01A0D1EFBC2D613958B0 /* JNMentionTextView+PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E8D9279C207198894375F515296E26 /* JNMentionTextView+PickerView.swift */; };
 		C53908573D9450D090D0FC8D2DD91ADD /* JNMentionPickerViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */; };
 		CFD7539AEF511F4C2EADF9B8A0F2C491 /* JNMentionPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF060858C9DA8BCA50E54E05CEDD74 /* JNMentionPickable.swift */; };
 		D2C6D85CE5D8876A93CAF09C0877CF5D /* JNMentionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */; };
@@ -44,13 +41,11 @@
 		2A4009BC730C0E20CF45162424886197 /* Pods-JNMentionTextView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNMentionTextView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionTextView.swift; sourceTree = "<group>"; };
 		3F4752D4F28C90ACAF74F3246CE96EAA /* Pods-JNMentionTextView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNMentionTextView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		431C0718F0F602CBA096E90130A8ACDD /* JNMentionPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickerView.swift; sourceTree = "<group>"; };
 		4828A54C22B7B834007E5A60 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IDETemplateMacros.plist; sourceTree = "<group>"; };
 		4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewController.swift; sourceTree = "<group>"; };
 		4E27EEB7C8B38691161E2988D317EC6B /* JNMentionTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JNMentionTextView-dummy.m"; sourceTree = "<group>"; };
 		52265CE32EAB88AECADD40E03476AEA4 /* Pods-JNMentionTextView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNMentionTextView_Example-umbrella.h"; sourceTree = "<group>"; };
 		5239BC37BA26488050EEAC34AE7A484B /* JNMentionTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JNMentionTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		57E8D9279C207198894375F515296E26 /* JNMentionTextView+PickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+PickerView.swift"; sourceTree = "<group>"; };
 		6F96C5BE56D207301810A8AFA31C50C9 /* JNMentionTextView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JNMentionTextView.xcconfig; sourceTree = "<group>"; };
 		71794E519076F02D801C14FE1E218AB2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7360B14EB71E674B92878E2BFFE081B6 /* JNMentionTextView+UITextViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+UITextViewDelegate.swift"; sourceTree = "<group>"; };
@@ -72,7 +67,6 @@
 		EA7E75B4A6B4ACAE1B4D9DCE9E2E86F5 /* Pods-JNMentionTextView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNMentionTextView_Example.modulemap"; sourceTree = "<group>"; };
 		EDE7238C379FCF6CF38561377EEBAB94 /* JNMentionTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JNMentionTextView.modulemap; sourceTree = "<group>"; };
 		FBEA2239557FAF65682127F92F474CD6 /* Pods-JNMentionTextView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNMentionTextView_Example-dummy.m"; sourceTree = "<group>"; };
-		FC3780B864CC950EECA637B5A066AA07 /* JNMentionPickerView+TableDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionPickerView+TableDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +153,6 @@
 			children = (
 				4828A56B22B7BE17007E5A60 /* MentionPickable */,
 				9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */,
-				431C0718F0F602CBA096E90130A8ACDD /* JNMentionPickerView.swift */,
-				FC3780B864CC950EECA637B5A066AA07 /* JNMentionPickerView+TableDelegate.swift */,
 				31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */,
 				AB777D32A02B9167E91EE43A2E987A75 /* Extensions */,
 				4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */,
@@ -237,7 +229,6 @@
 			children = (
 				C7838C39005D291CAABFFC072E8B2B98 /* JNMentionTextView+JNMentionPickerViewDelegate.swift */,
 				736DC7145A54DD1834DB76DBC6352156 /* JNMentionTextView+MentionEngine.swift */,
-				57E8D9279C207198894375F515296E26 /* JNMentionTextView+PickerView.swift */,
 				B266D62450799B572558AD540704C44C /* JNMentionTextView+ReplacementEngine.swift */,
 				7360B14EB71E674B92878E2BFFE081B6 /* JNMentionTextView+UITextViewDelegate.swift */,
 			);
@@ -364,12 +355,9 @@
 			files = (
 				CFD7539AEF511F4C2EADF9B8A0F2C491 /* JNMentionPickable.swift in Sources */,
 				C53908573D9450D090D0FC8D2DD91ADD /* JNMentionPickerViewOptions.swift in Sources */,
-				A5598D0E4048FA728D82A57B0FF6D0A5 /* JNMentionPickerView+TableDelegate.swift in Sources */,
-				AA129A253162AC3653CD4821AA7C0E4C /* JNMentionPickerView.swift in Sources */,
 				E230216598264BA1272DC180B1D81B08 /* JNMentionTextView+JNMentionPickerViewDelegate.swift in Sources */,
 				4828A56D22BD112C007E5A60 /* JNMentionPickerViewController.swift in Sources */,
 				D522507BA3E686CE7C4235A4DC8FB1B3 /* JNMentionTextView+MentionEngine.swift in Sources */,
-				BC347FF4ED7E01A0D1EFBC2D613958B0 /* JNMentionTextView+PickerView.swift in Sources */,
 				A1CE85218119583E5D1A5A5BCFFF8316 /* JNMentionTextView+ReplacementEngine.swift in Sources */,
 				6366A200F3F1EFE9C43D1299673CE154 /* JNMentionTextView+UITextViewDelegate.swift in Sources */,
 				6A7F8170AD4B53BF73C0570449F31B37 /* JNMentionTextView-dummy.m in Sources */,

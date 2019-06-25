@@ -8,29 +8,17 @@
 import UIKit
 
 /// JNMention Picker View Position Mode
-public enum JNMentionPickerViePositionwMode {
+public struct JNMentionPickerViewPositionwMode: OptionSet {
     
-    /// Top
-    case top(JNMentionPickerViePositionwMode.accessoryView)
+    public var rawValue: UInt
     
-    /// Bottom
-    case bottom(JNMentionPickerViePositionwMode.accessoryView)
-    
-    /// Enclosed Top
-    case enclosedTop(JNMentionPickerViePositionwMode.accessoryView)
-    
-    /// Enclosed Bottom
-    case enclosedBottom(JNMentionPickerViePositionwMode.accessoryView)
-    
-    /// Accessory View
-    public enum accessoryView {
-        
-        /// None
-        case none
-        
-        /// Triangle
-        case triangle(sideLength: CGFloat)
+    public init(rawValue: UInt) {
+        self.rawValue = rawValue
     }
+
+    public static let up = JNMentionPickerViewPositionwMode(rawValue: 0)
+    public static let down = JNMentionPickerViewPositionwMode(rawValue: 1)
+    public static let automatic = JNMentionPickerViewPositionwMode(rawValue: 2)
 }
 
 /// JNMention Picker View Options
@@ -46,7 +34,7 @@ public struct JNMentionPickerViewOptions {
     var backgroundColor: UIColor
     
     /// View Position Mode
-    var viewPositionMode: JNMentionPickerViePositionwMode
+    var viewPositionMode: JNMentionPickerViewPositionwMode
         
     /**
      Initializer
@@ -55,7 +43,7 @@ public struct JNMentionPickerViewOptions {
      - Parameter backgroundColor: Background color.
      - Parameter viewPositionMode: JNMention View Mode.
      */
-    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor = UIColor.white, viewPositionMode: JNMentionPickerViePositionwMode) {
+    public init(borderColor: UIColor = .clear, borderWitdth: CGFloat = 0.0, backgroundColor: UIColor = UIColor.white, viewPositionMode: JNMentionPickerViewPositionwMode) {
         
         // borderColor
         self.borderColor = borderColor

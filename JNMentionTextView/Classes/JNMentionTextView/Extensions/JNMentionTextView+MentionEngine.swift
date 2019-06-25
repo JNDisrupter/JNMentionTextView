@@ -7,116 +7,58 @@
 
 import UIKit
 
-/// MentionEngine
-extension JNMentionTextView: UIPopoverPresentationControllerDelegate {
+/// Mention Engine
+extension JNMentionTextView {
     
     /**
      Start Mention Process
      */
     func startMentionProcess() {
         
-        if self.pickerViewController == nil {
-            self.pickerViewController = JNMentionPickerViewController()
-            pickerViewController.modalPresentationStyle = UIModalPresentationStyle.popover
-            pickerViewController.preferredContentSize = CGSize(width: self.frame.size.width , height: 100)
-            pickerViewController.options = self.options
-            pickerViewController.delegate = self
-            
-            let popoverPresentationController = pickerViewController.popoverPresentationController
-            popoverPresentationController?.delegate = self
-            popoverPresentationController?.sourceView = self
-            popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
-            popoverPresentationController?.containerView?.backgroundColor = UIColor.red
-            popoverPresentationController?.presentedView?.backgroundColor = UIColor.red
-            popoverPresentationController?.backgroundColor = UIColor.yellow
-            popoverPresentationController?.containerView?.layer.borderColor = UIColor.red.cgColor
-            popoverPresentationController?.popoverBackgroundViewClass = MyPopoverBackgroundView.self
+        pickerViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+        pickerViewController.preferredContentSize = CGSize(width: self.frame.width, height: self.mentionDelegate?.heightForPickerView() ?? 0.0)
+        pickerViewController.options = self.options
+        pickerViewController.delegate = self
+        
+        let popoverPresentationController = self.pickerViewController.popoverPresentationController
+        popoverPresentationController?.delegate = self
+        popoverPresentationController?.sourceView = self
+        popoverPresentationController?.backgroundColor = self.options.backgroundColor
+        
+        switch self.options.viewPositionMode {
+        case .up:
+            popoverPresentationController?.permittedArrowDirections = .up
+        case .down:
+            popoverPresentationController?.permittedArrowDirections = .down
+        default:
+            popoverPresentationController?.permittedArrowDirections = [.up, .down]
         }
-
-        if let viewcontroller = self.mentionDelegate?.sourceViewForPickerView() {
+        
+        if let viewcontroller = self.mentionDelegate?.sourceViewControllerForPickerView() {
             let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
             let popoverPresentationController = self.pickerViewController.popoverPresentationController
             popoverPresentationController?.sourceRect = rect
-            //popoverPresentationController?.passthroughViews = [self]
             viewcontroller.present(self.pickerViewController, animated: true, completion:{
                 
             })
             
         }
-        
-//        // unhide the picker view
-//        self.pickerView.isHidden = false
-//
-//        // super view
-//        var superView = self.superview
-//
-//        switch self.options.viewPositionMode {
-//        case .top(_), .bottom(_):
-//            superView = self.mentionDelegate?.sourceViewForPickerView() ?? self.superview
-//        default:
-//            break
-//        }
-//
-//        if self.pickerView.superview != superView {
-//
-//            // remove picker view from super view
-//            self.pickerView.removeFromSuperview()
-//
-//            // add picker view
-//            superView?.addSubview(self.pickerView)
-//        }
     }
     
-    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
     /**
      End Mention Process
      */
     func endMentionProcess() {
         
-        self.searchString = ""
-        self.selectedSymbol = ""
-        self.selectedSymbolLocation = 0
-        self.selectedSymbolAttributes = [:]
-       // self.pickerView.isHidden = true
-        //self.pickerViewController.dismiss(animated: true, completion: nil)
-        self.resetConentOffset()
-    }
-    
-    /**
-     Set content offset on
-     - Parameter position: UITextPosition.
-     */
-    func setContentOffset() {
-        
-//        // get text position
-//        let textPosition = self.position(from: self.beginningOfDocument, offset: self.selectedRange.location) ?? self.beginningOfDocument
-//
-//        // content offset
-//        let conentOffsetRect = self.caretRect(for: textPosition)
-//
-//        DispatchQueue.main.async {
-//
-//            // scroll to content offset accroding to view position mode
-//            switch self.options.viewPositionMode {
-//
-//            case .top(_), .enclosedTop(_):
-//                self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y - self.bounds.size.height + conentOffsetRect.size.height), animated: false)
-//            case .bottom(_), .enclosedBottom(_):
-//                self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y), animated: false)
-//            }
-//        }
-    }
-    
-    /**
-     Reset Content Offset
-     */
-    func resetConentOffset(){
-//        
-//        DispatchQueue.main.async {
-//            self.setContentOffset(self.previousOffset, animated: false)
-//        }
+        if let pickerView = self.pickerViewController {
+            pickerView.dismiss(animated: true, completion: {
+                
+                self.searchString = ""
+                self.selectedSymbol = ""
+                self.selectedSymbolLocation = 0
+                self.selectedSymbolAttributes = [:]
+            })
+        }
     }
     
     /**
@@ -153,23 +95,7 @@ extension JNMentionTextView: UIPopoverPresentationControllerDelegate {
                         self.startMentionProcess()
                         
                         // post filtering process
-                        self.postFilteringProcess(in: matchRange, completion: { [weak self] in
-                            
-//                            // strong self
-//                            guard let strongSelf = self else { return }
-//
-//                            // create CGRect for current position
-//                            let rect: CGRect = strongSelf.caretRect(for: strongSelf.selectedTextRange?.start ?? strongSelf.beginningOfDocument)
-//
-//                            // draw triangle in current position
-//                            //strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-//
-//                            // save previous offset
-//                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
-//
-//                            // set content offset
-//                            strongSelf.setContentOffset()
-                        })
+                        self.postFilteringProcess(in: matchRange)
                     }
                 }
             }
@@ -179,5 +105,18 @@ extension JNMentionTextView: UIPopoverPresentationControllerDelegate {
                     "\(error.localizedDescription)")
             }
         }
+    }
+}
+
+/// Mention Engine
+extension JNMentionTextView: UIPopoverPresentationControllerDelegate {
+    
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    public func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        self.endMentionProcess()
+        return true
     }
 }

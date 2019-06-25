@@ -15,18 +15,28 @@ class JNMentionPickerViewController: UIViewController {
     var tableView: UITableView!
     
     /// Options
-    var options: JNMentionPickerViewOptions!
+    var options: JNMentionPickerViewOptions = JNMentionPickerViewOptions(viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
     
     /// Delegate
     weak var delegate: JNMentionPickerViewControllerDelegate?
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.initTableView(with: self.options)
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    /**
+     View Did load
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.initTableView(with: self.options)
     }
-    
-
 
     /**
      Init Table View
@@ -40,47 +50,19 @@ class JNMentionPickerViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        //self.view.layer.borderColor = options.borderColor.cgColor
-       // self.view.layer.borderWidth = options.borderWitdth
-        self.view.backgroundColor = UIColor.clear//options.backgroundColor
+        self.view.backgroundColor = options.backgroundColor
         self.tableView.backgroundColor = UIColor.clear
         self.view.addSubview(self.tableView)
-        
-        // top and bottom constants
-        var topAnchorConstant: CGFloat = 0.0
-        var bottomAnchorConstant: CGFloat = 0.0
-        
-        // update the constants according to view position mode
-        switch options.viewPositionMode {
-        case .top(let accessoryView), .enclosedTop(let accessoryView):
-            switch accessoryView {
-            case .triangle(let length):
-                topAnchorConstant = 0.0
-                bottomAnchorConstant = -(length * CGFloat (3.0.squareRoot()) / 2.0)
-            case .none:
-                break
-            }
-        case .bottom(let accessoryView), .enclosedBottom(let accessoryView):
-            switch accessoryView {
-            case .triangle(let length):
-                topAnchorConstant = (length * CGFloat (3.0.squareRoot()) / 2.0)
-                bottomAnchorConstant = 0.0
-            case .none:
-                break
-            }
-        }
         
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topAnchorConstant),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: bottomAnchorConstant)
-            ])
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+       ])
     }
-
 }
-
 
 // UITableViewDelegate & UITableViewDataSource
 extension JNMentionPickerViewController: UITableViewDelegate, UITableViewDataSource {
@@ -169,45 +151,4 @@ public protocol JNMentionPickerViewControllerDelegate: NSObjectProtocol {
      - Parameter indexPath: IndexPath.
      */
     func didSelectItem(at indexPath: IndexPath)
-}
-
-
-class MyPopoverBackgroundView : UIPopoverBackgroundView {
-
-    var arrOff : CGFloat
-    var arrDir : UIPopoverArrowDirection
-    
-    override init(frame:CGRect) {
-        self.arrOff = 0
-        self.arrDir = .up
-        super.init(frame:frame)
-        self.layer.borderWidth = 2.0
-        self.layer.borderColor = UIColor.red.cgColor
-        //self.backgroundColor = UIColor.purple
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override class func contentViewInsets() -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
-    }
-    
-    override class func arrowBase() -> CGFloat { return 10 }
-    override class func arrowHeight() -> CGFloat { return 20 }
-    
-    override var arrowDirection : UIPopoverArrowDirection {
-        get { return self.arrDir }
-        set { self.arrDir = newValue }
-    }
-    override var arrowOffset : CGFloat {
-        get { return self.arrOff }
-        set { self.arrOff = newValue }
-    }
-    
-    override class var wantsDefaultContentAppearance : Bool {
-        return true // try false to see if you can find a difference...
-    }
-    
 }

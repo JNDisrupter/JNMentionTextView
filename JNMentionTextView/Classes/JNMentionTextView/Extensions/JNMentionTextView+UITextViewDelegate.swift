@@ -16,7 +16,7 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // return if delegate indicate that it sohuld not chnage text in the selected range.
-        if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {
+         if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {
             return false
         }
         
@@ -57,14 +57,7 @@ extension JNMentionTextView: UITextViewDelegate {
             
             // Calculate range
             let filterRange = NSRange(location: range.location - self.searchString.count , length: self.searchString.count)            
-            self.postFilteringProcess(in: filterRange, completion: {
-                
-                // end mention process
-                if let tableView = self.pickerViewController?.tableView, tableView.visibleCells.count == 0 {
-                    //self.endMentionProcess()
-                }
-            })
-            
+            self.postFilteringProcess(in: filterRange)
             
         } else {
             
@@ -101,27 +94,7 @@ extension JNMentionTextView: UITextViewDelegate {
                         self.startMentionProcess()
                         
                         // post filtering process
-                        self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
-                            
-//                            // strong self
-//                            guard let strongSelf = self else { return }
-//                            
-//                            // get position
-//                            let position = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedSymbolLocation)
-//                            
-//                            // create CGRect for current position
-//                            let rect: CGRect = strongSelf.caretRect(for: position ?? strongSelf.beginningOfDocument)
-//                            
-//                            // draw triangle in current position
-//                            strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-//                            
-//                            // save previous offset
-//                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
-//                            
-//                            // set content offset
-//                            strongSelf.setContentOffset()
-                        })
-                        
+                        self.postFilteringProcess(in: rangeAttributes)
                         
                         // skip this change in text
                         shouldChangeText = false
