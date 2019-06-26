@@ -155,9 +155,9 @@
 			children = (
 				482E8E9D22C3A690007915E3 /* JNMentionTextViewDelegate */,
 				4828A56B22B7BE17007E5A60 /* MentionPickable */,
+				AB777D32A02B9167E91EE43A2E987A75 /* Extensions */,
 				9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */,
 				31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */,
-				AB777D32A02B9167E91EE43A2E987A75 /* Extensions */,
 				4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */,
 			);
 			name = JNMentionTextView;

@@ -43,7 +43,7 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
     func jnMentionTextView(heightfor item: JNMentionPickable, tableView: UITableView) -> CGFloat
     
     /**
-     Source View Controller For Picker View
+     Source View Controller to present the Picker View on
      - Returns: the super view for the picker view.
      */
     func sourceViewControllerForPickerView() -> UIViewController
