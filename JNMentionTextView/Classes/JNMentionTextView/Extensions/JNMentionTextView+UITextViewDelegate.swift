@@ -16,7 +16,7 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // return if delegate indicate that it sohuld not chnage text in the selected range.
-         if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {
+        if let delegate = self.mentionDelegate, !(delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true) {
             return false
         }
         
@@ -40,8 +40,8 @@ extension JNMentionTextView: UITextViewDelegate {
                     // deleted index
                     let deletedIndex = range.location - self.selectedSymbolLocation - 1
                     
-                    // deleted index greter than 0
-                    guard deletedIndex > 0
+                    // deleted index greter than -1
+                    guard deletedIndex > -1
                         else {
                             self.endMentionProcess()
                             return true
@@ -49,8 +49,8 @@ extension JNMentionTextView: UITextViewDelegate {
                     
                     let index = self.searchString.index(self.searchString.startIndex, offsetBy: deletedIndex)
                     self.searchString.remove(at: index)
-                 }
-
+                }
+                
             } else {
                 self.searchString += text
             }
@@ -59,6 +59,9 @@ extension JNMentionTextView: UITextViewDelegate {
             self.pickerViewController?.reloadData()
             
         } else {
+            
+            /// mentionDeletionProcess
+            var mentionDeletionProcess = false
             
             // check if delete already mentioned item
             if let selectedRange = self.selectedTextRange {
@@ -94,13 +97,48 @@ extension JNMentionTextView: UITextViewDelegate {
                         
                         // skip this change in text
                         shouldChangeText = false
+                        
+                        // set mention deletion process true
+                        mentionDeletionProcess = true
                     }
                 }
-            }
-            
-            // set normal attributes
-            if !text.isEmpty {
-             self.normalAttributes = self.typingAttributes
+                
+                
+                // check to start mention process for special characters
+                if text.isEmpty && !mentionDeletionProcess {
+                    
+                    #warning("ToBe-Continued")
+//                    // get special chracters
+//                    let charactersArray = Array(self.textStorage.string)
+//                    var indexArray: [Int] = []
+//
+//                    for key in self.mentionReplacements.keys {
+//                        let indices = charactersArray.enumerated()
+//                            .compactMap { $0.element == Character(key) ? $0.offset : nil }
+//
+//                        indexArray.append(contentsOf: indices)
+//                    }
+//
+//                    // filter index less than my index
+//                    if !indexArray.isEmpty {
+//                        indexArray = indexArray.filter({ $0 <= cursorPosition })
+//                        if let minDifference = indexArray.map({ cursorPosition - $0 }).min() {
+//                            self.selectedSymbolLocation = cursorPosition - minDifference
+//                            self.selectedSymbol = String(Array(self.textStorage.string)[self.selectedSymbolLocation])
+//                            self.selectedSymbolAttributes = self.mentionReplacements[self.selectedSymbol]
+//                            self.searchString = self.textStorage.attributedSubstring(from: NSRange(location: self.selectedSymbolLocation + 1, length: minDifference - 2)).string
+//
+//                            if let delegate = self.mentionDelegate, delegate.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString).count > 0 {
+//                                self.startMentionProcess()
+//                         }
+//                        }
+//                    }
+                    
+                } else {
+                    
+                    // set normal attributes
+                    self.normalAttributes = self.typingAttributes
+                }
             }
         }
         

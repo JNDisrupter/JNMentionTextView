@@ -39,13 +39,12 @@ extension JNMentionTextView {
         }
         
         if let viewcontroller = self.mentionDelegate?.sourceViewControllerForPickerView() {
-            let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
+            
+            let position = self.position(from: self.beginningOfDocument, offset: self.selectedSymbolLocation + 1) ?? self.beginningOfDocument
+            let rect: CGRect = self.caretRect(for: position)
             let popoverPresentationController = _pickerViewController.popoverPresentationController
             popoverPresentationController?.sourceRect = rect
-            viewcontroller.present(_pickerViewController, animated: true, completion:{
-                
-            })
-            
+            viewcontroller.present(_pickerViewController, animated: true, completion: nil)
         }
     }
     
