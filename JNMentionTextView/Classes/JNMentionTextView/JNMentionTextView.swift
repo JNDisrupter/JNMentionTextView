@@ -40,22 +40,16 @@ public struct JNMentionEntity {
 }
 
 /// JNMentionTextView
-open class JNMentionTextView: UITextView {
+public class JNMentionTextView: UITextView {
     
     /// JNMentionAttributeName
     static let JNMentionAttributeName: NSAttributedString.Key = (NSString("JNMENTIONITEM")) as NSAttributedString.Key
 
     /// Picker View Controller
-    var pickerViewController: JNMentionPickerViewController!
+    var pickerViewController: JNMentionPickerViewController?
 
     /// Options
     var options: JNMentionPickerViewOptions!
-    
-    /// Mention Replacements
-    public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
-    
-    /// Normal Attributes
-    var normalAttributes: [NSAttributedString.Key: Any] = [:]
     
     /// Search String
     var searchString: String!
@@ -68,6 +62,12 @@ open class JNMentionTextView: UITextView {
     
     /// Selected Symbol Attributes
     var selectedSymbolAttributes: [NSAttributedString.Key : Any]!
+    
+    /// Normal Attributes
+    public var normalAttributes: [NSAttributedString.Key: Any] = [:]
+    
+    /// Mention Replacements
+    public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
     
     /// Mention Delegate
     public weak var mentionDelegate: JNMentionTextViewDelegate?
@@ -101,9 +101,7 @@ open class JNMentionTextView: UITextView {
         self.selectedSymbolLocation = 0
         self.selectedSymbolAttributes = [:]
         self.searchString = ""
-        
         self.pickerViewController = JNMentionPickerViewController()
-
         self.delegate = self
     }
     
@@ -123,7 +121,7 @@ open class JNMentionTextView: UITextView {
      - Parameter identifier: string identifier.
      */
     public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
-        self.pickerViewController.tableView.register(nib, forCellReuseIdentifier: identifier)
+        self.pickerViewController?.tableView.register(nib, forCellReuseIdentifier: identifier)
     }
     
     /**
@@ -154,11 +152,11 @@ open class JNMentionTextView: UITextView {
     }
     
     /**
-     Is In Filter Process
+     Is In Mention Process
      - Returns Bool: Bool value to indicate if the mention is in filter process.
      */
-    func isInFilterProcess() -> Bool {
-        return ((self.pickerViewController?.viewIfLoaded) != nil) && self.pickerViewController.view.window != nil
+    func isInMentionProcess() -> Bool {
+        return ((self.pickerViewController?.viewIfLoaded) != nil) && self.pickerViewController?.view.window != nil
     }
     
     /**
@@ -177,15 +175,6 @@ open class JNMentionTextView: UITextView {
         }
     }
     
-    /**
-     post filtering process
-     - Parameter selectedRange: NSRange.
-     */
-    func postFilteringProcess(in selectedRange: NSRange) {
-        if let tableview = self.pickerViewController?.tableView {
-            tableview.reloadData()
-        }
-    }
 }
 
 /// JNMention Text View Delegate

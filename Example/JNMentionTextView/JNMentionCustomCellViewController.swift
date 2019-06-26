@@ -36,7 +36,7 @@ class JNMentionCustomCellViewController: UIViewController {
                                                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)], "#": [NSAttributedString.Key.foregroundColor: UIColor.red, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
         
         // init options
-        let options = JNMentionPickerViewOptions(borderColor: .gray, borderWitdth: 1.0, viewPositionMode: self.positionMode)
+        let options = JNMentionPickerViewOptions(viewPositionMode: self.positionMode)
         
         
         // build data

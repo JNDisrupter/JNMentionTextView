@@ -15,12 +15,16 @@ extension JNMentionTextView {
      */
     func startMentionProcess() {
         
-        pickerViewController.modalPresentationStyle = UIModalPresentationStyle.popover
-        pickerViewController.preferredContentSize = CGSize(width: self.frame.width, height: self.mentionDelegate?.heightForPickerView() ?? 0.0)
-        pickerViewController.options = self.options
-        pickerViewController.delegate = self
+        guard let _pickerViewController = self.pickerViewController else {
+            return
+        }
         
-        let popoverPresentationController = self.pickerViewController.popoverPresentationController
+        _pickerViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+        _pickerViewController.preferredContentSize = CGSize(width: self.frame.width, height: self.mentionDelegate?.heightForPickerView() ?? 0.0)
+        _pickerViewController.options = self.options
+        _pickerViewController.delegate = self
+        
+        let popoverPresentationController = _pickerViewController.popoverPresentationController
         popoverPresentationController?.delegate = self
         popoverPresentationController?.sourceView = self
         popoverPresentationController?.backgroundColor = self.options.backgroundColor
@@ -36,9 +40,9 @@ extension JNMentionTextView {
         
         if let viewcontroller = self.mentionDelegate?.sourceViewControllerForPickerView() {
             let rect: CGRect = self.caretRect(for: self.selectedTextRange?.start ?? self.beginningOfDocument)
-            let popoverPresentationController = self.pickerViewController.popoverPresentationController
+            let popoverPresentationController = _pickerViewController.popoverPresentationController
             popoverPresentationController?.sourceRect = rect
-            viewcontroller.present(self.pickerViewController, animated: true, completion:{
+            viewcontroller.present(_pickerViewController, animated: true, completion:{
                 
             })
             
@@ -68,7 +72,7 @@ extension JNMentionTextView {
     func applyMentionEngine(searchRange: NSRange) {
         
         // in mention process
-        guard !self.isInFilterProcess() else { return }
+        guard !self.isInMentionProcess() else { return }
         
         // iterate through each replacement symbol
         for (pattern, attributes) in self.mentionReplacements {
@@ -93,9 +97,6 @@ extension JNMentionTextView {
                         
                         // start mention process
                         self.startMentionProcess()
-                        
-                        // post filtering process
-                        self.postFilteringProcess(in: matchRange)
                     }
                 }
             }

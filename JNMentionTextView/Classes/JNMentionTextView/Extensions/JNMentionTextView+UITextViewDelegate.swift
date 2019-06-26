@@ -24,7 +24,7 @@ extension JNMentionTextView: UITextViewDelegate {
         var shouldChangeText = true
         
         // In Filter Process
-        if self.isInFilterProcess() {
+        if self.isInMentionProcess() {
             
             // delete text
             if text.isEmpty {
@@ -55,9 +55,8 @@ extension JNMentionTextView: UITextViewDelegate {
                 self.searchString += text
             }
             
-            // Calculate range
-            let filterRange = NSRange(location: range.location - self.searchString.count , length: self.searchString.count)            
-            self.postFilteringProcess(in: filterRange)
+            // Reload Data
+            self.pickerViewController?.reloadData()
             
         } else {
             
@@ -92,9 +91,6 @@ extension JNMentionTextView: UITextViewDelegate {
                         // start mention process with search string for tem title
                         self.searchString = mentionedItem.item.getPickableTitle()
                         self.startMentionProcess()
-                        
-                        // post filtering process
-                        self.postFilteringProcess(in: rangeAttributes)
                         
                         // skip this change in text
                         shouldChangeText = false

@@ -30,7 +30,7 @@ extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
      - Returns: UITableViewCell.
      */
     public func cell(for item: JNMentionPickable) -> UITableViewCell {
-        return self.mentionDelegate?.jnMentionTextView(cellFor: item, tableView: self.pickerViewController.tableView) ?? UITableViewCell()
+        return self.mentionDelegate?.jnMentionTextView(cellFor: item, tableView: self.pickerViewController!.tableView) ?? UITableViewCell()
     }
     
     /**
@@ -39,7 +39,7 @@ extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
      - Returns: UITableViewCell.
      */
     public func heightForCell(for item: JNMentionPickable) -> CGFloat {
-        return self.mentionDelegate?.jnMentionTextView(heightfor: item, tableView: self.pickerViewController.tableView) ?? 0.0
+        return self.mentionDelegate?.jnMentionTextView(heightfor: item, tableView: self.pickerViewController!.tableView) ?? 0.0
     }
     
     /**

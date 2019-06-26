@@ -39,7 +39,7 @@ class JNMentionTextViewTableViewCell: UITableViewCell {
                                                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)], "#": [NSAttributedString.Key.foregroundColor: UIColor.red, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
         
         // init options
-        let options = JNMentionPickerViewOptions(borderColor: .gray, borderWitdth: 1.0, viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
+        let options = JNMentionPickerViewOptions(viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
         
         
         // build data
