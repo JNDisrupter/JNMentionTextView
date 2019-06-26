@@ -29,6 +29,7 @@ class JNMentionPickerViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     /**
      View Did load
      */
@@ -38,6 +39,16 @@ class JNMentionPickerViewController: UIViewController {
         self.initTableView(with: self.options)
     }
 
+    /**
+     View Will Appear
+     */
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Reload Data
+        self.tableView.reloadData()
+    }
+    
     /**
      Init Table View
      - Parameter options: JNMentionPickerViewOptions
@@ -61,6 +72,13 @@ class JNMentionPickerViewController: UIViewController {
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
        ])
+    }
+    
+    /**
+     Reload Data
+     */
+    func reloadData() {
+        self.tableView.reloadData()
     }
 }
 
