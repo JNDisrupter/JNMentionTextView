@@ -109,7 +109,7 @@ extension JNMentionPickerViewController: UITableViewDelegate, UITableViewDataSou
         
         // get cell for pickable item
         if data.count > indexPath.row {
-            return self.delegate?.cell(for: data[indexPath.row]) ?? UITableViewCell()
+            return self.delegate?.jnMentionPickerViewController(cellFor: data[indexPath.row]) ?? UITableViewCell()
         }
         
         return UITableViewCell()
@@ -125,7 +125,7 @@ extension JNMentionPickerViewController: UITableViewDelegate, UITableViewDataSou
         
         // get cell for pickable item
         if data.count > indexPath.row {
-            return self.delegate?.heightForCell(for: data[indexPath.row]) ?? UITableView.automaticDimension
+            return self.delegate?.jnMentionPickerViewController(cellHeightFor: data[indexPath.row]) ?? UITableView.automaticDimension
         }
         
         return UITableView.automaticDimension
@@ -137,36 +137,6 @@ extension JNMentionPickerViewController: UITableViewDelegate, UITableViewDataSou
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // did select item
-        self.delegate?.didSelectItem(at: indexPath)
+        self.delegate?.jnMentionPickerViewController(didSelectItemAt: indexPath)
     }
-}
-
-// JNMention Picker View Delegate
-public protocol JNMentionPickerViewControllerDelegate: NSObjectProtocol {
-    
-    /**
-     Retrieve Data
-     - Returns: Pickable data array.
-     */
-    func pickerViewRetrieveData() -> [JNMentionPickable]
-    
-    /**
-     Cell
-     - Parameter item: Pickable item.
-     - Returns: UITableViewCell.
-     */
-    func cell(for item: JNMentionPickable) -> UITableViewCell
-    
-    /**
-     Height for cell
-     - Parameter item: Pickable item.
-     - Returns: UITableViewCell.
-     */
-    func heightForCell(for item: JNMentionPickable) -> CGFloat
-    
-    /**
-     Did Select Item
-     - Parameter indexPath: IndexPath.
-     */
-    func didSelectItem(at indexPath: IndexPath)
 }
