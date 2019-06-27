@@ -41,7 +41,7 @@ extension JNMentionTextView: UITextViewDelegate {
                     let deletedIndex = range.location - self.selectedSymbolLocation - 1
                     
                     // deleted index greter than -1
-                    guard deletedIndex > -1
+                    guard deletedIndex > -1 && deletedIndex < self.searchString.count
                         else {
                             self.endMentionProcess()
                             return true
