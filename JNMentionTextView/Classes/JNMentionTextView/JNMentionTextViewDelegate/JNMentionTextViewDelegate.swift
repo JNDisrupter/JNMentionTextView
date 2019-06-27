@@ -22,9 +22,9 @@ public protocol JNMentionTextViewDelegate: UITextViewDelegate {
      Retrieve Data For
      - Parameter symbol: replacement string.
      - Parameter searchString: search string.
-     - Returns: list of JNMentionEntityPickable objects for the search criteria.
+     - Parameter compliation: list of JNMentionEntityPickable objects for the search criteria.
      */
-    func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) -> [JNMentionPickable]
+    func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String, compliation: (([JNMentionPickable]) -> ()))
     
     /**
      Cell For

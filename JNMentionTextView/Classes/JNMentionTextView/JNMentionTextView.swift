@@ -175,4 +175,31 @@ public class JNMentionTextView: UITextView {
         }
     }
     
+    /**
+     Retrieve Data
+     - Returns: Pickable data array.
+     */
+    func pickerViewRetrieveData() {
+        
+        // Show Loading Indicator View
+        self.pickerViewController?.showLoadingIndicatorView()
+        
+        // Data
+        self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString, compliation: { [weak self] (results) in
+            
+            // Get strong self refrence
+            guard let strongSelf = self else { return }
+            
+            // Set Data
+            strongSelf.pickerViewController?.dataList = results
+
+            if results.isEmpty {
+                strongSelf.endMentionProcess()
+            }
+            
+            // Reload Data
+            strongSelf.pickerViewController?.reloadData()
+        })
+    }
+    
 }

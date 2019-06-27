@@ -14,15 +14,21 @@ class JNMentionPickerViewController: UIViewController {
     /// Table View
     var tableView: UITableView!
     
+    /// Loading Indicator View
+    var loadingIndicatorView: UIActivityIndicatorView!
+    
     /// Options
     var options: JNMentionPickerViewOptions = JNMentionPickerViewOptions(viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
+    
+    /// Table View
+    var dataList: [JNMentionPickable] = []
     
     /// Delegate
     weak var delegate: JNMentionPickerViewControllerDelegate?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.initTableView(with: self.options)
+        self.initSubViews(with: self.options)
     }
     
     
@@ -36,7 +42,7 @@ class JNMentionPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initTableView(with: self.options)
+        self.initSubViews(with: self.options)
     }
 
     /**
@@ -50,6 +56,19 @@ class JNMentionPickerViewController: UIViewController {
     }
     
     /**
+     Init Sub Views
+     - Parameter options: JNMentionPickerViewOptions
+     */
+    private func initSubViews(with options: JNMentionPickerViewOptions) {
+        
+        // Init Table View
+        self.initTableView(with: self.options)
+        
+        // Init Loading View
+        self.initLoadingIndicatorView()
+    }
+    
+    /**
      Init Table View
      - Parameter options: JNMentionPickerViewOptions
      */
@@ -60,6 +79,7 @@ class JNMentionPickerViewController: UIViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         self.view.backgroundColor = options.backgroundColor
         self.tableView.backgroundColor = UIColor.clear
@@ -75,9 +95,37 @@ class JNMentionPickerViewController: UIViewController {
     }
     
     /**
+     Init Loading Indicator View
+     */
+    private func initLoadingIndicatorView() {
+        
+        // init table view
+        self.loadingIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        self.loadingIndicatorView.frame = CGRect.zero
+        self.view.addSubview(self.loadingIndicatorView)
+        
+        self.loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.loadingIndicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.loadingIndicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            ])
+    }
+    
+    /**
+     Show Loading Indicator View
+     */
+    func showLoadingIndicatorView() {
+        if self.dataList.isEmpty {
+            self.loadingIndicatorView.isHidden = false
+            self.loadingIndicatorView.startAnimating()
+        }
+    }
+    
+    /**
      Reload Data
      */
     func reloadData() {
+        self.loadingIndicatorView.isHidden = true
         self.tableView.reloadData()
     }
 }
@@ -96,7 +144,7 @@ extension JNMentionPickerViewController: UITableViewDelegate, UITableViewDataSou
      Number Of Rows In Section
      */
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.delegate?.pickerViewRetrieveData().count ?? 0
+        return self.dataList.count
     }
     
     /**
@@ -104,12 +152,9 @@ extension JNMentionPickerViewController: UITableViewDelegate, UITableViewDataSou
      */
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // data
-        let data = self.delegate?.pickerViewRetrieveData() ?? []
-        
         // get cell for pickable item
-        if data.count > indexPath.row {
-            return self.delegate?.jnMentionPickerViewController(cellFor: data[indexPath.row]) ?? UITableViewCell()
+        if self.dataList.count > indexPath.row {
+            return self.delegate?.jnMentionPickerViewController(cellFor: self.dataList[indexPath.row]) ?? UITableViewCell()
         }
         
         return UITableViewCell()
@@ -120,12 +165,9 @@ extension JNMentionPickerViewController: UITableViewDelegate, UITableViewDataSou
      */
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        // data
-        let data = self.delegate?.pickerViewRetrieveData() ?? []
-        
         // get cell for pickable item
-        if data.count > indexPath.row {
-            return self.delegate?.jnMentionPickerViewController(cellHeightFor: data[indexPath.row]) ?? UITableView.automaticDimension
+        if self.dataList.count > indexPath.row {
+            return self.delegate?.jnMentionPickerViewController(cellHeightFor: self.dataList[indexPath.row]) ?? UITableView.automaticDimension
         }
         
         return UITableView.automaticDimension

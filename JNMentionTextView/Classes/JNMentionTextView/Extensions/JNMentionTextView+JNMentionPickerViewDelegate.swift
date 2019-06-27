@@ -9,21 +9,7 @@ import UIKit
 
 /// JNMentionPickerViewDelegate
 extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
-    
-    /**
-     Retrieve Data
-     - Returns: Pickable data array.
-     */
-    func pickerViewRetrieveData() -> [JNMentionPickable] {
         
-        // Data
-        let data =  self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) ?? []
-        if data.isEmpty {
-           self.endMentionProcess()
-        }
-        return data
-    }
-    
     /**
      Cell
      - Parameter item: Pickable item.
@@ -48,10 +34,10 @@ extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
      */
     func jnMentionPickerViewController(didSelectItemAt indexPath: IndexPath) {
         
-        if let data = self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) {
+        if let _pickerViewController =  self.pickerViewController, _pickerViewController.dataList.count > indexPath.row {
             
             // selected item & range
-            let selectedItem = data[indexPath.row]
+            let selectedItem = _pickerViewController.dataList[indexPath.row]
             
             // selected location
             guard let selectedRange = selectedTextRange else { return }

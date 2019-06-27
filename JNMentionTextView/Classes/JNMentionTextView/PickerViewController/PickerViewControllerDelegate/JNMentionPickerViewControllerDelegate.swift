@@ -11,12 +11,6 @@ import Foundation
 protocol JNMentionPickerViewControllerDelegate: NSObjectProtocol {
     
     /**
-     Retrieve Data
-     - Returns: Pickable data array.
-     */
-    func pickerViewRetrieveData() -> [JNMentionPickable]
-    
-    /**
      Get Cell
      - Parameter item: Pickable item.
      - Returns: UITableViewCell.

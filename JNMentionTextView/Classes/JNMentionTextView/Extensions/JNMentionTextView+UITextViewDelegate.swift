@@ -49,15 +49,18 @@ extension JNMentionTextView: UITextViewDelegate {
                     
                     let index = self.searchString.index(self.searchString.startIndex, offsetBy: deletedIndex)
                     self.searchString.remove(at: index)
+                    
+                    // Retrieve Picker Data
+                    self.pickerViewRetrieveData()
                 }
                 
             } else {
                 self.searchString += text
+               
+                // Retrieve Picker Data
+                self.pickerViewRetrieveData()
             }
-            
-            // Reload Data
-            self.pickerViewController?.reloadData()
-            
+                        
         } else {
             
             /// mentionDeletionProcess
@@ -107,33 +110,32 @@ extension JNMentionTextView: UITextViewDelegate {
                 // check to start mention process for special characters
                 if text.isEmpty && !mentionDeletionProcess {
                     
-                    #warning("ToBe-Continued")
-//                    // get special chracters
-//                    let charactersArray = Array(self.textStorage.string)
-//                    var indexArray: [Int] = []
-//
-//                    for key in self.mentionReplacements.keys {
-//                        let indices = charactersArray.enumerated()
-//                            .compactMap { $0.element == Character(key) ? $0.offset : nil }
-//
-//                        indexArray.append(contentsOf: indices)
-//                    }
-//
-//                    // filter index less than my index
-//                    if !indexArray.isEmpty {
-//                        indexArray = indexArray.filter({ $0 <= cursorPosition })
-//                        if let minDifference = indexArray.map({ cursorPosition - $0 }).min() {
-//                            self.selectedSymbolLocation = cursorPosition - minDifference
-//                            self.selectedSymbol = String(Array(self.textStorage.string)[self.selectedSymbolLocation])
-//                            self.selectedSymbolAttributes = self.mentionReplacements[self.selectedSymbol]
-//                            self.searchString = self.textStorage.attributedSubstring(from: NSRange(location: self.selectedSymbolLocation + 1, length: minDifference - 2)).string
-//
-//                            if let delegate = self.mentionDelegate, delegate.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString).count > 0 {
-//                                self.startMentionProcess()
-//                         }
-//                        }
-//                    }
-                    
+                    /* This Code Needs Will be added later because it will do the calculations every time we delete char.
+                    // get special chracters
+                    let charactersArray = Array(self.textStorage.string)
+                    var indexArray: [Int] = []
+
+                    for key in self.mentionReplacements.keys {
+                        let indices = charactersArray.enumerated()
+                            .compactMap { $0.element == Character(key) ? $0.offset : nil }
+
+                        indexArray.append(contentsOf: indices)
+                    }
+
+                    // filter index less than my index
+                    if !indexArray.isEmpty {
+                        indexArray = indexArray.filter({ $0 <= cursorPosition })
+                        if let minDifference = indexArray.map({ cursorPosition - $0 }).min() {
+                            self.selectedSymbolLocation = cursorPosition - minDifference
+                            self.selectedSymbol = String(Array(self.textStorage.string)[self.selectedSymbolLocation])
+                            self.selectedSymbolAttributes = self.mentionReplacements[self.selectedSymbol]
+                            self.searchString = self.textStorage.attributedSubstring(from: NSRange(location: self.selectedSymbolLocation + 1, length: minDifference - 2)).string
+
+                            self.startMentionProcess()
+                         
+                        }
+                    }
+                    */
                 } else {
                     
                     // set normal attributes
@@ -185,7 +187,7 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textViewDidEndEditing(_ textView: UITextView) {
         
         // end mention process
-        //self.endMentionProcess()
+        self.endMentionProcess()
         self.mentionDelegate?.textViewDidEndEditing?(textView)
     }
     

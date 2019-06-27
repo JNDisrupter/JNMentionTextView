@@ -44,7 +44,14 @@ extension JNMentionTextView {
             let rect: CGRect = self.caretRect(for: position)
             let popoverPresentationController = _pickerViewController.popoverPresentationController
             popoverPresentationController?.sourceRect = rect
-            viewcontroller.present(_pickerViewController, animated: true, completion: nil)
+            viewcontroller.present(_pickerViewController, animated: true, completion: { [weak self] in
+                
+                // Get strong self refrence
+                guard let strongSelf = self else { return }
+                
+                // Retrieve Picker Data
+                strongSelf.pickerViewRetrieveData()
+            })
         }
     }
     

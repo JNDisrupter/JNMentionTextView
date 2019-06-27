@@ -129,18 +129,18 @@ extension JNMentionTextViewTableViewCell: JNMentionTextViewDelegate {
     
     /**
      Retrieve Data For
-     - Parameter symbole: replacement string.
+     - Parameter symbol: replacement string.
      - Parameter searchString: search string.
-     - Returns: list of JNMentionEntityPickable objects for the search criteria.
+     - Parameter compliation: list of JNMentionEntityPickable objects for the search criteria.
      */
-    func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) -> [JNMentionPickable] {
+    func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String, compliation: (([JNMentionPickable]) -> ())) {
         
         var data = self.data[symbol] ?? []
         if !searchString.isEmpty {
             data = data.filter({ $0.getPickableTitle().lowercased().contains(searchString.lowercased())})
         }
         
-        return data
+        return compliation(data)
     }
     
     /**
