@@ -19,10 +19,11 @@ extension JNMentionTextView {
         
         // replacement Range
         let replacementRange = NSRange(location: self.selectedSymbolLocation, length: selectedLocation - self.selectedSymbolLocation)
-        let replacementText = String((self.textStorage.string as NSString).substring(with: replacementRange).first ?? Character(""))
+        let startIndex = self.textStorage.string.index(self.textStorage.string.startIndex, offsetBy: self.selectedSymbolLocation)
+       let replacementText = self.textStorage.string[startIndex]
         
         // create mention item
-        let mentionItem = JNMentionEntity(item: item, symbol: replacementText)
+        let mentionItem = JNMentionEntity(item: item, symbol: String(replacementText))
         
         // add mentioned item as attribute
         var updatedAttributes = self.selectedSymbolAttributes
@@ -31,7 +32,18 @@ extension JNMentionTextView {
         // create mention attributed string with item title and symbol attributes
         let mentionAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: item.getPickableTitle(), attributes: updatedAttributes))
         
-        mentionAttributedString.append(NSAttributedString(string: " "))
+        // Check if the next char after the selected loaction has space then no need to add space
+        let nextCharLoaction = selectedLocation
+        if nextCharLoaction < self.textStorage.string.count {
+            let nextCharIndex = self.textStorage.string.index(self.textStorage.string.startIndex, offsetBy: nextCharLoaction)
+            let nextChar = self.textStorage.string[nextCharIndex]
+            if nextChar != " " {
+                mentionAttributedString.append(NSAttributedString(string: " "))
+            }
+        }else{
+            mentionAttributedString.append(NSAttributedString(string: " "))
+        }
+
         
         // replace the replacement range with mention item
         self.textStorage.replaceCharacters(in: replacementRange, with: mentionAttributedString)
@@ -120,7 +132,6 @@ extension JNMentionTextView {
         
         // set attributed text
         self.attributedText = attributedString
-        
     }
     
     /**

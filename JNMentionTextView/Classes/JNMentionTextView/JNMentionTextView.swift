@@ -8,7 +8,7 @@
 import UIKit
 
 /// Component Values
-private struct ComponentValues {
+struct ComponentValues {
     
     // Default Cell Height
     static let defaultCellHeight: CGFloat = 50.0
@@ -40,25 +40,16 @@ public struct JNMentionEntity {
 }
 
 /// JNMentionTextView
-open class JNMentionTextView: UITextView {
+public class JNMentionTextView: UITextView {
     
     /// JNMentionAttributeName
     static let JNMentionAttributeName: NSAttributedString.Key = (NSString("JNMENTIONITEM")) as NSAttributedString.Key
 
-    /// Picker View
-    var pickerView: JNMentionPickerView!
-    
+    /// Picker View Controller
+    var pickerViewController: JNMentionPickerViewController?
+
     /// Options
     var options: JNMentionPickerViewOptions!
-    
-    /// Mention Replacements
-    public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
-    
-    /// Normal Attributes
-    var normalAttributes: [NSAttributedString.Key: Any] = [:]
-    
-    /// previous offset
-    var previousOffset: CGPoint = CGPoint.zero
     
     /// Search String
     var searchString: String!
@@ -71,6 +62,12 @@ open class JNMentionTextView: UITextView {
     
     /// Selected Symbol Attributes
     var selectedSymbolAttributes: [NSAttributedString.Key : Any]!
+    
+    /// Normal Attributes
+    public var normalAttributes: [NSAttributedString.Key: Any] = [:]
+    
+    /// Mention Replacements
+    public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
     
     /// Mention Delegate
     public weak var mentionDelegate: JNMentionTextViewDelegate?
@@ -104,7 +101,7 @@ open class JNMentionTextView: UITextView {
         self.selectedSymbolLocation = 0
         self.selectedSymbolAttributes = [:]
         self.searchString = ""
-        
+        self.pickerViewController = JNMentionPickerViewController()
         self.delegate = self
     }
     
@@ -116,24 +113,20 @@ open class JNMentionTextView: UITextView {
         
         // set options
         self.options = options
-        
-        // init picker view
-        self.initPickerView()
-        
-        // set picker view delegate
-        self.pickerView.delegate = self
     }
 
     /**
      Register Table View Cells
-     - Parameter cells: list of Table View Cells.
+     - Parameter nib: UINib.
+     - Parameter identifier: string identifier.
      */
     public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
-        self.pickerView.tableView.register(nib, forCellReuseIdentifier: identifier)
+        self.pickerViewController?.tableView.register(nib, forCellReuseIdentifier: identifier)
     }
     
     /**
      Get Mentioned Items
+     - Parameter attributedString: NSAttributedString.
      - Parameter symbol: Symbol string value.
      - Returns [JNMentionEntity]: list of mentioned (JNMentionEntity)
      */
@@ -159,16 +152,17 @@ open class JNMentionTextView: UITextView {
     }
     
     /**
-     Is In Filter Process
+     Is In Mention Process
      - Returns Bool: Bool value to indicate if the mention is in filter process.
      */
-    func isInFilterProcess() -> Bool {
-        return !self.pickerView.isHidden
+    func isInMentionProcess() -> Bool {
+        return ((self.pickerViewController?.viewIfLoaded) != nil) && self.pickerViewController?.view.window != nil
     }
     
     /**
      Move cursor to
      - Parameter location: Location.
+     - Parameter completion: completion closure block
      */
     func moveCursor(to location: Int, completion:(() -> ())? = nil) {
         
@@ -176,96 +170,36 @@ open class JNMentionTextView: UITextView {
         if let newPosition = self.position(from: self.beginningOfDocument, offset: location) {
             DispatchQueue.main.async {
                 self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
-                
                 completion?()
             }
         }
     }
     
     /**
-     post filtering process
-     - Parameter selectedRange: NSRange.
+     Retrieve Data
+     - Returns: Pickable data array.
      */
-    func postFilteringProcess(in selectedRange: NSRange, completion:(() -> ())? = nil) {
-        self.pickerView.tableView.reloadData()
-        self.setPickerViewFrame(completion: {
-                completion?()
+    func pickerViewRetrieveData() {
+        
+        // Show Loading Indicator View
+        self.pickerViewController?.showLoadingIndicatorView()
+        
+        // Data
+        self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString, compliation: { [weak self] (results) in
+            
+            // Get strong self refrence
+            guard let strongSelf = self else { return }
+            
+            // Set Data
+            strongSelf.pickerViewController?.dataList = results
+
+            if results.isEmpty {
+                strongSelf.endMentionProcess()
+            }
+            
+            // Reload Data
+            strongSelf.pickerViewController?.reloadData()
         })
     }
-}
-
-/// JNMention Text View Delegate
-public protocol JNMentionTextViewDelegate: UITextViewDelegate {
     
-    /**
-     Get Mention Item For
-     - Parameter symbol: replacement string.
-     - Parameter id: JNMentionEntityPickable ID.
-     - Returns: JNMentionEntityPickable objects for the search criteria.
-     */
-    func jnMentionTextView(getMentionItemFor symbol: String, id: String) -> JNMentionPickable?
-    
-    /**
-     Retrieve Data For
-     - Parameter symbol: replacement string.
-     - Parameter searchString: search string.
-     - Returns: list of JNMentionEntityPickable objects for the search criteria.
-     */
-    func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) -> [JNMentionPickable]
-    
-    /**
-     Cell For
-     - Parameter item: JNMentionEntityPickable Item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: UITableViewCell.
-     */
-    func jnMentionTextView(cellFor item: JNMentionPickable, tableView: UITableView) -> UITableViewCell
-    
-    /**
-     Height for cell
-     - Parameter item: JNMentionEntityPickable item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: cell height.
-     */
-    func jnMentionTextView(heightfor item: JNMentionPickable, tableView: UITableView) -> CGFloat
-    
-    /**
-     Container View For Picker View
-     - Returns: the super view for the picker view.
-     */
-    func containerViewForPickerView() -> UIView
-    
-    /**
-     height for picker view
-     - Returns: picker view height.
-     */
-    func heightForPickerView() -> CGFloat
-}
-
-
-/// JNMentionTextViewDelegate
-public extension JNMentionTextViewDelegate {
-
-    /**
-     Cell For
-     - Parameter item: JNMentionEntityPickable Item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: UITableViewCell.
-     */
-    func jnMentionTextView(cellFor item: JNMentionPickable, tableView: UITableView) -> UITableViewCell {
-        
-        let cell = UITableViewCell()
-        cell.textLabel?.text = item.getPickableTitle()
-        return cell
-    }
-    
-    /**
-     Height for cell
-     - Parameter item: JNMentionEntityPickable item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: cell height.
-     */
-     func jnMentionTextView(heightfor item: JNMentionPickable, tableView: UITableView) -> CGFloat {
-        return ComponentValues.defaultCellHeight
-    }
 }

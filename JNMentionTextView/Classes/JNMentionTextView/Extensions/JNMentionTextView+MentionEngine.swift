@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// MentionEngine
+/// Mention Engine
 extension JNMentionTextView {
     
     /**
@@ -15,26 +15,43 @@ extension JNMentionTextView {
      */
     func startMentionProcess() {
         
-        // unhide the picker view
-        self.pickerView.isHidden = false
-        
-        // super view
-        var superView = self.superview
-        
-        switch self.options.viewPositionMode {
-        case .top(_), .bottom(_):
-            superView = self.mentionDelegate?.containerViewForPickerView() ?? self.superview
-        default:
-            break
+        guard let _pickerViewController = self.pickerViewController else {
+            return
         }
         
-        if self.pickerView.superview != superView {
+        _pickerViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+        _pickerViewController.preferredContentSize = CGSize(width: self.frame.width, height: self.mentionDelegate?.heightForPickerView() ?? 0.0)
+        _pickerViewController.options = self.options
+        _pickerViewController.delegate = self
+        
+        let popoverPresentationController = _pickerViewController.popoverPresentationController
+        popoverPresentationController?.delegate = self
+        popoverPresentationController?.sourceView = self
+        popoverPresentationController?.backgroundColor = self.options.backgroundColor
+        
+        switch self.options.viewPositionMode {
+        case .up:
+            popoverPresentationController?.permittedArrowDirections = .up
+        case .down:
+            popoverPresentationController?.permittedArrowDirections = .down
+        default:
+            popoverPresentationController?.permittedArrowDirections = [.up, .down]
+        }
+        
+        if let viewcontroller = self.mentionDelegate?.sourceViewControllerForPickerView() {
             
-            // remove picker view from super view
-            self.pickerView.removeFromSuperview()
-            
-            // add picker view
-            superView?.addSubview(self.pickerView)
+            let position = self.position(from: self.beginningOfDocument, offset: self.selectedSymbolLocation + 1) ?? self.beginningOfDocument
+            let rect: CGRect = self.caretRect(for: position)
+            let popoverPresentationController = _pickerViewController.popoverPresentationController
+            popoverPresentationController?.sourceRect = rect
+            viewcontroller.present(_pickerViewController, animated: true, completion: { [weak self] in
+                
+                // Get strong self refrence
+                guard let strongSelf = self else { return }
+                
+                // Retrieve Picker Data
+                strongSelf.pickerViewRetrieveData()
+            })
         }
     }
     
@@ -43,47 +60,14 @@ extension JNMentionTextView {
      */
     func endMentionProcess() {
         
-        self.searchString = ""
-        self.selectedSymbol = ""
-        self.selectedSymbolLocation = 0
-        self.selectedSymbolAttributes = [:]
-        self.pickerView.isHidden = true
-        
-        self.resetConentOffset()
-    }
-    
-    /**
-     Set content offset on
-     - Parameter position: UITextPosition.
-     */
-    func setContentOffset() {
-        
-        // get text position
-        let textPosition = self.position(from: self.beginningOfDocument, offset: self.selectedRange.location) ?? self.beginningOfDocument
-        
-        // content offset
-        let conentOffsetRect = self.caretRect(for: textPosition)
-        
-        DispatchQueue.main.async {
-            
-            // scroll to content offset accroding to view position mode
-            switch self.options.viewPositionMode {
+        if let pickerView = self.pickerViewController {
+            pickerView.dismiss(animated: true, completion: {
                 
-            case .top(_), .enclosedTop(_):
-                self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y - self.bounds.size.height + conentOffsetRect.size.height), animated: false)
-            case .bottom(_), .enclosedBottom(_):
-                self.setContentOffset(CGPoint(x: self.contentOffset.x, y: conentOffsetRect.origin.y), animated: false)
-            }
-        }
-    }
-    
-    /**
-     Reset Content Offset
-     */
-    func resetConentOffset(){
-        
-        DispatchQueue.main.async {
-            self.setContentOffset(self.previousOffset, animated: false)
+                self.searchString = ""
+                self.selectedSymbol = ""
+                self.selectedSymbolLocation = 0
+                self.selectedSymbolAttributes = [:]
+            })
         }
     }
     
@@ -94,7 +78,7 @@ extension JNMentionTextView {
     func applyMentionEngine(searchRange: NSRange) {
         
         // in mention process
-        guard !self.isInFilterProcess() else { return }
+        guard !self.isInMentionProcess() else { return }
         
         // iterate through each replacement symbol
         for (pattern, attributes) in self.mentionReplacements {
@@ -119,25 +103,6 @@ extension JNMentionTextView {
                         
                         // start mention process
                         self.startMentionProcess()
-                        
-                        // post filtering process
-                        self.postFilteringProcess(in: matchRange, completion: { [weak self] in
-                            
-                            // strong self
-                            guard let strongSelf = self else { return }
-                            
-                            // create CGRect for current position
-                            let rect: CGRect = strongSelf.caretRect(for: strongSelf.selectedTextRange?.start ?? strongSelf.beginningOfDocument)
-                            
-                            // draw triangle in current position
-                            strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-                            
-                            // save previous offset
-                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
-
-                            // set content offset
-                            strongSelf.setContentOffset()
-                        })
                     }
                 }
             }
@@ -147,5 +112,18 @@ extension JNMentionTextView {
                     "\(error.localizedDescription)")
             }
         }
+    }
+}
+
+/// Mention Engine
+extension JNMentionTextView: UIPopoverPresentationControllerDelegate {
+    
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    public func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        self.endMentionProcess()
+        return true
     }
 }

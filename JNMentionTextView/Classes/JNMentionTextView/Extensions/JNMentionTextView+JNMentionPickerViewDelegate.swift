@@ -8,25 +8,15 @@
 import UIKit
 
 /// JNMentionPickerViewDelegate
-extension JNMentionTextView: JNMentionPickerViewDelegate {
-    
-    /**
-     Retrieve Data
-     - Returns: Pickable data array.
-     */
-    public func pickerViewRetrieveData() -> [JNMentionPickable] {
+extension JNMentionTextView: JNMentionPickerViewControllerDelegate {
         
-        // Data
-        return self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) ?? []
-    }
-    
     /**
      Cell
      - Parameter item: Pickable item.
      - Returns: UITableViewCell.
      */
-    public func cell(for item: JNMentionPickable) -> UITableViewCell {
-        return self.mentionDelegate?.jnMentionTextView(cellFor: item, tableView: self.pickerView.tableView) ?? UITableViewCell()
+    func jnMentionPickerViewController(cellFor item: JNMentionPickable) -> UITableViewCell {
+        return self.mentionDelegate?.jnMentionTextView(cellFor: item, tableView: self.pickerViewController!.tableView) ?? UITableViewCell()
     }
     
     /**
@@ -34,20 +24,20 @@ extension JNMentionTextView: JNMentionPickerViewDelegate {
      - Parameter item: Pickable item.
      - Returns: UITableViewCell.
      */
-    public func heightForCell(for item: JNMentionPickable) -> CGFloat {
-        return self.mentionDelegate?.jnMentionTextView(heightfor: item, tableView: self.pickerView.tableView) ?? 0.0
+    func jnMentionPickerViewController(cellHeightFor item: JNMentionPickable) -> CGFloat {
+        return self.mentionDelegate?.jnMentionTextView(heightfor: item, tableView: self.pickerViewController!.tableView) ?? 0.0
     }
     
     /**
      Did Select Item
      - Parameter indexPath: IndexPath.
      */
-    public func didSelectItem(at indexPath: IndexPath) {
+    func jnMentionPickerViewController(didSelectItemAt indexPath: IndexPath) {
         
-        if let data = self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString) {
+        if let _pickerViewController =  self.pickerViewController, _pickerViewController.dataList.count > indexPath.row {
             
             // selected item & range
-            let selectedItem = data[indexPath.row]
+            let selectedItem = _pickerViewController.dataList[indexPath.row]
             
             // selected location
             guard let selectedRange = selectedTextRange else { return }

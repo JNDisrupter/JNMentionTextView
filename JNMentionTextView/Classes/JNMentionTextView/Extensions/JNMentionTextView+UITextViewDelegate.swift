@@ -24,7 +24,7 @@ extension JNMentionTextView: UITextViewDelegate {
         var shouldChangeText = true
         
         // In Filter Process
-        if self.isInFilterProcess() {
+        if self.isInMentionProcess() {
             
             // delete text
             if text.isEmpty {
@@ -40,8 +40,8 @@ extension JNMentionTextView: UITextViewDelegate {
                     // deleted index
                     let deletedIndex = range.location - self.selectedSymbolLocation - 1
                     
-                    // deleted index greter than 0
-                    guard deletedIndex > 0
+                    // deleted index greter than -1
+                    guard deletedIndex > -1 && deletedIndex < self.searchString.count
                         else {
                             self.endMentionProcess()
                             return true
@@ -49,24 +49,22 @@ extension JNMentionTextView: UITextViewDelegate {
                     
                     let index = self.searchString.index(self.searchString.startIndex, offsetBy: deletedIndex)
                     self.searchString.remove(at: index)
-                 }
-
+                    
+                    // Retrieve Picker Data
+                    self.pickerViewRetrieveData()
+                }
+                
             } else {
                 self.searchString += text
+               
+                // Retrieve Picker Data
+                self.pickerViewRetrieveData()
             }
-            
-            // Calculate range
-            let filterRange = NSRange(location: range.location - self.searchString.count , length: self.searchString.count)            
-            self.postFilteringProcess(in: filterRange, completion: {
-                
-                // end mention process
-                if self.pickerView.tableView.visibleCells.count == 0 {
-                    self.endMentionProcess()
-                }
-            })
-            
-            
+                        
         } else {
+            
+            /// mentionDeletionProcess
+            var mentionDeletionProcess = false
             
             // check if delete already mentioned item
             if let selectedRange = self.selectedTextRange {
@@ -96,42 +94,53 @@ extension JNMentionTextView: UITextViewDelegate {
                         self.selectedSymbolLocation = rangeAttributes.location
                         self.selectedSymbolAttributes = attributes
                         
-                        // start mention process with search string for item title
+                        // start mention process with search string for tem title
                         self.searchString = mentionedItem.item.getPickableTitle()
                         self.startMentionProcess()
                         
-                        // post filtering process
-                        self.postFilteringProcess(in: rangeAttributes, completion: { [weak self] in
-                            
-                            // strong self
-                            guard let strongSelf = self else { return }
-                            
-                            // get position
-                            let position = strongSelf.position(from: strongSelf.beginningOfDocument, offset: strongSelf.selectedSymbolLocation)
-                            
-                            // create CGRect for current position
-                            let rect: CGRect = strongSelf.caretRect(for: position ?? strongSelf.beginningOfDocument)
-                            
-                            // draw triangle in current position
-                            strongSelf.pickerView.drawTriangle(options: strongSelf.options, cursorOffset: rect.origin.x + rect.width)
-                            
-                            // save previous offset
-                            strongSelf.previousOffset = CGPoint(x: 0.0, y: strongSelf.contentOffset.y)
-                            
-                            // set content offset
-                            strongSelf.setContentOffset()
-                        })
-                        
-                        
                         // skip this change in text
                         shouldChangeText = false
+                        
+                        // set mention deletion process true
+                        mentionDeletionProcess = true
                     }
                 }
-            }
-            
-            // set normal attributes
-            if !text.isEmpty {
-             self.normalAttributes = self.typingAttributes
+                
+                
+                // check to start mention process for special characters
+                if text.isEmpty && !mentionDeletionProcess {
+                    
+                    /* This Code Needs Will be added later because it will do the calculations every time we delete char.
+                    // get special chracters
+                    let charactersArray = Array(self.textStorage.string)
+                    var indexArray: [Int] = []
+
+                    for key in self.mentionReplacements.keys {
+                        let indices = charactersArray.enumerated()
+                            .compactMap { $0.element == Character(key) ? $0.offset : nil }
+
+                        indexArray.append(contentsOf: indices)
+                    }
+
+                    // filter index less than my index
+                    if !indexArray.isEmpty {
+                        indexArray = indexArray.filter({ $0 <= cursorPosition })
+                        if let minDifference = indexArray.map({ cursorPosition - $0 }).min() {
+                            self.selectedSymbolLocation = cursorPosition - minDifference
+                            self.selectedSymbol = String(Array(self.textStorage.string)[self.selectedSymbolLocation])
+                            self.selectedSymbolAttributes = self.mentionReplacements[self.selectedSymbol]
+                            self.searchString = self.textStorage.attributedSubstring(from: NSRange(location: self.selectedSymbolLocation + 1, length: minDifference - 2)).string
+
+                            self.startMentionProcess()
+                         
+                        }
+                    }
+                    */
+                } else {
+                    
+                    // set normal attributes
+                    self.normalAttributes = self.typingAttributes
+                }
             }
         }
         
