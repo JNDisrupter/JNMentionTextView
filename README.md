@@ -169,23 +169,23 @@ import JNMentionTextView
    - **Retrieve Mention List:**
     You can retrieve the list of mentioned items with their range (location, length) and special symbol string in TextView by calling the class method in the JNMentionTextView:
 
-    ```swift
-        getMentionedItems(from attributedString: NSAttributedString, symbol: String = "") -> [JNMentionEntity]
-    ```
+  ```swift
+     getMentionedItems(from attributedString: NSAttributedString, symbol: String = "") -> [JNMentionEntity]
+  ```
 
    - **Get Smart Replacement:**
 Used to retrieve smart attributed string (encrich string with mention annotations) from a simple string contains special    characters with unique pickable ids: as an example:  
 Consider the String as template that retured from the BackEnd has this format and want to set this in textview to be readable with smart fields:
 
-   - This agreement is made between **@client_name** and **@compnay_name**
-   - And the Smart Fields are:
+    - This agreement is made between **@client_name** and **@compnay_name**
+    - And the Smart Fields are:
     - client_name
     - compnay_name
-   - This Class methods will help you to genereate the attributtedstring to be used to set the attributtedString in TextView
+    - This Class methods will help you to genereate the attributtedstring to be used to set the attributtedString in TextView
 
-    ```swift
+        ```swift
         getSmartReplacement(text: String, data: [String: [JNMentionPickable]], normalAttributes: [NSAttributedString.Key: Any],       mentionReplacements: [String: [NSAttributedString.Key : Any]]) -> NSAttributedString
-    ```
+        ```
 
 ## Example
 
