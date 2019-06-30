@@ -1,28 +1,74 @@
 //
 //  JNMentionTextView+MentionEngine.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
 
-/// MentionEngine
+/// Mention Engine
 extension JNMentionTextView {
     
     /**
      Start Mention Process
      */
     func startMentionProcess() {
-        self.pickerView.isHidden = false
+        
+        guard let _pickerViewController = self.pickerViewController else {
+            return
+        }
+        
+        _pickerViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+        _pickerViewController.preferredContentSize = CGSize(width: self.frame.width, height: self.mentionDelegate?.heightForPickerView() ?? 0.0)
+        _pickerViewController.options = self.options
+        _pickerViewController.delegate = self
+        
+        let popoverPresentationController = _pickerViewController.popoverPresentationController
+        popoverPresentationController?.delegate = self
+        popoverPresentationController?.sourceView = self
+        popoverPresentationController?.backgroundColor = self.options.backgroundColor
+        
+        switch self.options.viewPositionMode {
+        case .up:
+            popoverPresentationController?.permittedArrowDirections = .up
+        case .down:
+            popoverPresentationController?.permittedArrowDirections = .down
+        default:
+            popoverPresentationController?.permittedArrowDirections = [.up, .down]
+        }
+        
+        if let viewcontroller = self.mentionDelegate?.sourceViewControllerForPickerView() {
+            
+            let position = self.position(from: self.beginningOfDocument, offset: self.selectedSymbolLocation + 1) ?? self.beginningOfDocument
+            let rect: CGRect = self.caretRect(for: position)
+            let popoverPresentationController = _pickerViewController.popoverPresentationController
+            popoverPresentationController?.sourceRect = rect
+            viewcontroller.present(_pickerViewController, animated: true, completion: { [weak self] in
+                
+                // Get strong self refrence
+                guard let strongSelf = self else { return }
+                
+                // Retrieve Picker Data
+                strongSelf.pickerViewRetrieveData()
+            })
+        }
     }
     
     /**
      End Mention Process
      */
     func endMentionProcess() {
-        self.pickerView.isHidden = true
+        
+        if let pickerView = self.pickerViewController {
+            pickerView.dismiss(animated: true, completion: {
+                
+                self.searchString = ""
+                self.selectedSymbol = ""
+                self.selectedSymbolLocation = 0
+                self.selectedSymbolAttributes = [:]
+            })
+        }
     }
     
     /**
@@ -32,10 +78,10 @@ extension JNMentionTextView {
     func applyMentionEngine(searchRange: NSRange) {
         
         // in mention process
-        guard !self.isInFilterProcess() else { return }
+        guard !self.isInMentionProcess() else { return }
         
         // iterate through each replacement symbol
-        for (pattern, attributes) in self.options?.mentionReplacements ?? [:] {
+        for (pattern, attributes) in self.mentionReplacements {
             
             do {
                 let regex = try NSRegularExpression(pattern: pattern)
@@ -54,11 +100,9 @@ extension JNMentionTextView {
                         self.selectedSymbol = String((self.textStorage.string as NSString).substring(with: matchRange).first ?? Character(""))
                         self.selectedSymbolLocation = matchRange.location
                         self.selectedSymbolAttributes = attributes
-
+                        
                         // start mention process
                         self.startMentionProcess()
-                        self.postFilteringProcess(in: matchRange)
-                        
                     }
                 }
             }
@@ -68,5 +112,18 @@ extension JNMentionTextView {
                     "\(error.localizedDescription)")
             }
         }
+    }
+}
+
+/// Mention Engine
+extension JNMentionTextView: UIPopoverPresentationControllerDelegate {
+    
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    public func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        self.endMentionProcess()
+        return true
     }
 }

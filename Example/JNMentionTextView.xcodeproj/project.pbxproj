@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F8664A722C2456B00C1B11B /* JNMentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8664A622C2456B00C1B11B /* JNMentionViewController.swift */; };
+		1F8664A922C2458400C1B11B /* JNMentionCustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8664A822C2458400C1B11B /* JNMentionCustomCellViewController.swift */; };
+		1F8664AB22C2459C00C1B11B /* JNMentionTextViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8664AA22C2459C00C1B11B /* JNMentionTextViewTableViewController.swift */; };
+		1F8664AD22C245AB00C1B11B /* JNMentionTextViewTableViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8664AC22C245AB00C1B11B /* JNMentionTextViewTableViewController+DataSource.swift */; };
+		1F8664B122C2683200C1B11B /* JNMentionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8664B022C2683200C1B11B /* JNMentionTableViewController.swift */; };
+		1F8664B522C2692700C1B11B /* JNMentionTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8664B422C2692700C1B11B /* JNMentionTextViewTableViewCell.swift */; };
+		4828A55722B7BA0A007E5A60 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828A55522B7BA0A007E5A60 /* CustomTableViewCell.swift */; };
+		4828A55822B7BA0A007E5A60 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4828A55622B7BA0A007E5A60 /* CustomTableViewCell.xib */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -16,13 +23,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F8664A622C2456B00C1B11B /* JNMentionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionViewController.swift; sourceTree = "<group>"; };
+		1F8664A822C2458400C1B11B /* JNMentionCustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionCustomCellViewController.swift; sourceTree = "<group>"; };
+		1F8664AA22C2459C00C1B11B /* JNMentionTextViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionTextViewTableViewController.swift; sourceTree = "<group>"; };
+		1F8664AC22C245AB00C1B11B /* JNMentionTextViewTableViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JNMentionTextViewTableViewController+DataSource.swift"; sourceTree = "<group>"; };
+		1F8664B022C2683200C1B11B /* JNMentionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionTableViewController.swift; sourceTree = "<group>"; };
+		1F8664B422C2692700C1B11B /* JNMentionTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		2F8DD2808BBA1FFB8F30D552 /* Pods-JNMentionTextView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNMentionTextView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JNMentionTextView_Example/Pods-JNMentionTextView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		45EB091C27CBD824783224CB /* JNMentionTextView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JNMentionTextView.podspec; path = ../JNMentionTextView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4828A55522B7BA0A007E5A60 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		4828A55622B7BA0A007E5A60 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		484BB84F229E99923D1DD663 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JNMentionTextView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNMentionTextView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -45,6 +59,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F8664B222C2690500C1B11B /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4828A55522B7BA0A007E5A60 /* CustomTableViewCell.swift */,
+				4828A55622B7BA0A007E5A60 /* CustomTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		1F8664B322C2691200C1B11B /* JNMentionTextViewTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1F8664B422C2692700C1B11B /* JNMentionTextViewTableViewCell.swift */,
+			);
+			path = JNMentionTextViewTableViewCell;
+			sourceTree = "<group>";
+		};
 		2141C7F7F14C4D81CB1EAE2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +83,15 @@
 				895BA270954228F034036A68 /* Pods_JNMentionTextView_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4828A55422B7BA0A007E5A60 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				1F8664B322C2691200C1B11B /* JNMentionTextViewTableViewCell */,
+				1F8664B222C2690500C1B11B /* CustomTableViewCell */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -77,8 +117,13 @@
 		607FACD21AFB9204008FA782 /* Example for JNMentionTextView */ = {
 			isa = PBXGroup;
 			children = (
+				4828A55422B7BA0A007E5A60 /* TableViewCells */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				1F8664A622C2456B00C1B11B /* JNMentionViewController.swift */,
+				1F8664A822C2458400C1B11B /* JNMentionCustomCellViewController.swift */,
+				1F8664B022C2683200C1B11B /* JNMentionTableViewController.swift */,
+				1F8664AA22C2459C00C1B11B /* JNMentionTextViewTableViewController.swift */,
+				1F8664AC22C245AB00C1B11B /* JNMentionTextViewTableViewController+DataSource.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -160,7 +205,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -195,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				4828A55822B7BA0A007E5A60 /* CustomTableViewCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -254,8 +300,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				1F8664A722C2456B00C1B11B /* JNMentionViewController.swift in Sources */,
+				1F8664AB22C2459C00C1B11B /* JNMentionTextViewTableViewController.swift in Sources */,
+				4828A55722B7BA0A007E5A60 /* CustomTableViewCell.swift in Sources */,
+				1F8664A922C2458400C1B11B /* JNMentionCustomCellViewController.swift in Sources */,
+				1F8664B522C2692700C1B11B /* JNMentionTextViewTableViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				1F8664B122C2683200C1B11B /* JNMentionTableViewController.swift in Sources */,
+				1F8664AD22C245AB00C1B11B /* JNMentionTextViewTableViewController+DataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +337,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -293,12 +346,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -339,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -347,12 +403,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

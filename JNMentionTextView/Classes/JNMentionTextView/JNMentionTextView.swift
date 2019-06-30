@@ -1,34 +1,37 @@
 //
 //  JNMentionTextView.swift
-//  JNMentionTextView_Example
+//  JNMentionTextView
 //
-//  Created by mihmouda on 6/2/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by JNDisrupter 💡 on 6/17/19.
 //
 
 import UIKit
 
-/// JNMentionReplacement
-public struct JNMentionReplacement {
- 
-    var data: [JNMentionEntityPickable]
-    var style: [NSAttributedString.Key: Any]
+/// Component Values
+struct ComponentValues {
     
-    public init(data: [JNMentionEntityPickable], style: [NSAttributedString.Key: Any]) {
-        
-        self.data = data
-        self.style = style
-    }
+    // Default Cell Height
+    static let defaultCellHeight: CGFloat = 50.0
 }
 
 /// JNMentionEntity
 public struct JNMentionEntity {
     
-    var range: NSRange
-    var symbol: String
-    var item: JNMentionEntityPickable
+    /// Ranage
+    public var range: NSRange
+    
+    /// Symbol
+    public var symbol: String
+    
+    /// Pickable Item
+     public var item: JNMentionPickable
 
-    init(item: JNMentionEntityPickable, symbol: String) {
+    /**
+     Initializer
+     - Parameter item: JNMentionEntityPickable Item
+     - Parameter symbol: Symbol special character
+     */
+    init(item: JNMentionPickable, symbol: String) {
         
         self.item = item
         self.symbol = symbol
@@ -37,11 +40,20 @@ public struct JNMentionEntity {
 }
 
 /// JNMentionTextView
-open class JNMentionTextView: UITextView {
+public class JNMentionTextView: UITextView {
     
     /// JNMentionAttributeName
     static let JNMentionAttributeName: NSAttributedString.Key = (NSString("JNMENTIONITEM")) as NSAttributedString.Key
 
+    /// Picker View Controller
+    var pickerViewController: JNMentionPickerViewController?
+
+    /// Options
+    var options: JNMentionPickerViewOptions!
+    
+    /// Search String
+    var searchString: String!
+    
     /// Selected Symbol
     var selectedSymbol: String!
     
@@ -51,23 +63,23 @@ open class JNMentionTextView: UITextView {
     /// Selected Symbol Attributes
     var selectedSymbolAttributes: [NSAttributedString.Key : Any]!
     
-    /// Search String
-    var searchString: String!
+    /// Normal Attributes
+    public var normalAttributes: [NSAttributedString.Key: Any] = [:]
     
-    /// Options
-    var options: JNMentionOptions!
-    
-    /// Picker View
-    var pickerView: JNMentionPickerView!
+    /// Mention Replacements
+    public var mentionReplacements: [String: [NSAttributedString.Key : Any]] = [:]
     
     /// Mention Delegate
-    open weak var mentionDelegate: JNMentionTextViewDelegate?
+    public weak var mentionDelegate: JNMentionTextViewDelegate?
     
+    // MARK:- Initializers
+
     /**
      Initializer
      */
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
+        
         self.initView()
     }
     
@@ -89,6 +101,7 @@ open class JNMentionTextView: UITextView {
         self.selectedSymbolLocation = 0
         self.selectedSymbolAttributes = [:]
         self.searchString = ""
+        self.pickerViewController = JNMentionPickerViewController()
         self.delegate = self
     }
     
@@ -96,29 +109,38 @@ open class JNMentionTextView: UITextView {
      Setup
      - Parameter options: JNMentionOptions Object.
      */
-    open func setup(options: JNMentionOptions) {
+    public func setup(options: JNMentionPickerViewOptions) {
         
         // set options
         self.options = options
-        
-        // init picker view
-        self.initPickerView(frame: self.frame)
-        
-        // set picker view delegate
-        self.pickerView.delegate = self
+    }
+
+    /**
+     Register Table View Cells
+     - Parameter nib: UINib.
+     - Parameter identifier: string identifier.
+     */
+    public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+        self.pickerViewController?.tableView.register(nib, forCellReuseIdentifier: identifier)
     }
     
     /**
      Get Mentioned Items
+     - Parameter attributedString: NSAttributedString.
      - Parameter symbol: Symbol string value.
+     - Returns [JNMentionEntity]: list of mentioned (JNMentionEntity)
      */
-    open func getMentionedItems(for symbol: String) -> [JNMentionEntity] {
+    public class func getMentionedItems(from attributedString: NSAttributedString, symbol: String = "") -> [JNMentionEntity] {
         
         var mentionedItems: [JNMentionEntity] = []
         
-        self.attributedText.enumerateAttributes(in: NSRange(0..<self.textStorage.length), options: [], using:{ attrs, range, stop in
+        attributedString.enumerateAttributes(in: NSRange(0..<attributedString.length), options: [], using:{ attrs, range, stop in
             
-            if let item = (attrs[JNMentionTextView.JNMentionAttributeName] as AnyObject) as? JNMentionEntity, item.symbol == symbol {
+            if let item = (attrs[JNMentionTextView.JNMentionAttributeName] as AnyObject) as? JNMentionEntity {
+                
+                if !symbol.isEmpty, symbol != item.symbol {
+                    return
+                }
                 
                 var mentionedItem = item
                 mentionedItem.range = range
@@ -130,67 +152,54 @@ open class JNMentionTextView: UITextView {
     }
     
     /**
-     Is In Filter Process
+     Is In Mention Process
+     - Returns Bool: Bool value to indicate if the mention is in filter process.
      */
-    func isInFilterProcess() -> Bool {
-        return !self.pickerView.isHidden
+    func isInMentionProcess() -> Bool {
+        return ((self.pickerViewController?.viewIfLoaded) != nil) && self.pickerViewController?.view.window != nil
     }
     
     /**
-     Move cursor
+     Move cursor to
      - Parameter location: Location.
+     - Parameter completion: completion closure block
      */
-    func moveCursor(to location: Int) {
+    func moveCursor(to location: Int, completion:(() -> ())? = nil) {
         
         // get cursor position
-        if let newPosition = self.position(from: self.beginningOfDocument, in: UITextLayoutDirection.right, offset: location) {
-            self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
+        if let newPosition = self.position(from: self.beginningOfDocument, offset: location) {
+            DispatchQueue.main.async {
+                self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
+                completion?()
+            }
         }
     }
     
     /**
-     post filtering process
-     - Parameter selectedRange: NSRange.
+     Retrieve Data
+     - Returns: Pickable data array.
      */
-    func postFilteringProcess(in selectedRange: NSRange) {
-        self.pickerView.tableView.reloadData()
-        self.uppdatePickerViewFrame(selectedRange: selectedRange)
+    func pickerViewRetrieveData() {
+        
+        // Show Loading Indicator View
+        self.pickerViewController?.showLoadingIndicatorView()
+        
+        // Data
+        self.mentionDelegate?.jnMentionTextView(retrieveDataFor: self.selectedSymbol, using: self.searchString, compliation: { [weak self] (results) in
+            
+            // Get strong self refrence
+            guard let strongSelf = self else { return }
+            
+            // Set Data
+            strongSelf.pickerViewController?.dataList = results
+
+            if results.isEmpty {
+                strongSelf.endMentionProcess()
+            }
+            
+            // Reload Data
+            strongSelf.pickerViewController?.reloadData()
+        })
     }
+    
 }
-
-/// JNMention Text View Delegate
-public protocol JNMentionTextViewDelegate: NSObjectProtocol {
-    
-    /**
-     Get Mention Item For
-     - Parameter symbol: replacement string.
-     - Parameter id: JNMentionEntityPickable ID.
-     - Returns: list of JNMentionEntityPickable objects for the search criteria.
-     */
-    func getMentionItemFor(symbol: String, id: String) -> JNMentionEntityPickable?
-    
-    /**
-     Retrieve Data For
-     - Parameter symbol: replacement string.
-     - Parameter searchString: search string.
-     - Returns: list of JNMentionEntityPickable objects for the search criteria.
-     */
-    func retrieveDataFor(_ symbol: String, using searchString: String) -> [JNMentionEntityPickable]
-    
-    /**
-     Cell For
-     - Parameter item: JNMentionEntityPickable Item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: UITableViewCell.
-     */
-    func cell(for item: JNMentionEntityPickable, tableView: UITableView) -> UITableViewCell
-    
-    /**
-     Height for cell
-     - Parameter item: JNMentionEntityPickable item.
-     - Parameter tableView: The data list UITableView.
-     - Returns: cell height.
-     */
-    func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) -> CGFloat
-}
-
