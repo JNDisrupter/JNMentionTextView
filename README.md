@@ -52,28 +52,28 @@ self.view.addSubview(textView)
 -  **Setup:**
   
       - ***Setup the mention replacements:***
-      as dictionary of special characters used in mention process [ #, @ ] with their crossponding style.
+        as dictionary of special characters used in mention process [ #, @ ] with their crossponding style.
 
       ```swift
       self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
       ```
 
-        - **Setup the data list:**
+      - **Setup the data list:**
         The list of entities that you can select, as instance of class / struct which confirms to the **JNMentionPickable**           protocol by implementing his methods:
 
           ***1. getPickableTitle:*** return the title of entities which you can select.
 
-            ```swift
-             getPickableTitle() -> String
-            ```
+           ```swift
+           getPickableTitle() -> String
+           ```
 
           ***2. getPickableIdentifier:*** used to uniquely identify the entities - Entity id -.
 
-            ```swift
-              getPickableIdentifier() -> String
-            ```
+           ```swift
+           getPickableIdentifier() -> String
+           ```
 
-        - **Setup the data list picker options:**
+      - **Setup the data list picker options:**
 
         ```swift
          self.textView.setup(options: JNMentionOptions()
