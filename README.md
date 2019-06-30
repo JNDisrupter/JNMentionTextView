@@ -93,26 +93,25 @@ import JNMentionTextView
                  viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
                 ```
 
- - ### JNMentionTextViewDelegate:
+ ## JNMentionTextViewDelegate
+   - Your class must use the **JNMentionTextViewDelegate** Protocol and conform to it by implementing its required methods in        **JNMentionTextViewDelegate**:
 
-        - Your class must use the **JNMentionTextViewDelegate** Protocol and conform to it by implementing its required methods in        **JNMentionTextViewDelegate**:
+   ```swift
+   self.textView.mentionDelegate = self
+   ```
 
-    ```swift
-    self.textView.mentionDelegate = self
-    ```
+   - **Retrieve Data For Symbol:** In this method retrieve data of **JNMentionPickable** objects as the data list to be picked according to search text that had been typed in textview also this opeartion will be async and the loading activity indictor will appear in Picker view.
 
-- **retrieveDataFor:** In this method retrieve data of **JNMentionPickable** objects as the data list to be picked.
-
-```swift
-func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) 
--> [JNMentionPickable] {
-var data = self.data[symbol] ?? []
-if !searchString.isEmpty {
-data = data.filter({ $0.getPickableTitle().lowercased().contains(searchString.lowercased())})
-}
-return data
-}
-```
+   ```swift
+   func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String, compliation: (([JNMentionPickable]) -> ()) {
+        var data = self.data[symbol] ?? []
+        if !searchString.isEmpty {
+            data = data.filter({ $0.getPickableTitle().lowercased().contains(searchString.lowercased())})
+        }
+        
+        return compliation(data)
+    }
+  ```
 
 
 - **getMentionItemFor:** In this method retrieve  **JNMentionPickable** object to be converted to mention annotation in    the **setSmartText** method
