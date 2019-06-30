@@ -9,6 +9,10 @@
 import UIKit
 import JNMentionTextView
 
+/// ComponentValues
+private struct ComponentValues {
+    static let cellHeight: CGFloat = 100.0
+}
 
 // JNMentionTableViewController
 class JNMentionTableViewController: UIViewController {
@@ -22,11 +26,11 @@ class JNMentionTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // empty back title
+        self.navigationController?.navigationBar.topItem?.title = " "
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        // set navigation controller title
-        self.navigationItem.title = "JN Mention TextView Examples"
     }
 }
 
@@ -38,13 +42,16 @@ extension JNMentionTableViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row != 20 {
-            return UITableViewCell()
+        if indexPath.row != 5 {
+            
+            let cell = UITableViewCell()
+            cell.textLabel?.text = " Cell # " + indexPath.row.description
+            return cell
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "JNMentionTextViewTableViewCell", for: indexPath) as! JNMentionTextViewTableViewCell
@@ -54,8 +61,8 @@ extension JNMentionTableViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row != 20 {
-            return 50.0
+        if indexPath.row != 5 {
+            return ComponentValues.cellHeight
         } else {
             return JNMentionTextViewTableViewCell.getCellHeight()
         }

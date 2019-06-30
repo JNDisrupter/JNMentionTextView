@@ -11,10 +11,10 @@
 
 ## Preview
 
-<img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-1.gif" width="280"/> 
-<img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-2.gif" width="280"/> 
-<img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-3.gif" width="280"/> 
-## Requirements:
+<img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-1.gif" width="260"/> <img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-2.gif" width="260"/> <img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-3.gif" width="260"/> <img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-4.gif" width="260"/> <img src="https://github.com/JNDisrupter/JNMentionTextView/raw/master/Images/mention-5.gif" width="260"/> 
+
+
+## Requirements
 
 - Xcode 9
 - iOS 9.0+
@@ -50,46 +50,19 @@ self.view.addSubview(textView)
 ```
 
 -  **Setup:**
--  
-**Setup the mention replacements:**
-as dictionary of special characters used in mention process [ #, @ ] with their crossponding style. 
-```swift
-self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
-```
-**Setup the data list:**
+
+- **Setup the mention replacements:**
+as dictionary of special characters used in mention process [ #, @ ] with their crossponding style.
 
 ```swift
-self.data = ["@": [firstObject, secondObject, thirdObject]
+self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor:    UIColor.blue,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
 ```
 
-**Setup the data list picker options:**
+- **Setup the data list:**
+The list of entities that you can select, as instance of class / struct which confirms to the **JNMentionPickable**           protocol by implementing his methods:
 
-```swift
-self.textView.setup(options: JNMentionOptions()
-```
-
-- **Options Customization:**
-Customize the data list apperance (Picker View):
-
-- **borderColor**: picker view border color.
-- **borderWitdth**: picker view border width.
-- **backgroundColor**: picker view background color.
-- **viewPositionMode**: can support one or more of three view modes:
-- **Up**
-- **Down**
-- **Automatic**
-
-```swift
-JNMentionOptions(
-borderColor: UIColor.gray,
-borderWitdth: 1.0, 
-backgroundColor: UIColor.white,
-viewPositionMode: JNMentionPickerViewPositionwMode.automatic
-)
-```
--  **Mention Data List:**
-The list of entities that you can select, as instance of class / struct which confirms to the **JNMentionPickable** protocol by implementing his methods:
 **1. getPickableTitle:** return the title of entities which you can select.
+
 ```swift
 getPickableTitle() -> String
 ```
@@ -99,17 +72,48 @@ getPickableTitle() -> String
 ```swift
 getPickableIdentifier() -> String
 ```
+Set data:
+
+```swift
+self.data = ["@": [firstObject, secondObject, thirdObject]
+```
+
+- **Setup the data list picker options:**
+
+```swift
+self.textView.setup(options: JNMentionOptions()
+```
+
+- **Options Customization:**
+Customize the data list apperance (Picker View):
+
+- **backgroundColor**: picker view background color.
+- **viewPositionMode**: can support one or more of three view modes:
+
+- **Up**
+- **Down**
+- **Automatic**
+
+
+```swift
+JNMentionOptions(
+backgroundColor: UIColor.white,
+viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
+```
 
 - **JNMentionTextViewDelegate:**
 
-Your class must use the **JNMentionTextViewDelegate** Protocol and conform to it by implementing its required methods in **JNMentionTextViewDelegate**:
+Your class must use the **JNMentionTextViewDelegate** Protocol and conform to it by implementing its required methods in        **JNMentionTextViewDelegate**:
 
 ```swift
 self.textView.mentionDelegate = self
 ```
+
 - **retrieveDataFor:** In this method retrieve data of **JNMentionPickable** objects as the data list to be picked.
+
 ```swift
-func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) -> [JNMentionPickable] {
+func jnMentionTextView(retrieveDataFor symbol: String, using searchString: String) 
+-> [JNMentionPickable] {
 var data = self.data[symbol] ?? []
 if !searchString.isEmpty {
 data = data.filter({ $0.getPickableTitle().lowercased().contains(searchString.lowercased())})
@@ -117,9 +121,12 @@ data = data.filter({ $0.getPickableTitle().lowercased().contains(searchString.lo
 return data
 }
 ```
-- **getMentionItemFor:** In this method retrieve  **JNMentionPickable** object to be converted to mention annotation in the **setSmartText** method
+
+
+- **getMentionItemFor:** In this method retrieve  **JNMentionPickable** object to be converted to mention annotation in    the **setSmartText** method
 ```swift
-func jnMentionTextView(getMentionItemFor symbol: String, id: String) -> JNMentionPickable? {
+func jnMentionTextView(getMentionItemFor symbol: String, id: String) 
+-> JNMentionPickable? {
 for item in self.data[symbol] ?? [] {
 if item.getPickableIdentifier() == id {
 return item
@@ -128,9 +135,12 @@ return item
 return nil
 }
 ```
-- **sourceViewControllerForPickerView:** In this method return the super view controller to present the picker data list (Popover view controller)
+- **sourceViewControllerForPickerView:** In this method return the super view controller to present the picker data list        (Popover view controller)
+
+
 ```swift
-func sourceViewControllerForPickerView() -> UIViewController {
+func sourceViewControllerForPickerView() 
+-> UIViewController {
 return self
 }
 ```
@@ -139,7 +149,8 @@ return self
 - **Cell:** Optional method to return your custom **UITableViewCell** for the data picker list.
 
 ```swift
-func cell(for item: JNMentionEntityPickable, tableView: UITableView) -> UITableViewCell {
+func cell(for item: JNMentionEntityPickable, tableView: UITableView) 
+-> UITableViewCell {
 let cell = UITableViewCell()
 cell.textLabel?.text = item.getPickableTitle()
 return cell
@@ -148,24 +159,25 @@ return cell
 - **heightForCell:** Optional method to return the height of **UITableViewCell** in the data picker list.
 
 ```swift
-func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) -> CGFloat {
+func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) 
+-> CGFloat {
 return 50.0
 }
 ```    
 - ***Retrieve Mention List:***
-
 You can retrieve the list of mentioned items with their range (location, length) and special symbol string by calling the class method in the JNMentionTextView:
 
 ```swift
-getMentionedItems(from attributedString: NSAttributedString, symbol: String = "") -> [JNMentionEntity]
+getMentionedItems(from attributedString: NSAttributedString, symbol: String = "") 
+-> [JNMentionEntity]
 ```
 
 - ***Get Smart Replacement:***
-
-Used to retrieve smart attributed string (encrich string with mention annotations) from a simple string contains special characters with unique pickable ids  
+Used to retrieve smart attributed string (encrich string with mention annotations) from a simple string contains special    characters with unique pickable ids  
 
 ```swift
-getSmartReplacement(text: String, data: [String: [JNMentionPickable]], normalAttributes: [NSAttributedString.Key: Any], mentionReplacements: [String: [NSAttributedString.Key : Any]]) -> NSAttributedString
+getSmartReplacement(text: String, data: [String: [JNMentionPickable]], normalAttributes: [NSAttributedString.Key: Any],       mentionReplacements: [String: [NSAttributedString.Key : Any]]) 
+-> NSAttributedString
 ```
 
 ## Example

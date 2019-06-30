@@ -61,6 +61,7 @@
                             <constraint firstAttribute="trailing" secondItem="XUw-nf-15L" secondAttribute="trailing" constant="20" id="td2-C8-uMX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bkI-QC-jgK"/>
                     <connections>
                         <outlet property="textView" destination="XUw-nf-15L" id="Plo-YX-Rve"/>
                     </connections>
@@ -69,7 +70,7 @@
             </objects>
             <point key="canvasLocation" x="1049" y="-414"/>
         </scene>
-        <!--Example-->
+        <!--Mention Text View Table View Controller-->
         <scene sceneID="R9f-rc-fvS">
             <objects>
                 <tableViewController id="2qp-Gv-yaf" customClass="JNMentionTextViewTableViewController" customModule="JNMentionTextView_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,30 +125,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="zRD-CF-NuE">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zRD-CF-NuE" id="rlf-e0-IzJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjR-fO-iQp">
-                                                    <rect key="frame" x="16" y="11" width="343" height="38"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="NjR-fO-iQp" firstAttribute="leading" secondItem="rlf-e0-IzJ" secondAttribute="leadingMargin" id="1d0-qI-aGe"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="NjR-fO-iQp" secondAttribute="trailing" id="6qw-Lo-TFW"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="NjR-fO-iQp" secondAttribute="bottom" id="ctG-rO-fkY"/>
-                                                <constraint firstItem="NjR-fO-iQp" firstAttribute="top" secondItem="rlf-e0-IzJ" secondAttribute="topMargin" id="gBo-Bn-vXD"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="WFg-qv-IO2">
-                                        <rect key="frame" x="0.0" y="180" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="120" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WFg-qv-IO2" id="Tg7-Y2-n7A">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -169,7 +148,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="1zR-tH-NNn">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="180" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1zR-tH-NNn" id="8YD-p7-3uS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -198,7 +177,7 @@
                             <outlet property="delegate" destination="2qp-Gv-yaf" id="hqD-VQ-BIX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Example" id="iPq-fh-OmY"/>
+                    <navigationItem key="navigationItem" id="iPq-fh-OmY"/>
                     <connections>
                         <segue destination="6tO-xf-Non" kind="show" identifier="showDefaultCellMention" id="QDl-2N-UeM"/>
                         <segue destination="Nok-Sf-VBM" kind="show" identifier="showCustomCellMention" id="rVs-dk-nSM"/>

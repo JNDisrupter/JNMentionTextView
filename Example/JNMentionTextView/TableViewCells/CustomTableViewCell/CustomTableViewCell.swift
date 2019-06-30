@@ -91,6 +91,6 @@ class CustomTableViewCell: UITableViewCell {
      - Returns : Cell height
      */
     class func getCellHeight() -> CGFloat {
-        return 50.0
+        return 75.0
     }
 }

@@ -14,7 +14,6 @@ enum JNMentionTextViewExample: Int {
     
     case up
     case bottom
-    case automatic
     case customCell
     case tableView
 
@@ -26,10 +25,8 @@ enum JNMentionTextViewExample: Int {
             return JNMentionPickerViewPositionwMode.up
         case .bottom:
             return JNMentionPickerViewPositionwMode.down
-        case .automatic:
-            return [JNMentionPickerViewPositionwMode.up, JNMentionPickerViewPositionwMode.down]
         case .customCell:
-            return JNMentionPickerViewPositionwMode.up
+            return JNMentionPickerViewPositionwMode.automatic
         case .tableView:
             return [JNMentionPickerViewPositionwMode.up, JNMentionPickerViewPositionwMode.down]
         }
@@ -39,11 +36,8 @@ enum JNMentionTextViewExample: Int {
 // JNMentionTextViewTableViewController
 class JNMentionTextViewTableViewController: UITableViewController {
     
-    /**
-     View Did load
-     */
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         // set navigation controller title
         self.navigationItem.title = "JN Mention TextView Examples"

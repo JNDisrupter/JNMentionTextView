@@ -167,4 +167,12 @@ extension JNMentionTextViewTableViewCell: JNMentionTextViewDelegate {
     func heightForPickerView() -> CGFloat {
         return 200.0
     }
+    
+    /**
+     Should Begin Editing
+     */
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        (self.superview as! UITableView).scrollToRow(at: IndexPath(row: 5, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+        return true
+    }
 }

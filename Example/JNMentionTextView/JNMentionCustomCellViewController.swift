@@ -27,6 +27,8 @@ class JNMentionCustomCellViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // empty back title
+    self.navigationController?.navigationBar.topItem?.title = " "
         
         // customize text view apperance
         self.textView.font = UIFont.systemFont(ofSize: 17.0)

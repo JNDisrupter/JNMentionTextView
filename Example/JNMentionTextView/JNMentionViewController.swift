@@ -56,7 +56,9 @@ class JNMentionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // set back
+        self.navigationController?.navigationBar.topItem?.title = " "
+
         // customize text view apperance
         self.textView.font = UIFont.systemFont(ofSize: 17.0)
         
