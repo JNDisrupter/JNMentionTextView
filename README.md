@@ -114,30 +114,27 @@ import JNMentionTextView
   ```
 
 
-- **getMentionItemFor:** In this method retrieve  **JNMentionPickable** object to be converted to mention annotation in    the **setSmartText** method
-```swift
-func jnMentionTextView(getMentionItemFor symbol: String, id: String) 
--> JNMentionPickable? {
-for item in self.data[symbol] ?? [] {
-if item.getPickableIdentifier() == id {
-return item
-}
-}
-return nil
-}
-```
-- **sourceViewControllerForPickerView:** In this method return the super view controller to present the picker data list        (Popover view controller)
+   - **Get Mention Item For Symbol:** In this method retrieve  **JNMentionPickable** object to be converted to mention annotation in the **setSmartText** method
+   ```swift
+    func jnMentionTextView(getMentionItemFor symbol: String, id: String) -> JNMentionPickable? {
+        for item in self.data[symbol] ?? [] {
+            if item.getPickableIdentifier() == id {
+                return item
+            }
+        }
+        
+        return nil
+    }
+   ```
+    
+   - **Get Source ViewController For PickerView to be presented on:** In this method return the super view controller to present the picker data list Viewcontroller (Popover view controller)
+   ```swift
+        func sourceViewControllerForPickerView() -> UIViewController {
+            return self
+        }
+   ```
 
-
-```swift
-func sourceViewControllerForPickerView() 
--> UIViewController {
-return self
-}
-```
-
-
-- **Cell:** Optional method to return your custom **UITableViewCell** for the data picker list.
+   - **Cell:** Optional method to return your custom **UITableViewCell** for the data picker list.
 
 ```swift
 func cell(for item: JNMentionEntityPickable, tableView: UITableView) 
