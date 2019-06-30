@@ -134,33 +134,47 @@ import JNMentionTextView
         }
    ```
 
-   - **Cell:** Optional method to return your custom **UITableViewCell** for the data picker list.
+   - **Height For Picker View Controller :** Optional method to return the height of data picker list.
 
-```swift
-func cell(for item: JNMentionEntityPickable, tableView: UITableView) 
--> UITableViewCell {
-let cell = UITableViewCell()
-cell.textLabel?.text = item.getPickableTitle()
-return cell
-}
-```
-- **heightForCell:** Optional method to return the height of **UITableViewCell** in the data picker list.
+     ```swift
+        func heightForPickerView() -> CGFloat {
+            return 100.0
+        }
+     ``` 
+     
+   - **Custom Picker TableViewCell:** Optional method to return your custom **UITableViewCell** for the data picker list, if didn't implement this method we use our TableViewCell.
 
-```swift
-func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) 
--> CGFloat {
-return 50.0
-}
-```    
-- ***Retrieve Mention List:***
-You can retrieve the list of mentioned items with their range (location, length) and special symbol string by calling the class method in the JNMentionTextView:
+    ```swift
+        func cell(for item: JNMentionEntityPickable, tableView: UITableView) -> UITableViewCell {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = item.getPickableTitle()
+            return cell
+        }
+    ```
+   
+   ***Important To Register Your custom cell using this Method***:
+       ```swift
+         public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) 
+        }
+    ```
+   - **Height For Picker TableViewCell:** Optional method to return the height of **UITableViewCell** in the data picker list.
+
+     ```swift
+        func heightForCell(for item: JNMentionEntityPickable, tableView: UITableView) -> CGFloat {
+            return 50.0
+        }
+     ``` 
+     
+ ## General Methods:
+   - **Retrieve Mention List:**
+    You can retrieve the list of mentioned items with their range (location, length) and special symbol string by calling the class method in the JNMentionTextView:
 
 ```swift
 getMentionedItems(from attributedString: NSAttributedString, symbol: String = "") 
 -> [JNMentionEntity]
 ```
 
-- ***Get Smart Replacement:***
+   - **Get Smart Replacement:**
 Used to retrieve smart attributed string (encrich string with mention annotations) from a simple string contains special    characters with unique pickable ids  
 
 ```swift
