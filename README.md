@@ -143,20 +143,20 @@ import JNMentionTextView
      ``` 
      
    - **Custom Picker TableViewCell:** Optional method to return your custom **UITableViewCell** for the data picker list, if didn't implement this method we use our TableViewCell.
-
-    ```swift
+     ```swift
         func cell(for item: JNMentionEntityPickable, tableView: UITableView) -> UITableViewCell {
             let cell = UITableViewCell()
             cell.textLabel?.text = item.getPickableTitle()
             return cell
         }
-    ```
+     ```
    
-   ***Important To Register Your custom cell using this Method***:
+   ***Important: To Register Your custom cell use this Method***:
+      
        ```swift
          public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) 
         }
-    ```
+       ```
    - **Height For Picker TableViewCell:** Optional method to return the height of **UITableViewCell** in the data picker list.
 
      ```swift
