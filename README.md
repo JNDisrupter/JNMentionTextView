@@ -73,28 +73,25 @@ import JNMentionTextView
            getPickableIdentifier() -> String
            ```
 
-      - **Setup the data list picker options:**
+      - ***Setup the data list picker options:***
 
         ```swift
          self.textView.setup(options: JNMentionOptions()
         ```
 
-- **Options Customization:**
-Customize the data list apperance (Picker View):
+        - ****Options Customization:****
+            Customize the data list apperance (Picker View):
 
-- **backgroundColor**: picker view background color.
-- **viewPositionMode**: can support one or more of three view modes:
-
-- **Up**
-- **Down**
-- **Automatic**
-
-
-```swift
-JNMentionOptions(
-backgroundColor: UIColor.white,
-viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
-```
+            - **backgroundColor**: picker view background color.
+            - **viewPositionMode**: can support one or more of three view modes:
+                - **Up**
+                - **Down**
+                - **Automatic**
+                ```swift
+                JNMentionOptions(
+                 backgroundColor: UIColor.white,
+                 viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
+                ```
 
 - **JNMentionTextViewDelegate:**
 
