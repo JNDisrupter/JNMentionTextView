@@ -93,13 +93,13 @@ import JNMentionTextView
                  viewPositionMode: JNMentionPickerViewPositionwMode.automatic)
                 ```
 
-- **JNMentionTextViewDelegate:**
+ - ### JNMentionTextViewDelegate:
 
-Your class must use the **JNMentionTextViewDelegate** Protocol and conform to it by implementing its required methods in        **JNMentionTextViewDelegate**:
+        - Your class must use the **JNMentionTextViewDelegate** Protocol and conform to it by implementing its required methods in        **JNMentionTextViewDelegate**:
 
-```swift
-self.textView.mentionDelegate = self
-```
+    ```swift
+    self.textView.mentionDelegate = self
+    ```
 
 - **retrieveDataFor:** In this method retrieve data of **JNMentionPickable** objects as the data list to be picked.
 
