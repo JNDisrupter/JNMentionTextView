@@ -151,12 +151,11 @@ import JNMentionTextView
         }
      ```
    
-   ***Important: To Register Your custom cell use this Method***:
-      
-       ```swift
-         public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) 
-        }
-       ```
+        ***Important: To Register Your custom cell use this Method***:
+            ```swift
+            public func registerTableViewCell(_ nib: UINib?, forCellReuseIdentifier identifier: String) 
+            ```
+            
    - **Height For Picker TableViewCell:** Optional method to return the height of **UITableViewCell** in the data picker list.
 
      ```swift
