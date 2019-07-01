@@ -91,6 +91,19 @@ public class JNMentionTextView: UITextView {
         
         self.initView()
     }
+ 
+    /**
+     Resign First Responder
+     - Parameter completion: Completion block.
+     */
+    public func resignFirstResponder(completion: (() -> ())? = nil){
+        
+        // end mention process
+        self.endMentionProcess(animated: false) {
+            self.resignFirstResponder()
+            completion?()
+        }
+    }
     
     /**
      Init View

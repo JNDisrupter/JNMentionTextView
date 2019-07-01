@@ -57,17 +57,24 @@ extension JNMentionTextView {
     
     /**
      End Mention Process
+     - Parameter animated: is animated bool value.
+     - Parameter completion: completion block.
      */
-    func endMentionProcess() {
+    func endMentionProcess(animated: Bool = true, completion: (() -> ())? = nil) {
         
-        if let pickerView = self.pickerViewController {
-            pickerView.dismiss(animated: true, completion: {
+        if let pickerView = self.pickerViewController, self.isInMentionProcess() {
+            pickerView.dismiss(animated: animated, completion: {
                 
                 self.searchString = ""
                 self.selectedSymbol = ""
                 self.selectedSymbolLocation = 0
                 self.selectedSymbolAttributes = [:]
+                
+                completion?()
             })
+        } else {
+            
+            completion?()
         }
     }
     
