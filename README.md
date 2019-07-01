@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/JNMentionTextView.svg?style=flat)](https://cocoapods.org/pods/JNMentionTextView)
 [![Platform](https://img.shields.io/cocoapods/p/JNMentionTextView.svg?style=flat)](https://cocoapods.org/pods/JNMentionTextView)
 
-**JNMentionTextView** is a UITextView drop-in replacement supporting special characters such as [ #, @ ], written in Swift. **JNMentionTextView** is a custom easy to use UITextView providing powerful tool and supportting for creating **‘Mention’** annotations in to your iOS app; Annotations which refers to names of individuals or entities and treated as a single unit and can be styled differently from the rest of the text.
+**JNMentionTextView** is a custom easy to use UITextView providing powerful tool and supportting for creating **‘Mention’** annotations in to your iOS app; Annotations which refers to names of individuals or entities and treated as a single unit and can be styled differently from the rest of the text.
 
 
 
