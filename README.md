@@ -185,7 +185,13 @@ Consider the String as template that retured from the BackEnd has this format an
         ```swift
         getSmartReplacement(text: String, data: [String: [JNMentionPickable]], normalAttributes: [NSAttributedString.Key: Any],       mentionReplacements: [String: [NSAttributedString.Key : Any]]) -> NSAttributedString
         ```
-
+   - **Resign First Responder:** 
+   This method is a wrapper of resignFirstResponder for UITextView, but it handle the dismissal of Picker ViewController 
+   
+        ```swift
+            public func resignFirstResponder(completion: (() -> ())? = nil)
+        ```
+   
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
