@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     
     s.name             = "JNMentionTextView"
-    s.version          = "1.0.0"
+    s.version          = "1.0.1"
     s.summary          = "JNMentionTextView is a UITextView replacement supporting the mention feature for iOS applications."
     s.description      = "A UITextView drop-in replacement supporting special characters such as [ #, @ ] and regex patterns, written in Swift."
     s.homepage                  = "https://github.com/JNDisrupter"

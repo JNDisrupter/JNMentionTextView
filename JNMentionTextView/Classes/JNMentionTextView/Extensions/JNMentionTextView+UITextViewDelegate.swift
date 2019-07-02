@@ -187,8 +187,9 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textViewDidEndEditing(_ textView: UITextView) {
         
         // end mention process
-        self.endMentionProcess()
-        self.mentionDelegate?.textViewDidEndEditing?(textView)
+        self.endMentionProcess {
+            self.mentionDelegate?.textViewDidEndEditing?(textView)
+        }
     }
     
     /**
