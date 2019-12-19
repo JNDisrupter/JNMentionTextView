@@ -58,7 +58,7 @@ import JNMentionTextView
       self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
       ```
 
-    - ***Setup the placeHolder :***
+      - ***Setup the placeHolder :***
         Custom Textview that has a placeholder with their corresponding style.
 
       - ***Setup the data list:***
