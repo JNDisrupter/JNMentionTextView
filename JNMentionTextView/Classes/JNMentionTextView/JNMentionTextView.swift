@@ -72,6 +72,15 @@ public class JNMentionTextView: UITextView {
     /// Mention Delegate
     public weak var mentionDelegate: JNMentionTextViewDelegate?
     
+    /// Place holder string
+    public var placeHolder: String?
+    
+    /// Place holder font
+    public var placeHolderFont: UIFont?
+    
+    /// Place holder text color
+    public var placeHolderTextColor: UIColor?
+    
     // MARK:- Initializers
 
     /**
@@ -116,6 +125,7 @@ public class JNMentionTextView: UITextView {
         self.searchString = ""
         self.pickerViewController = JNMentionPickerViewController()
         self.delegate = self
+        self.addTextViewNotificationObservers()
     }
     
     /**
@@ -128,6 +138,33 @@ public class JNMentionTextView: UITextView {
         self.options = options
     }
 
+    /**
+     Draw rect
+     */
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        guard let placeHolderTextColor = self.placeHolderTextColor , let placeHolder = self.placeHolder , let text = self.text , text.isEmpty else {
+            return
+        }
+        
+        var placeHolderFont = self.placeHolderFont
+        
+        if placeHolderFont == nil {
+            placeHolderFont = self.font
+        }
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        paragraphStyle.alignment = self.textAlignment
+        
+        let attr : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: (placeHolderFont ?? self.font)!,
+                                                    NSAttributedString.Key.foregroundColor: placeHolderTextColor,
+                                                    NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        
+        placeHolder.draw(in: rect.insetBy(dx: max(self.textContainerInset.left, self.contentInset.left), dy: self.textContainerInset.top), withAttributes: attr)
+    }
+    
     /**
      Register Table View Cells
      - Parameter nib: UINib.
@@ -215,4 +252,38 @@ public class JNMentionTextView: UITextView {
         })
     }
     
+    
+    /**
+     Add text view notification observers
+     */
+    private func addTextViewNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveTextViewNotification(_:)), name: UITextView.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveTextViewNotification(_:)), name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveTextViewNotification(_:)), name: UITextView.textDidEndEditingNotification, object: nil)
+    }
+    
+    /**
+     Remove text view notfication observers
+     */
+    private func removeTextViewNotificationObservers() {
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidEndEditingNotification, object: nil)
+    }
+    
+    
+    
+    /**
+     Did recieve notifications
+     */
+    @objc private func didReceiveTextViewNotification(_ notification: Notification) {
+        self.setNeedsDisplay()
+    }
+    
+    /**
+     Deinit
+     */
+    deinit {
+        self.removeTextViewNotificationObservers()
+    }
 }

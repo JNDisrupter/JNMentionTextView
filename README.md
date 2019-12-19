@@ -48,6 +48,9 @@ import JNMentionTextView
     let textView = JNMentionTextView()
     self.view.addSubview(textView)
     ```
+    - ***Configuration:***
+    Custom Text View that have a place holder with the following features:
+    Custom place holder font, size and color.
 
 -  **Setup:**
   
