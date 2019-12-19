@@ -158,6 +158,9 @@ extension JNMentionTextView: UITextViewDelegate {
         
         // call delegate
         self.mentionDelegate?.textViewDidChange?(textView)
+        
+        // Update view
+        self.setNeedsDisplay()
     }
     
     /**
@@ -179,6 +182,9 @@ extension JNMentionTextView: UITextViewDelegate {
      */
     public func textViewDidBeginEditing(_ textView: UITextView) {
         self.mentionDelegate?.textViewDidBeginEditing?(textView)
+        
+        // Update view
+        self.setNeedsDisplay()
     }
     
     /**
@@ -190,6 +196,9 @@ extension JNMentionTextView: UITextViewDelegate {
         self.endMentionProcess {
             self.mentionDelegate?.textViewDidEndEditing?(textView)
         }
+        
+        // Update view
+        self.setNeedsDisplay()
     }
     
     /**
