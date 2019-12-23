@@ -167,9 +167,14 @@ public class JNMentionTextView: UITextView {
         paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
         paragraphStyle.alignment = self.textAlignment
                 
+        // Set paragraph style
         self.placeHolderAttributes[ NSAttributedString.Key.paragraphStyle] =  paragraphStyle
         
-        placeHolder.draw(in: rect.insetBy(dx: max(self.textContainerInset.left, self.contentInset.left), dy: self.textContainerInset.top), withAttributes:  self.placeHolderAttributes)
+          // Set placeholder rectange
+        let placeHolerRect = CGRect(x: max(self.textContainerInset.left, self.contentInset.left), y: self.textContainerInset.top, width: rect.width, height: (self.placeHolderAttributes[NSAttributedString.Key.font] as? UIFont)?.lineHeight ?? defaultPlaceHolderFont.lineHeight)
+        
+        // Draw placeholder
+        placeHolder.draw(in: placeHolerRect, withAttributes: self.placeHolderAttributes)
     }
     
     /**
