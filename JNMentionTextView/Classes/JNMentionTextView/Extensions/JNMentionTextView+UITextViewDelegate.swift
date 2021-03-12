@@ -153,7 +153,7 @@ extension JNMentionTextView: UITextViewDelegate {
     open func textViewDidChange(_ textView: UITextView) {
         
         // calculate range
-        let range = NSRange(location: 0, length: self.attributedText.string.count)
+        let range = NSRange(location: 0, length: self.attributedText.length)
         self.applyMentionEngine(searchRange: range)
         
         // call delegate
