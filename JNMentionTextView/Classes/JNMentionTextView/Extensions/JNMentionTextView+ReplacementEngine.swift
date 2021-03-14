@@ -19,7 +19,7 @@ extension JNMentionTextView {
         
         // replacement Range
         let replacementRange = NSRange(location: self.selectedSymbolLocation, length: selectedLocation - self.selectedSymbolLocation)
-        let startIndex = self.textStorage.string.index(self.textStorage.string.startIndex, offsetBy: self.selectedSymbolLocation)
+        let startIndex = self.textStorage.string.utf16.index(self.textStorage.string.startIndex, offsetBy: self.selectedSymbolLocation)
        let replacementText = self.textStorage.string[startIndex]
         
         // create mention item
@@ -34,8 +34,8 @@ extension JNMentionTextView {
         
         // Check if the next char after the selected loaction has space then no need to add space
         let nextCharLoaction = selectedLocation
-        if nextCharLoaction < self.textStorage.string.count {
-            let nextCharIndex = self.textStorage.string.index(self.textStorage.string.startIndex, offsetBy: nextCharLoaction)
+        if nextCharLoaction < self.textStorage.length {
+            let nextCharIndex = self.textStorage.string.utf16.index(self.textStorage.string.startIndex, offsetBy: nextCharLoaction)
             let nextChar = self.textStorage.string[nextCharIndex]
             if nextChar != " " {
                 mentionAttributedString.append(NSAttributedString(string: " "))
