@@ -159,8 +159,8 @@ extension JNMentionTextView: UITextViewDelegate {
         // call delegate
         self.mentionDelegate?.textViewDidChange?(textView)
         
-        // Update view
-        self.setNeedsDisplay()
+        // Update placeholder label visibility
+        self.showPlaceholder(textView.text.isEmpty)
     }
     
     /**
@@ -183,8 +183,8 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
         self.mentionDelegate?.textViewDidBeginEditing?(textView)
         
-        // Update view
-        self.setNeedsDisplay()
+        // Update placeholder label visibility
+        self.showPlaceholder(textView.text.isEmpty)
     }
     
     /**
@@ -197,8 +197,8 @@ extension JNMentionTextView: UITextViewDelegate {
             self.mentionDelegate?.textViewDidEndEditing?(textView)
         }
         
-        // Update view
-        self.setNeedsDisplay()
+        // Update placeholder label visibility
+        self.showPlaceholder(textView.text.isEmpty)
     }
     
     /**
