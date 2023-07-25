@@ -72,57 +72,13 @@ public class JNMentionTextView: UITextView {
     /// Mention Delegate
     public weak var mentionDelegate: JNMentionTextViewDelegate?
     
-    /// Placeholder label
-    private var placeholderLabel: UILabel?
-    
     /// Place holder string
-    public var placeHolder: String? {
-        
-        didSet {
-            
-            // Add placeholder label subview
-            self.addPlaceholderLabelSubview()
-        }
-    }
+    public var placeHolder: String?
     
     /// Place holder Attributes
-    public var placeHolderAttributes: [NSAttributedString.Key : Any] = [:] {
-        didSet {
-            
-            // Update placeholder text attributes
-            self.updatePlaceholderTextAttributes()
-        }
-    }
+    public var placeHolderAttributes: [NSAttributedString.Key : Any] = [:]
     
-    /// Bounds
-    override open var bounds: CGRect {
-        didSet {
-            
-            // Resize placeholder
-            self.resizePlaceholder()
-        }
-    }
-    
-    /// Font
-    public override var font: UIFont? {
-        didSet {
-            
-            // Resize placeholder
-            self.resizePlaceholder()
-            
-            // Update placeholder label font
-            self.placeholderLabel?.font = self.placeholderFont
-        }
-    }
-    
-    /// Placeholder font
-    public var placeholderFont: UIFont {
-        get {
-            (self.placeHolderAttributes[NSAttributedString.Key.font] as? UIFont) ?? self.font ?? UIFont.systemFont(ofSize: 10.0)
-        }
-    }
-    
-    // MARK: - Initializers
+    // MARK:- Initializers
 
     /**
      Initializer
@@ -177,88 +133,48 @@ public class JNMentionTextView: UITextView {
         // set options
         self.options = options
     }
-    
+
     /**
-     Update placeholder label visibility
+     Draw rect
      */
-    public func showPlaceholder(_ show: Bool) {
-        self.placeholderLabel?.isHidden = !self.text.isEmpty
-    }
-    
-    /**
-     Resize placeholder
-     */
-    private func resizePlaceholder() {
-        guard let placeholderLabel = self.placeholderLabel else { return }
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
         
-        // Placeholder frame
-        let placeholderFrame = CGRect(x: max(self.textContainerInset.left, self.contentInset.left) + self.textContainer.lineFragmentPadding, y: self.textContainerInset.top, width: self.frame.width, height: self.placeholderFont.lineHeight)
-        
-        placeholderLabel.frame = placeholderFrame
-    }
-    
-    /**
-     Update placeholder text attributes
-     */
-    private func updatePlaceholderTextAttributes() {
-        guard let placeholderLabel = self.placeholderLabel, let placeholderString = self.placeHolder else { return }
-        
-        // Build placeholder text attributes
-        let placeholderTextAttributes = self.getPlaceholderTextAttributes()
-        
-        // Set placeholder label attributed text
-        placeholderLabel.attributedText = NSAttributedString(string: placeholderString, attributes: placeholderTextAttributes)
-    }
-    
-    /**
-     Add placeholder label subview
-     */
-    private func addPlaceholderLabelSubview() {
-        guard let placeHolder = self.placeHolder, !placeHolder.isEmpty else { return }
-        
-        // Build placeholder text attributes
-        let placeholderTextAttributes = self.getPlaceholderTextAttributes()
-        
-        // Placeholder frame
-        let placeholderFrame = CGRect(x: max(self.textContainerInset.left, self.contentInset.left) + self.textContainer.lineFragmentPadding, y: self.textContainerInset.top, width: self.frame.width, height: self.placeholderFont.lineHeight)
-        
-        // Init placeholder label with frame
-        self.placeholderLabel = UILabel(frame: placeholderFrame)
-        
-        // Unwrap placeholder label
-        if let placeholderLabel = self.placeholderLabel {
-            
-            // Set placeholder label attributed text
-            placeholderLabel.attributedText = NSAttributedString(string: placeHolder, attributes: placeholderTextAttributes)
-            
-            // Add subview
-            self.addSubview(placeholderLabel)
+        guard let placeHolder = self.placeHolder , let text = self.text, text.isEmpty else {
+            return
         }
-    }
-    
-    /**
-     Get placeholder text attributes
-     */
-    private func getPlaceholderTextAttributes() -> [NSAttributedString.Key: Any] {
+
+        // Default PlaceHolder Color
+        let defaultPlaceHolderColor = UIColor.lightGray
         
-        // Placeholder text attributes
-        var placeholderTextAttributes: [NSAttributedString.Key: Any] = [:]
+        // Default PlaceHolder Font
+        let defaultPlaceHolderFont =  self.font ?? UIFont.systemFont(ofSize: 10.0)
         
-        // Set foreground color
-        placeholderTextAttributes[NSAttributedString.Key.foregroundColor] = self.placeHolderAttributes[NSAttributedString.Key.foregroundColor] ?? UIColor.lightGray
+        if !self.placeHolderAttributes.isEmpty {
+          
+            if self.placeHolderAttributes[NSAttributedString.Key.font] == nil {
+                self.placeHolderAttributes[NSAttributedString.Key.font] = defaultPlaceHolderFont
+            }else if self.placeHolderAttributes[NSAttributedString.Key.foregroundColor] == nil  {
+                self.placeHolderAttributes[NSAttributedString.Key.foregroundColor] = defaultPlaceHolderColor
+            }
+            
+        }else{
+            self.placeHolderAttributes = [NSAttributedString.Key.foregroundColor: defaultPlaceHolderColor, NSAttributedString.Key.font: defaultPlaceHolderFont]
+        }
         
-        // Set font
-        placeholderTextAttributes[NSAttributedString.Key.font] = self.placeholderFont
         
-        // Paragraph style
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
         paragraphStyle.alignment = self.textAlignment
-        
+                
         // Set paragraph style
-        placeholderTextAttributes[NSAttributedString.Key.paragraphStyle] =  paragraphStyle
+        self.placeHolderAttributes[ NSAttributedString.Key.paragraphStyle] =  paragraphStyle
         
-        return placeholderTextAttributes
+          // Set placeholder rectange
+        let placeHolerRect = CGRect(x: max(self.textContainerInset.left, self.contentInset.left), y: self.textContainerInset.top, width: rect.width, height: (self.placeHolderAttributes[NSAttributedString.Key.font] as? UIFont)?.lineHeight ?? defaultPlaceHolderFont.lineHeight)
+        
+        // Draw placeholder
+        placeHolder.draw(in: placeHolerRect, withAttributes: self.placeHolderAttributes)
     }
     
     /**
