@@ -182,7 +182,7 @@ public class JNMentionTextView: UITextView {
      Update placeholder label visibility
      */
     public func showPlaceholder(_ show: Bool) {
-        self.placeholderLabel?.isHidden = !self.text.isEmpty
+        self.placeholderLabel?.isHidden = !show
     }
     
     /**
@@ -207,15 +207,11 @@ public class JNMentionTextView: UITextView {
         // Init placeholder label with frame
         self.placeholderLabel = UILabel(frame: self.getPlaceholderLabelFrame())
         
-        // Unwrap placeholder label
-        if let placeholderLabel = self.placeholderLabel {
-            
-            // Set placeholder label attributed text
-            placeholderLabel.attributedText = NSAttributedString(string: placeHolder, attributes: placeholderTextAttributes)
-            
-            // Add subview
-            self.addSubview(placeholderLabel)
-        }
+        // Set placeholder label attributed text
+        self.placeholderLabel!.attributedText = NSAttributedString(string: placeHolder, attributes: placeholderTextAttributes)
+        
+        // Add subview
+        self.addSubview(self.placeholderLabel!)
     }
     
     /**
