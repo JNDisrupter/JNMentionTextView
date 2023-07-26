@@ -204,6 +204,9 @@ public class JNMentionTextView: UITextView {
         // Build placeholder text attributes
         let placeholderTextAttributes = self.getPlaceholderTextAttributes()
         
+        // Placeholder frame
+        let placeholderFrame = CGRect(x: max(self.textContainerInset.left, self.contentInset.left) + self.textContainer.lineFragmentPadding, y: self.textContainerInset.top, width: self.frame.width, height: self.placeholderFont.lineHeight)
+        
         // Init placeholder label with frame
         self.placeholderLabel = UILabel(frame: self.getPlaceholderLabelFrame())
         
