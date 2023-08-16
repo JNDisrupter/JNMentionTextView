@@ -7,268 +7,245 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		178CAB503371AD7AC2F29271027B8283 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		22EDE79ADBDF1F89C2FDF90E59A4DA99 /* Pods-JNMentionTextView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEA2239557FAF65682127F92F474CD6 /* Pods-JNMentionTextView_Example-dummy.m */; };
-		2CDA9C2ACBEB72694FFC1E2D542460EC /* JNMentionTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D28C51DE663298B33FA213748C8E0732 /* JNMentionTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4828A54D22B7B834007E5A60 /* IDETemplateMacros.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4828A54C22B7B834007E5A60 /* IDETemplateMacros.plist */; };
-		4828A56D22BD112C007E5A60 /* JNMentionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */; };
-		482E8E9F22C3A6B2007915E3 /* JNMentionTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482E8E9E22C3A6B2007915E3 /* JNMentionTextViewDelegate.swift */; };
-		482E8EA322C3A982007915E3 /* JNMentionPickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482E8EA222C3A982007915E3 /* JNMentionPickerViewControllerDelegate.swift */; };
-		50ACD654317FCECC85976AE80CE01371 /* Pods-JNMentionTextView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52265CE32EAB88AECADD40E03476AEA4 /* Pods-JNMentionTextView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6366A200F3F1EFE9C43D1299673CE154 /* JNMentionTextView+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360B14EB71E674B92878E2BFFE081B6 /* JNMentionTextView+UITextViewDelegate.swift */; };
-		6A7F8170AD4B53BF73C0570449F31B37 /* JNMentionTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E27EEB7C8B38691161E2988D317EC6B /* JNMentionTextView-dummy.m */; };
-		A1CE85218119583E5D1A5A5BCFFF8316 /* JNMentionTextView+ReplacementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B266D62450799B572558AD540704C44C /* JNMentionTextView+ReplacementEngine.swift */; };
-		B153D85B08B27E32FBAD822EBB86D283 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		C53908573D9450D090D0FC8D2DD91ADD /* JNMentionPickerViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */; };
-		CFD7539AEF511F4C2EADF9B8A0F2C491 /* JNMentionPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF060858C9DA8BCA50E54E05CEDD74 /* JNMentionPickable.swift */; };
-		D2C6D85CE5D8876A93CAF09C0877CF5D /* JNMentionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */; };
-		D522507BA3E686CE7C4235A4DC8FB1B3 /* JNMentionTextView+MentionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DC7145A54DD1834DB76DBC6352156 /* JNMentionTextView+MentionEngine.swift */; };
-		E230216598264BA1272DC180B1D81B08 /* JNMentionTextView+JNMentionPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7838C39005D291CAABFFC072E8B2B98 /* JNMentionTextView+JNMentionPickerViewDelegate.swift */; };
+		18B5CDE1611A328BB37C08BFF7C8356B /* Pods-JNMentionTextView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C6FF6666E9F52AF1459E6498AB4477 /* Pods-JNMentionTextView_Example-dummy.m */; };
+		1CB3CC61D6B0E8BBA37DCEA364AD94EF /* JNMentionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9290ACB72B89A3465E843264A075ADF /* JNMentionTextView.swift */; };
+		1F39EA2F51D61059D0D9835083ADBC99 /* JNMentionPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB638ECF71BFC99EE43AF9EA07C5D3 /* JNMentionPickable.swift */; };
+		336AF5E14BFBCDB47A8C81CEDC9546D0 /* JNMentionTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB764C1694C50657993A6BA4919F57D /* JNMentionTextView-dummy.m */; };
+		33C60178E1046AAEC3C12CAA04798AF3 /* JNMentionPickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD57239728B47A99DA108BD7CCE5A87 /* JNMentionPickerViewControllerDelegate.swift */; };
+		5819B6C764FB467017F703088FDF7CAA /* JNMentionTextView+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB194FF058A1E29951E3A05ED6BBC9 /* JNMentionTextView+UITextViewDelegate.swift */; };
+		64DBAFFED7EBC680AC214B79DD73EC23 /* JNMentionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404B82BB44DEF995402E8CD82CC6014 /* JNMentionPickerViewController.swift */; };
+		74EDDC4C57A301FC9E358DDCBF352FFB /* JNMentionTextView+JNMentionPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE59978C9A38B575CB61156BDBC1E1 /* JNMentionTextView+JNMentionPickerViewDelegate.swift */; };
+		80024959E22195DECA60229C48237718 /* JNMentionTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B5D56A69F4C01B4BD2FA7F48C5BC93 /* JNMentionTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84EC144D024F24DE1C38E42FA743F9D3 /* JNMentionTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C223673F52A3EBE0F9E1C56E9C771306 /* JNMentionTextViewDelegate.swift */; };
+		A555EA7129DD0D85300015412D6387E8 /* JNMentionTextView+ReplacementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD3723670D4102579BF39C85C01908 /* JNMentionTextView+ReplacementEngine.swift */; };
+		A8707684AA06169CEED40612147E1593 /* JNMentionPickerViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB132AF20CB9D6490A76CFA1E21A74CC /* JNMentionPickerViewOptions.swift */; };
+		C9C767E2979C4E3A2460490DB9F7B0D4 /* JNMentionTextView+MentionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9EEFE297E5A3FA23216ACE04A9FAC /* JNMentionTextView+MentionEngine.swift */; };
+		DE20BB949E1DE4057772AF51038580DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F15DD64EAAC430129EE6E16B27C9543F /* Pods-JNMentionTextView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7EA4C1F4C0E05FA0C91D64B516F978A /* Pods-JNMentionTextView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F51CD106636D53E02C1B7D9716DD83B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CE4115A9F7E8754CCF931D73E011A03E /* PBXContainerItemProxy */ = {
+		24609992CD54416D1769F95652B90855 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 919C626599DE95DF6512122D41935F00;
+			remoteGlobalIDString = 15E07129237B180732F80857F6A73E7B;
 			remoteInfo = JNMentionTextView;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F297515C726EFD678749D7E913EC9DD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		1F7FEB9341D3941FECA2F9E6F905A1C3 /* Pods_JNMentionTextView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNMentionTextView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2735E1A7973D73E6C2972962DA505C06 /* JNMentionTextView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = JNMentionTextView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		2A4009BC730C0E20CF45162424886197 /* Pods-JNMentionTextView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNMentionTextView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionTextView.swift; sourceTree = "<group>"; };
-		3F4752D4F28C90ACAF74F3246CE96EAA /* Pods-JNMentionTextView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNMentionTextView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4828A54C22B7B834007E5A60 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IDETemplateMacros.plist; sourceTree = "<group>"; };
-		4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewController.swift; sourceTree = "<group>"; };
-		482E8E9E22C3A6B2007915E3 /* JNMentionTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionTextViewDelegate.swift; sourceTree = "<group>"; };
-		482E8EA222C3A982007915E3 /* JNMentionPickerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewControllerDelegate.swift; sourceTree = "<group>"; };
-		4E27EEB7C8B38691161E2988D317EC6B /* JNMentionTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JNMentionTextView-dummy.m"; sourceTree = "<group>"; };
-		52265CE32EAB88AECADD40E03476AEA4 /* Pods-JNMentionTextView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNMentionTextView_Example-umbrella.h"; sourceTree = "<group>"; };
-		5239BC37BA26488050EEAC34AE7A484B /* JNMentionTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JNMentionTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F96C5BE56D207301810A8AFA31C50C9 /* JNMentionTextView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JNMentionTextView.xcconfig; sourceTree = "<group>"; };
-		71794E519076F02D801C14FE1E218AB2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7360B14EB71E674B92878E2BFFE081B6 /* JNMentionTextView+UITextViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+UITextViewDelegate.swift"; sourceTree = "<group>"; };
-		736DC7145A54DD1834DB76DBC6352156 /* JNMentionTextView+MentionEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+MentionEngine.swift"; sourceTree = "<group>"; };
-		80CF060858C9DA8BCA50E54E05CEDD74 /* JNMentionPickable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickable.swift; sourceTree = "<group>"; };
-		8FD581F3B08492F82E7FD54420CB1436 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewOptions.swift; sourceTree = "<group>"; };
-		B14592B88FD6995492D6D6DD4520D29F /* Pods-JNMentionTextView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JNMentionTextView_Example-frameworks.sh"; sourceTree = "<group>"; };
-		B266D62450799B572558AD540704C44C /* JNMentionTextView+ReplacementEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+ReplacementEngine.swift"; sourceTree = "<group>"; };
-		C07F1ABB003406BB51333496B6F6605A /* JNMentionTextView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNMentionTextView-prefix.pch"; sourceTree = "<group>"; };
-		C7838C39005D291CAABFFC072E8B2B98 /* JNMentionTextView+JNMentionPickerViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+JNMentionPickerViewDelegate.swift"; sourceTree = "<group>"; };
-		C8660B3DEA8E9C1779FABF50512CE477 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D28C51DE663298B33FA213748C8E0732 /* JNMentionTextView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNMentionTextView-umbrella.h"; sourceTree = "<group>"; };
-		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DD98095565E6561F016074B49A0DE0F0 /* Pods-JNMentionTextView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNMentionTextView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		DEC419DA998890A93FA4325B67FA3188 /* Pods-JNMentionTextView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNMentionTextView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		E4102C613103A00DF0E265F5DCE4AECC /* Pods-JNMentionTextView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JNMentionTextView_Example-resources.sh"; sourceTree = "<group>"; };
-		EA7E75B4A6B4ACAE1B4D9DCE9E2E86F5 /* Pods-JNMentionTextView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNMentionTextView_Example.modulemap"; sourceTree = "<group>"; };
-		EDE7238C379FCF6CF38561377EEBAB94 /* JNMentionTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JNMentionTextView.modulemap; sourceTree = "<group>"; };
-		FBEA2239557FAF65682127F92F474CD6 /* Pods-JNMentionTextView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNMentionTextView_Example-dummy.m"; sourceTree = "<group>"; };
+		0D932001F99D1C620FDC4E31F80A2520 /* JNMentionTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JNMentionTextView.modulemap; sourceTree = "<group>"; };
+		1D026F948773705142256E2A3F44D2FE /* Pods-JNMentionTextView_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JNMentionTextView_Example"; path = Pods_JNMentionTextView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32AB638ECF71BFC99EE43AF9EA07C5D3 /* JNMentionPickable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickable.swift; sourceTree = "<group>"; };
+		36ABF613D3B3F678011CB55639CC3560 /* JNMentionTextView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JNMentionTextView.release.xcconfig; sourceTree = "<group>"; };
+		3909FC0E0D499728D1D1BE1B67F54011 /* Pods-JNMentionTextView_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNMentionTextView_Example-Info.plist"; sourceTree = "<group>"; };
+		3DAB194FF058A1E29951E3A05ED6BBC9 /* JNMentionTextView+UITextViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+UITextViewDelegate.swift"; sourceTree = "<group>"; };
+		41AE59978C9A38B575CB61156BDBC1E1 /* JNMentionTextView+JNMentionPickerViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+JNMentionPickerViewDelegate.swift"; sourceTree = "<group>"; };
+		44B5D56A69F4C01B4BD2FA7F48C5BC93 /* JNMentionTextView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNMentionTextView-umbrella.h"; sourceTree = "<group>"; };
+		494F2B782FAB87018E49125B94CD5E86 /* Pods-JNMentionTextView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JNMentionTextView_Example-frameworks.sh"; sourceTree = "<group>"; };
+		4AE6998F03BF6C2D0906E2B7F402BFAF /* Pods-JNMentionTextView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNMentionTextView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		51475EF4FD353A17D079C31F2A0EF887 /* JNMentionTextView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JNMentionTextView.debug.xcconfig; sourceTree = "<group>"; };
+		7064E98013A84E0AD8BCCDB461BD1180 /* Pods-JNMentionTextView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNMentionTextView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		89DAD28450159388807B9B6269A7520F /* Pods-JNMentionTextView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNMentionTextView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		8ABD3723670D4102579BF39C85C01908 /* JNMentionTextView+ReplacementEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+ReplacementEngine.swift"; sourceTree = "<group>"; };
+		9290A49617735F6C68F2D0E674EE5303 /* JNMentionTextView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JNMentionTextView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9404B82BB44DEF995402E8CD82CC6014 /* JNMentionPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewController.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FE9EEFE297E5A3FA23216ACE04A9FAC /* JNMentionTextView+MentionEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JNMentionTextView+MentionEngine.swift"; sourceTree = "<group>"; };
+		AFB764C1694C50657993A6BA4919F57D /* JNMentionTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JNMentionTextView-dummy.m"; sourceTree = "<group>"; };
+		B7EA4C1F4C0E05FA0C91D64B516F978A /* Pods-JNMentionTextView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNMentionTextView_Example-umbrella.h"; sourceTree = "<group>"; };
+		B90DCBEF7E3C05584C6197E3AC561B3E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B9290ACB72B89A3465E843264A075ADF /* JNMentionTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNMentionTextView.swift; path = JNMentionTextView/Classes/JNMentionTextView/JNMentionTextView.swift; sourceTree = "<group>"; };
+		BB132AF20CB9D6490A76CFA1E21A74CC /* JNMentionPickerViewOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNMentionPickerViewOptions.swift; path = JNMentionTextView/Classes/JNMentionTextView/JNMentionPickerViewOptions.swift; sourceTree = "<group>"; };
+		C03E36377360745129CF40ED68DBF592 /* Pods-JNMentionTextView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNMentionTextView_Example.modulemap"; sourceTree = "<group>"; };
+		C223673F52A3EBE0F9E1C56E9C771306 /* JNMentionTextViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionTextViewDelegate.swift; sourceTree = "<group>"; };
+		C36D5159C66AC10A2AEAA1AFC2B2E920 /* JNMentionTextView */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JNMentionTextView; path = JNMentionTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C6FF6666E9F52AF1459E6498AB4477 /* Pods-JNMentionTextView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNMentionTextView_Example-dummy.m"; sourceTree = "<group>"; };
+		CCB376FEBC0C5F73273DB9C61846FD84 /* JNMentionTextView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JNMentionTextView-Info.plist"; sourceTree = "<group>"; };
+		CE74B0021BBCCD702A0F3B6FD2B2054C /* JNMentionTextView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNMentionTextView-prefix.pch"; sourceTree = "<group>"; };
+		D085FF199ACB9FB1BC350B092C295F7B /* Pods-JNMentionTextView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNMentionTextView_Example.release.xcconfig"; sourceTree = "<group>"; };
+		E43320AAA84F2137823EC2D71F551CA5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		FBD57239728B47A99DA108BD7CCE5A87 /* JNMentionPickerViewControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNMentionPickerViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4770DFCB33E9CF22BEF8326FCA09DF2F /* Frameworks */ = {
+		46E9D25634FAF6A18B3F6331D04EDA95 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B153D85B08B27E32FBAD822EBB86D283 /* Foundation.framework in Frameworks */,
+				DE20BB949E1DE4057772AF51038580DA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0E9B67FD1702722D8C58149C62C217A /* Frameworks */ = {
+		F0081F4B22E7A0D1C8CF6C1E2B84F319 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				178CAB503371AD7AC2F29271027B8283 /* Foundation.framework in Frameworks */,
+				F51CD106636D53E02C1B7D9716DD83B1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D26BCEAC8116CFFC4BA14BC6C14B476 /* Pod */ = {
+		019E63922FFCAE00E82923B8B03EBE6C /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				2735E1A7973D73E6C2972962DA505C06 /* JNMentionTextView.podspec */,
-				0F297515C726EFD678749D7E913EC9DD /* LICENSE */,
-				C8660B3DEA8E9C1779FABF50512CE477 /* README.md */,
+				9290A49617735F6C68F2D0E674EE5303 /* JNMentionTextView.podspec */,
+				B90DCBEF7E3C05584C6197E3AC561B3E /* LICENSE */,
+				E43320AAA84F2137823EC2D71F551CA5 /* README.md */,
 			);
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		19CF87721EE7E524E3D5556FAB212E99 /* Pods-JNMentionTextView_Example */ = {
+		0C2B83577FC32B9FC4ABE9686844DCC2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8FD581F3B08492F82E7FD54420CB1436 /* Info.plist */,
-				EA7E75B4A6B4ACAE1B4D9DCE9E2E86F5 /* Pods-JNMentionTextView_Example.modulemap */,
-				3F4752D4F28C90ACAF74F3246CE96EAA /* Pods-JNMentionTextView_Example-acknowledgements.markdown */,
-				DD98095565E6561F016074B49A0DE0F0 /* Pods-JNMentionTextView_Example-acknowledgements.plist */,
-				FBEA2239557FAF65682127F92F474CD6 /* Pods-JNMentionTextView_Example-dummy.m */,
-				B14592B88FD6995492D6D6DD4520D29F /* Pods-JNMentionTextView_Example-frameworks.sh */,
-				E4102C613103A00DF0E265F5DCE4AECC /* Pods-JNMentionTextView_Example-resources.sh */,
-				52265CE32EAB88AECADD40E03476AEA4 /* Pods-JNMentionTextView_Example-umbrella.h */,
-				2A4009BC730C0E20CF45162424886197 /* Pods-JNMentionTextView_Example.debug.xcconfig */,
-				DEC419DA998890A93FA4325B67FA3188 /* Pods-JNMentionTextView_Example.release.xcconfig */,
-			);
-			name = "Pods-JNMentionTextView_Example";
-			path = "Target Support Files/Pods-JNMentionTextView_Example";
-			sourceTree = "<group>";
-		};
-		1C6DDA1821DCDEFB2FABEB617A8A4D44 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				71794E519076F02D801C14FE1E218AB2 /* Info.plist */,
-				EDE7238C379FCF6CF38561377EEBAB94 /* JNMentionTextView.modulemap */,
-				6F96C5BE56D207301810A8AFA31C50C9 /* JNMentionTextView.xcconfig */,
-				4E27EEB7C8B38691161E2988D317EC6B /* JNMentionTextView-dummy.m */,
-				C07F1ABB003406BB51333496B6F6605A /* JNMentionTextView-prefix.pch */,
-				D28C51DE663298B33FA213748C8E0732 /* JNMentionTextView-umbrella.h */,
+				0D932001F99D1C620FDC4E31F80A2520 /* JNMentionTextView.modulemap */,
+				AFB764C1694C50657993A6BA4919F57D /* JNMentionTextView-dummy.m */,
+				CCB376FEBC0C5F73273DB9C61846FD84 /* JNMentionTextView-Info.plist */,
+				CE74B0021BBCCD702A0F3B6FD2B2054C /* JNMentionTextView-prefix.pch */,
+				44B5D56A69F4C01B4BD2FA7F48C5BC93 /* JNMentionTextView-umbrella.h */,
+				51475EF4FD353A17D079C31F2A0EF887 /* JNMentionTextView.debug.xcconfig */,
+				36ABF613D3B3F678011CB55639CC3560 /* JNMentionTextView.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/JNMentionTextView";
 			sourceTree = "<group>";
 		};
-		25DF0E86E9767263DD18C77B492E286E /* Products */ = {
+		0EC513B3D0CF1C1347D2B961E4F86FB7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5239BC37BA26488050EEAC34AE7A484B /* JNMentionTextView.framework */,
-				1F7FEB9341D3941FECA2F9E6F905A1C3 /* Pods_JNMentionTextView_Example.framework */,
+				C36D5159C66AC10A2AEAA1AFC2B2E920 /* JNMentionTextView */,
+				1D026F948773705142256E2A3F44D2FE /* Pods-JNMentionTextView_Example */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2B530C562DFCA38371EC5DB8B8CA93F8 /* Targets Support Files */ = {
+		1CCDAE5B6126E233D1CDD9C65087EC6F /* JNMentionTextViewDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				19CF87721EE7E524E3D5556FAB212E99 /* Pods-JNMentionTextView_Example */,
+				C223673F52A3EBE0F9E1C56E9C771306 /* JNMentionTextViewDelegate.swift */,
 			);
-			name = "Targets Support Files";
+			name = JNMentionTextViewDelegate;
+			path = JNMentionTextView/Classes/JNMentionTextView/JNMentionTextViewDelegate;
 			sourceTree = "<group>";
 		};
-		321F9AB1727075F329103259B562CDA9 /* JNMentionTextView */ = {
+		224D90C0EF0DB0E7EB49BBCF0700AB90 /* Pods-JNMentionTextView_Example */ = {
 			isa = PBXGroup;
 			children = (
-				482E8EA022C3A958007915E3 /* PickerViewController */,
-				482E8E9D22C3A690007915E3 /* JNMentionTextViewDelegate */,
-				4828A56B22B7BE17007E5A60 /* MentionPickable */,
-				AB777D32A02B9167E91EE43A2E987A75 /* Extensions */,
-				9C72C3118690BB2ABFA694F731CACA22 /* JNMentionPickerViewOptions.swift */,
-				31B18FF662B33CE971AD5E1B159CD599 /* JNMentionTextView.swift */,
+				C03E36377360745129CF40ED68DBF592 /* Pods-JNMentionTextView_Example.modulemap */,
+				4AE6998F03BF6C2D0906E2B7F402BFAF /* Pods-JNMentionTextView_Example-acknowledgements.markdown */,
+				89DAD28450159388807B9B6269A7520F /* Pods-JNMentionTextView_Example-acknowledgements.plist */,
+				C7C6FF6666E9F52AF1459E6498AB4477 /* Pods-JNMentionTextView_Example-dummy.m */,
+				494F2B782FAB87018E49125B94CD5E86 /* Pods-JNMentionTextView_Example-frameworks.sh */,
+				3909FC0E0D499728D1D1BE1B67F54011 /* Pods-JNMentionTextView_Example-Info.plist */,
+				B7EA4C1F4C0E05FA0C91D64B516F978A /* Pods-JNMentionTextView_Example-umbrella.h */,
+				7064E98013A84E0AD8BCCDB461BD1180 /* Pods-JNMentionTextView_Example.debug.xcconfig */,
+				D085FF199ACB9FB1BC350B092C295F7B /* Pods-JNMentionTextView_Example.release.xcconfig */,
 			);
-			name = JNMentionTextView;
-			path = JNMentionTextView/Classes/JNMentionTextView;
+			name = "Pods-JNMentionTextView_Example";
+			path = "Target Support Files/Pods-JNMentionTextView_Example";
 			sourceTree = "<group>";
 		};
-		44D5347904CF754D6785B84253F2574A /* iOS */ = {
+		2FF6AE40ED111C81BAF2DB6D2D517AB7 /* PickerViewControllerDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
+				FBD57239728B47A99DA108BD7CCE5A87 /* JNMentionPickerViewControllerDelegate.swift */,
 			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		4828A54A22B7B7EC007E5A60 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4828A54B22B7B7FA007E5A60 /* TemplateMacros */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		4828A54B22B7B7FA007E5A60 /* TemplateMacros */ = {
-			isa = PBXGroup;
-			children = (
-				4828A54C22B7B834007E5A60 /* IDETemplateMacros.plist */,
-			);
-			path = TemplateMacros;
-			sourceTree = "<group>";
-		};
-		4828A56B22B7BE17007E5A60 /* MentionPickable */ = {
-			isa = PBXGroup;
-			children = (
-				80CF060858C9DA8BCA50E54E05CEDD74 /* JNMentionPickable.swift */,
-			);
-			path = MentionPickable;
-			sourceTree = "<group>";
-		};
-		482E8E9D22C3A690007915E3 /* JNMentionTextViewDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				482E8E9E22C3A6B2007915E3 /* JNMentionTextViewDelegate.swift */,
-			);
-			path = JNMentionTextViewDelegate;
-			sourceTree = "<group>";
-		};
-		482E8EA022C3A958007915E3 /* PickerViewController */ = {
-			isa = PBXGroup;
-			children = (
-				482E8EA122C3A974007915E3 /* PickerViewControllerDelegate */,
-				4828A56C22BD112C007E5A60 /* JNMentionPickerViewController.swift */,
-			);
-			path = PickerViewController;
-			sourceTree = "<group>";
-		};
-		482E8EA122C3A974007915E3 /* PickerViewControllerDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				482E8EA222C3A982007915E3 /* JNMentionPickerViewControllerDelegate.swift */,
-			);
+			name = PickerViewControllerDelegate;
 			path = PickerViewControllerDelegate;
 			sourceTree = "<group>";
 		};
-		4E42FF67B612337DE690A82338062E2B /* Development Pods */ = {
+		3EDC58079D6FABE2407E9B2D9EA0C777 /* JNMentionTextView */ = {
 			isa = PBXGroup;
 			children = (
-				675C9D8C90DE581B81102CA1FF7F4BA1 /* JNMentionTextView */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		675C9D8C90DE581B81102CA1FF7F4BA1 /* JNMentionTextView */ = {
-			isa = PBXGroup;
-			children = (
-				4828A54A22B7B7EC007E5A60 /* Resources */,
-				321F9AB1727075F329103259B562CDA9 /* JNMentionTextView */,
-				0D26BCEAC8116CFFC4BA14BC6C14B476 /* Pod */,
-				1C6DDA1821DCDEFB2FABEB617A8A4D44 /* Support Files */,
+				BB132AF20CB9D6490A76CFA1E21A74CC /* JNMentionPickerViewOptions.swift */,
+				B9290ACB72B89A3465E843264A075ADF /* JNMentionTextView.swift */,
+				C500A55DE3A9109EEF758109DD59C581 /* Extensions */,
+				1CCDAE5B6126E233D1CDD9C65087EC6F /* JNMentionTextViewDelegate */,
+				7203D5C821DC36B066D60D7775C61C1A /* MentionPickable */,
+				A8009C0E00403ABB20065979887F7C3E /* PickerViewController */,
+				019E63922FFCAE00E82923B8B03EBE6C /* Pod */,
+				0C2B83577FC32B9FC4ABE9686844DCC2 /* Support Files */,
 			);
 			name = JNMentionTextView;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				4E42FF67B612337DE690A82338062E2B /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				25DF0E86E9767263DD18C77B492E286E /* Products */,
-				2B530C562DFCA38371EC5DB8B8CA93F8 /* Targets Support Files */,
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7203D5C821DC36B066D60D7775C61C1A /* MentionPickable */ = {
+			isa = PBXGroup;
+			children = (
+				32AB638ECF71BFC99EE43AF9EA07C5D3 /* JNMentionPickable.swift */,
+			);
+			name = MentionPickable;
+			path = JNMentionTextView/Classes/JNMentionTextView/MentionPickable;
+			sourceTree = "<group>";
+		};
+		A7141CF141C1C65DD4080EFE426B1EC3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				224D90C0EF0DB0E7EB49BBCF0700AB90 /* Pods-JNMentionTextView_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A8009C0E00403ABB20065979887F7C3E /* PickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9404B82BB44DEF995402E8CD82CC6014 /* JNMentionPickerViewController.swift */,
+				2FF6AE40ED111C81BAF2DB6D2D517AB7 /* PickerViewControllerDelegate */,
+			);
+			name = PickerViewController;
+			path = JNMentionTextView/Classes/JNMentionTextView/PickerViewController;
+			sourceTree = "<group>";
+		};
+		BD30A6EB681C0CC6202B140CA0142487 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3EDC58079D6FABE2407E9B2D9EA0C777 /* JNMentionTextView */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		C500A55DE3A9109EEF758109DD59C581 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				41AE59978C9A38B575CB61156BDBC1E1 /* JNMentionTextView+JNMentionPickerViewDelegate.swift */,
+				9FE9EEFE297E5A3FA23216ACE04A9FAC /* JNMentionTextView+MentionEngine.swift */,
+				8ABD3723670D4102579BF39C85C01908 /* JNMentionTextView+ReplacementEngine.swift */,
+				3DAB194FF058A1E29951E3A05ED6BBC9 /* JNMentionTextView+UITextViewDelegate.swift */,
+			);
+			name = Extensions;
+			path = JNMentionTextView/Classes/JNMentionTextView/Extensions;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				BD30A6EB681C0CC6202B140CA0142487 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				0EC513B3D0CF1C1347D2B961E4F86FB7 /* Products */,
+				A7141CF141C1C65DD4080EFE426B1EC3 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		AB777D32A02B9167E91EE43A2E987A75 /* Extensions */ = {
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C7838C39005D291CAABFFC072E8B2B98 /* JNMentionTextView+JNMentionPickerViewDelegate.swift */,
-				736DC7145A54DD1834DB76DBC6352156 /* JNMentionTextView+MentionEngine.swift */,
-				B266D62450799B572558AD540704C44C /* JNMentionTextView+ReplacementEngine.swift */,
-				7360B14EB71E674B92878E2BFFE081B6 /* JNMentionTextView+UITextViewDelegate.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				44D5347904CF754D6785B84253F2574A /* iOS */,
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,52 +253,52 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		34C83C9ACEFFE4C4D57F8CA7E1F7B940 /* Headers */ = {
+		2CE02AF4AE995700E2C606C941D08813 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50ACD654317FCECC85976AE80CE01371 /* Pods-JNMentionTextView_Example-umbrella.h in Headers */,
+				F15DD64EAAC430129EE6E16B27C9543F /* Pods-JNMentionTextView_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DAE964515FFB83A8CAB1070B9C5C417E /* Headers */ = {
+		C0AAD4860B41588FADAE70439ED0AC05 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CDA9C2ACBEB72694FFC1E2D542460EC /* JNMentionTextView-umbrella.h in Headers */,
+				80024959E22195DECA60229C48237718 /* JNMentionTextView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		09535CC2AE606BEF3FBB7EB4DE0F1ABC /* Pods-JNMentionTextView_Example */ = {
+		022609815EC2764B8054009EC54FCDFB /* Pods-JNMentionTextView_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD5CC3EEBC0523EDDF0DC2C71F3492EA /* Build configuration list for PBXNativeTarget "Pods-JNMentionTextView_Example" */;
+			buildConfigurationList = 507EDC6ABAAA78B9961C73C6A4D7B8A5 /* Build configuration list for PBXNativeTarget "Pods-JNMentionTextView_Example" */;
 			buildPhases = (
-				34C83C9ACEFFE4C4D57F8CA7E1F7B940 /* Headers */,
-				82C7A6262B90149E8BE96BBC23CA7861 /* Sources */,
-				D0E9B67FD1702722D8C58149C62C217A /* Frameworks */,
-				825A80DF8EF2AD50978475A79ABB49A1 /* Resources */,
+				2CE02AF4AE995700E2C606C941D08813 /* Headers */,
+				0619696F1A853FAF3D7303FD70AB7CB2 /* Sources */,
+				46E9D25634FAF6A18B3F6331D04EDA95 /* Frameworks */,
+				42CCDA724732002FE55232C5677984D4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EA814AE350DBE7D93CF2BA0555C65868 /* PBXTargetDependency */,
+				4CD441D635E53294A38E15E8754DB744 /* PBXTargetDependency */,
 			);
 			name = "Pods-JNMentionTextView_Example";
-			productName = "Pods-JNMentionTextView_Example";
-			productReference = 1F7FEB9341D3941FECA2F9E6F905A1C3 /* Pods_JNMentionTextView_Example.framework */;
+			productName = Pods_JNMentionTextView_Example;
+			productReference = 1D026F948773705142256E2A3F44D2FE /* Pods-JNMentionTextView_Example */;
 			productType = "com.apple.product-type.framework";
 		};
-		919C626599DE95DF6512122D41935F00 /* JNMentionTextView */ = {
+		15E07129237B180732F80857F6A73E7B /* JNMentionTextView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71EA8F3AA988B37E897FD50ED1E3CC6B /* Build configuration list for PBXNativeTarget "JNMentionTextView" */;
+			buildConfigurationList = 694B47AB1515BBA02864248758BCCFC6 /* Build configuration list for PBXNativeTarget "JNMentionTextView" */;
 			buildPhases = (
-				DAE964515FFB83A8CAB1070B9C5C417E /* Headers */,
-				3B1B4F22005909AA5C9606134C6E072E /* Sources */,
-				4770DFCB33E9CF22BEF8326FCA09DF2F /* Frameworks */,
-				3D9EAF48E74D33A5E176CC9671A97273 /* Resources */,
+				C0AAD4860B41588FADAE70439ED0AC05 /* Headers */,
+				9FC4E61F669D3967042DDD2E6C6652DB /* Sources */,
+				F0081F4B22E7A0D1C8CF6C1E2B84F319 /* Frameworks */,
+				18179D02F813FE45A7AED384BB6D1E44 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -329,47 +306,46 @@
 			);
 			name = JNMentionTextView;
 			productName = JNMentionTextView;
-			productReference = 5239BC37BA26488050EEAC34AE7A484B /* JNMentionTextView.framework */;
+			productReference = C36D5159C66AC10A2AEAA1AFC2B2E920 /* JNMentionTextView */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1020;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 25DF0E86E9767263DD18C77B492E286E /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 0EC513B3D0CF1C1347D2B961E4F86FB7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				919C626599DE95DF6512122D41935F00 /* JNMentionTextView */,
-				09535CC2AE606BEF3FBB7EB4DE0F1ABC /* Pods-JNMentionTextView_Example */,
+				15E07129237B180732F80857F6A73E7B /* JNMentionTextView */,
+				022609815EC2764B8054009EC54FCDFB /* Pods-JNMentionTextView_Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3D9EAF48E74D33A5E176CC9671A97273 /* Resources */ = {
+		18179D02F813FE45A7AED384BB6D1E44 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4828A54D22B7B834007E5A60 /* IDETemplateMacros.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		825A80DF8EF2AD50978475A79ABB49A1 /* Resources */ = {
+		42CCDA724732002FE55232C5677984D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,45 +355,113 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3B1B4F22005909AA5C9606134C6E072E /* Sources */ = {
+		0619696F1A853FAF3D7303FD70AB7CB2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD7539AEF511F4C2EADF9B8A0F2C491 /* JNMentionPickable.swift in Sources */,
-				C53908573D9450D090D0FC8D2DD91ADD /* JNMentionPickerViewOptions.swift in Sources */,
-				E230216598264BA1272DC180B1D81B08 /* JNMentionTextView+JNMentionPickerViewDelegate.swift in Sources */,
-				4828A56D22BD112C007E5A60 /* JNMentionPickerViewController.swift in Sources */,
-				D522507BA3E686CE7C4235A4DC8FB1B3 /* JNMentionTextView+MentionEngine.swift in Sources */,
-				482E8EA322C3A982007915E3 /* JNMentionPickerViewControllerDelegate.swift in Sources */,
-				A1CE85218119583E5D1A5A5BCFFF8316 /* JNMentionTextView+ReplacementEngine.swift in Sources */,
-				6366A200F3F1EFE9C43D1299673CE154 /* JNMentionTextView+UITextViewDelegate.swift in Sources */,
-				6A7F8170AD4B53BF73C0570449F31B37 /* JNMentionTextView-dummy.m in Sources */,
-				D2C6D85CE5D8876A93CAF09C0877CF5D /* JNMentionTextView.swift in Sources */,
-				482E8E9F22C3A6B2007915E3 /* JNMentionTextViewDelegate.swift in Sources */,
+				18B5CDE1611A328BB37C08BFF7C8356B /* Pods-JNMentionTextView_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		82C7A6262B90149E8BE96BBC23CA7861 /* Sources */ = {
+		9FC4E61F669D3967042DDD2E6C6652DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22EDE79ADBDF1F89C2FDF90E59A4DA99 /* Pods-JNMentionTextView_Example-dummy.m in Sources */,
+				1F39EA2F51D61059D0D9835083ADBC99 /* JNMentionPickable.swift in Sources */,
+				64DBAFFED7EBC680AC214B79DD73EC23 /* JNMentionPickerViewController.swift in Sources */,
+				33C60178E1046AAEC3C12CAA04798AF3 /* JNMentionPickerViewControllerDelegate.swift in Sources */,
+				A8707684AA06169CEED40612147E1593 /* JNMentionPickerViewOptions.swift in Sources */,
+				1CB3CC61D6B0E8BBA37DCEA364AD94EF /* JNMentionTextView.swift in Sources */,
+				74EDDC4C57A301FC9E358DDCBF352FFB /* JNMentionTextView+JNMentionPickerViewDelegate.swift in Sources */,
+				C9C767E2979C4E3A2460490DB9F7B0D4 /* JNMentionTextView+MentionEngine.swift in Sources */,
+				A555EA7129DD0D85300015412D6387E8 /* JNMentionTextView+ReplacementEngine.swift in Sources */,
+				5819B6C764FB467017F703088FDF7CAA /* JNMentionTextView+UITextViewDelegate.swift in Sources */,
+				336AF5E14BFBCDB47A8C81CEDC9546D0 /* JNMentionTextView-dummy.m in Sources */,
+				84EC144D024F24DE1C38E42FA743F9D3 /* JNMentionTextViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EA814AE350DBE7D93CF2BA0555C65868 /* PBXTargetDependency */ = {
+		4CD441D635E53294A38E15E8754DB744 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JNMentionTextView;
-			target = 919C626599DE95DF6512122D41935F00 /* JNMentionTextView */;
-			targetProxy = CE4115A9F7E8754CCF931D73E011A03E /* PBXContainerItemProxy */;
+			target = 15E07129237B180732F80857F6A73E7B /* JNMentionTextView */;
+			targetProxy = 24609992CD54416D1769F95652B90855 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		50646285DD9FD95AF390BDA3FB1948EA /* Debug */ = {
+		3B536B8039A2CA99CF169267F4E7B29D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D085FF199ACB9FB1BC350B092C295F7B /* Pods-JNMentionTextView_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JNMentionTextView_Example/Pods-JNMentionTextView_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JNMentionTextView_Example/Pods-JNMentionTextView_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4B55F8E191DDABD0468B561135D4F33E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36ABF613D3B3F678011CB55639CC3560 /* JNMentionTextView.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JNMentionTextView/JNMentionTextView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JNMentionTextView/JNMentionTextView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JNMentionTextView/JNMentionTextView.modulemap";
+				PRODUCT_MODULE_NAME = JNMentionTextView;
+				PRODUCT_NAME = JNMentionTextView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.8.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		903A0004D3E6651EFD5D2E16214D101B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -444,14 +488,107 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B345A7E30E7DBA9975D3B65E3ED67A7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51475EF4FD353A17D079C31F2A0EF887 /* JNMentionTextView.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JNMentionTextView/JNMentionTextView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JNMentionTextView/JNMentionTextView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JNMentionTextView/JNMentionTextView.modulemap";
+				PRODUCT_MODULE_NAME = JNMentionTextView;
+				PRODUCT_NAME = JNMentionTextView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.8.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -479,17 +616,18 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		53C73533D4C57729DD7FCC397F050AFF /* Debug */ = {
+		F79E144394D9D110FF91CE21E79606D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A4009BC730C0E20CF45162424886197 /* Pods-JNMentionTextView_Example.debug.xcconfig */;
+			baseConfigurationReference = 7064E98013A84E0AD8BCCDB461BD1180 /* Pods-JNMentionTextView_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -498,7 +636,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JNMentionTextView_Example/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-JNMentionTextView_Example/Pods-JNMentionTextView_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -516,197 +654,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		58DCB2BA7C34E84C00C38CEF18A96D11 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		66F26BE17F77CBBA5D72DBDB6D5F5C54 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEC419DA998890A93FA4325B67FA3188 /* Pods-JNMentionTextView_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JNMentionTextView_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JNMentionTextView_Example/Pods-JNMentionTextView_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6F3D74238A5A42C06A2E1F955246394B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F96C5BE56D207301810A8AFA31C50C9 /* JNMentionTextView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JNMentionTextView/JNMentionTextView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JNMentionTextView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JNMentionTextView/JNMentionTextView.modulemap";
-				PRODUCT_MODULE_NAME = JNMentionTextView;
-				PRODUCT_NAME = JNMentionTextView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		AD68FEF3A0DB59EB0F3BD136D0FE1EE9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F96C5BE56D207301810A8AFA31C50C9 /* JNMentionTextView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JNMentionTextView/JNMentionTextView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JNMentionTextView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JNMentionTextView/JNMentionTextView.modulemap";
-				PRODUCT_MODULE_NAME = JNMentionTextView;
-				PRODUCT_NAME = JNMentionTextView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50646285DD9FD95AF390BDA3FB1948EA /* Debug */,
-				58DCB2BA7C34E84C00C38CEF18A96D11 /* Release */,
+				B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */,
+				903A0004D3E6651EFD5D2E16214D101B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71EA8F3AA988B37E897FD50ED1E3CC6B /* Build configuration list for PBXNativeTarget "JNMentionTextView" */ = {
+		507EDC6ABAAA78B9961C73C6A4D7B8A5 /* Build configuration list for PBXNativeTarget "Pods-JNMentionTextView_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F3D74238A5A42C06A2E1F955246394B /* Debug */,
-				AD68FEF3A0DB59EB0F3BD136D0FE1EE9 /* Release */,
+				F79E144394D9D110FF91CE21E79606D4 /* Debug */,
+				3B536B8039A2CA99CF169267F4E7B29D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD5CC3EEBC0523EDDF0DC2C71F3492EA /* Build configuration list for PBXNativeTarget "Pods-JNMentionTextView_Example" */ = {
+		694B47AB1515BBA02864248758BCCFC6 /* Build configuration list for PBXNativeTarget "JNMentionTextView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				53C73533D4C57729DD7FCC397F050AFF /* Debug */,
-				66F26BE17F77CBBA5D72DBDB6D5F5C54 /* Release */,
+				B345A7E30E7DBA9975D3B65E3ED67A7F /* Debug */,
+				4B55F8E191DDABD0468B561135D4F33E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }
