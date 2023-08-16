@@ -83,8 +83,19 @@ extension JNMentionTextView: UITextViewDelegate {
                         // init replacement string
                         let replacementString = mentionedItem.symbol + mentionedItem.item.getPickableTitle()
                         
+                        // Selected Attributed Location and Length
+                        let selectedAttributedLocation = rangeAttributes.location
+                        var selectedAttributedLength = rangeAttributes.length
+                        
+                        if (selectedAttributedLocation + selectedAttributedLength + 1) <= self.textStorage.length {
+                            selectedAttributedLength = selectedAttributedLength + 1
+                        }
+                        
+                        // Selected Attributed Range
+                        let selectedAttributedRange = NSRange(location: selectedAttributedLocation, length: selectedAttributedLength)
+                        
                         // replace the mentioned item with (symbol with mentioned title)
-                        self.textStorage.replaceCharacters(in: rangeAttributes, with: NSAttributedString(string: replacementString, attributes: self.normalAttributes))
+                        self.textStorage.replaceCharacters(in: selectedAttributedRange, with: NSAttributedString(string: replacementString, attributes: self.normalAttributes))
                         
                         // move cursor to the end of replacement string
                         self.moveCursor(to: rangeAttributes.location + replacementString.count)
@@ -207,14 +218,7 @@ extension JNMentionTextView: UITextViewDelegate {
     public func textViewDidChangeSelection(_ textView: UITextView) {
         self.mentionDelegate?.textViewDidChangeSelection?(textView)
     }
-    
-    /**
-     Text View should interact with url.
-     */
-    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        return self.mentionDelegate?.textView?(textView, shouldInteractWith: URL, in: characterRange) ?? true
-    }
-    
+        
     /**
      Text View should interact with url in range with interaction.
      */
@@ -229,12 +233,5 @@ extension JNMentionTextView: UITextViewDelegate {
     @available(iOS 10.0, *)
     public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         return self.mentionDelegate?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true
-    }
-    
-    /**
-     Text View should interact with text attachment in range.
-     */
-    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
-        return self.mentionDelegate?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange) ?? true
     }
 }
