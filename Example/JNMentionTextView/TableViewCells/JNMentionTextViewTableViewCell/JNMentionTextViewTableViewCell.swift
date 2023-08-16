@@ -79,6 +79,12 @@ class JNMentionTextViewTableViewCell: UITableViewCell {
         
         // set mention delegate
         self.textView.mentionDelegate = self
+        
+        // Set Place holder
+        self.textView.placeHolder = "Type Message"
+        
+        // Set Place Holder Attributes
+        self.textView.placeHolderAttributes = [NSAttributedString.Key.font:  UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.white]
     }
    
     

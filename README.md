@@ -58,6 +58,9 @@ import JNMentionTextView
       self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
       ```
 
+      - ***Setup the placeHolder :***
+        Custom Textview that has a placeholder with their corresponding style.
+
       - ***Setup the data list:***
         The list of entities that you can select, as instance of class / struct which confirms to the **JNMentionPickable**           protocol by implementing his methods:
 
