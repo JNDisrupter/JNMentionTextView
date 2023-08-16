@@ -16,9 +16,9 @@
 
 ## Requirements
 
-- Xcode 9
-- iOS 9.0+
-- Swift 4.2+
+- Xcode 14.3.1
+- iOS 11.0+
+- Swift 5.8+
 
 
 ## Installation
@@ -57,6 +57,9 @@ import JNMentionTextView
       ```swift
       self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
       ```
+
+      - ***Setup the placeHolder :***
+        Custom Textview that has a placeholder with their corresponding style.
 
       - ***Setup the data list:***
         The list of entities that you can select, as instance of class / struct which confirms to the **JNMentionPickable**           protocol by implementing his methods:

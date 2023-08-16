@@ -72,7 +72,57 @@ public class JNMentionTextView: UITextView {
     /// Mention Delegate
     public weak var mentionDelegate: JNMentionTextViewDelegate?
     
-    // MARK:- Initializers
+    /// Placeholder label
+    private var placeholderLabel: UILabel?
+    
+    /// Place holder string
+    public var placeHolder: String? {
+        
+        didSet {
+            
+            // Add placeholder label subview
+            self.addPlaceholderLabelSubview()
+        }
+    }
+    
+    /// Place holder Attributes
+    public var placeHolderAttributes: [NSAttributedString.Key : Any] = [:] {
+        didSet {
+            
+            // Update placeholder text attributes
+            self.updatePlaceholderTextAttributes()
+        }
+    }
+    
+    /// Bounds
+    override open var bounds: CGRect {
+        didSet {
+            
+            // Resize placeholder
+            self.resizePlaceholder()
+        }
+    }
+    
+    /// Font
+    public override var font: UIFont? {
+        didSet {
+            
+            // Resize placeholder
+            self.resizePlaceholder()
+            
+            // Update placeholder label font
+            self.placeholderLabel?.font = self.placeholderFont
+        }
+    }
+    
+    /// Placeholder font
+    public var placeholderFont: UIFont {
+        get {
+            (self.placeHolderAttributes[NSAttributedString.Key.font] as? UIFont) ?? self.font ?? UIFont.systemFont(ofSize: 10.0)
+        }
+    }
+    
+    // MARK: - Initializers
 
     /**
      Initializer
@@ -127,7 +177,89 @@ public class JNMentionTextView: UITextView {
         // set options
         self.options = options
     }
+    
+    /**
+     Update placeholder label visibility
+     */
+    public func showPlaceholder(_ show: Bool) {
+        self.placeholderLabel?.isHidden = !show
+    }
+    
+    /**
+     Resize placeholder
+     */
+    private func resizePlaceholder() {
+        guard let placeholderLabel = self.placeholderLabel else { return }
+        
+        // Set placeholder label frame
+        placeholderLabel.frame = self.getPlaceholderLabelFrame()
+    }
+    
+    /**
+     Add placeholder label subview
+     */
+    private func addPlaceholderLabelSubview() {
+        guard let placeHolder = self.placeHolder, !placeHolder.isEmpty else { return }
+        
+        // Build placeholder text attributes
+        let placeholderTextAttributes = self.getPlaceholderTextAttributes()
+        
+        // Init placeholder label with frame
+        self.placeholderLabel = UILabel(frame: self.getPlaceholderLabelFrame())
+        
+        // Set placeholder label attributed text
+        self.placeholderLabel!.attributedText = NSAttributedString(string: placeHolder, attributes: placeholderTextAttributes)
+        
+        // Add subview
+        self.addSubview(self.placeholderLabel!)
+    }
+    
+    /**
+     Get placeholder label frame
+     */
+    private func getPlaceholderLabelFrame() -> CGRect {
+        
+        return CGRect(x: max(self.textContainerInset.left, self.contentInset.left) + self.textContainer.lineFragmentPadding, y: self.textContainerInset.top, width: self.frame.width, height: self.placeholderFont.lineHeight)
+    }
 
+    /**
+     Update placeholder text attributes
+     */
+    private func updatePlaceholderTextAttributes() {
+        guard let placeholderLabel = self.placeholderLabel, let placeholderString = self.placeHolder else { return }
+        
+        // Build placeholder text attributes
+        let placeholderTextAttributes = self.getPlaceholderTextAttributes()
+        
+        // Set placeholder label attributed text
+        placeholderLabel.attributedText = NSAttributedString(string: placeholderString, attributes: placeholderTextAttributes)
+    }
+    
+    /**
+     Get placeholder text attributes
+     */
+    private func getPlaceholderTextAttributes() -> [NSAttributedString.Key: Any] {
+        
+        // Placeholder text attributes
+        var placeholderTextAttributes: [NSAttributedString.Key: Any] = [:]
+        
+        // Set foreground color
+        placeholderTextAttributes[NSAttributedString.Key.foregroundColor] = self.placeHolderAttributes[NSAttributedString.Key.foregroundColor] ?? UIColor.lightGray
+        
+        // Set font
+        placeholderTextAttributes[NSAttributedString.Key.font] = self.placeholderFont
+        
+        // Paragraph style
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        paragraphStyle.alignment = self.textAlignment
+        
+        // Set paragraph style
+        placeholderTextAttributes[NSAttributedString.Key.paragraphStyle] =  paragraphStyle
+        
+        return placeholderTextAttributes
+    }
+    
     /**
      Register Table View Cells
      - Parameter nib: UINib.
@@ -214,5 +346,4 @@ public class JNMentionTextView: UITextView {
             strongSelf.pickerViewController?.reloadData()
         })
     }
-    
 }

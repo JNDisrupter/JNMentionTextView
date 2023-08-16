@@ -37,6 +37,9 @@ class JNMentionCustomCellViewController: UIViewController {
         self.textView.mentionReplacements = ["@": [NSAttributedString.Key.foregroundColor: UIColor.blue,
                                                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)], "#": [NSAttributedString.Key.foregroundColor: UIColor.red, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]]
         
+        // set text view mention replacements
+        self.textView.normalAttributes =  [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]
+        
         // init options
         let options = JNMentionPickerViewOptions(viewPositionMode: self.positionMode)
         
@@ -81,6 +84,11 @@ class JNMentionCustomCellViewController: UIViewController {
         
         // register table view cells
         self.textView.registerTableViewCell(UINib(nibName: CustomTableViewCell.getReuseIdentifier(), bundle: Bundle.main), forCellReuseIdentifier: CustomTableViewCell.getReuseIdentifier())
+        
+        // Set PlaceHolder
+        self.textView.placeHolder = "Type Message"
+        
+        self.textView.textContainerInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         
     }
     
