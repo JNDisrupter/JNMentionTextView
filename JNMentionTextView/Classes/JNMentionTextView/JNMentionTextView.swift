@@ -103,6 +103,20 @@ public class JNMentionTextView: UITextView {
         }
     }
     
+    /// Text
+    override open var text: String! {
+        didSet {
+            self.updatePlaceholderLabelVisibility()
+        }
+    }
+    
+    /// Attributed text
+    override open var attributedText: NSAttributedString! {
+        didSet {
+            self.updatePlaceholderLabelVisibility()
+        }
+    }
+    
     /// Font
     public override var font: UIFont? {
         didSet {
@@ -179,10 +193,26 @@ public class JNMentionTextView: UITextView {
     }
     
     /**
-     Update placeholder label visibility
+     Update placeholder visibility
      */
-    public func showPlaceholder(_ show: Bool) {
-        self.placeholderLabel?.isHidden = !show
+    public func updatePlaceholderLabelVisibility() {
+        guard self.placeholderLabel != nil else { return }
+        
+        // Is placeholder hidden
+        var isPlaceholderLabelHidden = true
+        
+        // Check if there's a placeholder
+        // AND value text is empty
+        if let placeholder = self.placeHolder,
+           !placeholder.isEmpty,
+           self.text.isEmpty,
+           self.attributedText.string.isEmpty {
+            
+            isPlaceholderLabelHidden = false
+        }
+        
+        // Update placeholder label visibility
+        self.placeholderLabel?.isHidden = isPlaceholderLabelHidden
     }
     
     /**
@@ -212,6 +242,9 @@ public class JNMentionTextView: UITextView {
         
         // Add subview
         self.addSubview(self.placeholderLabel!)
+        
+        // Update placeholder label visibility
+        self.updatePlaceholderLabelVisibility()
     }
     
     /**

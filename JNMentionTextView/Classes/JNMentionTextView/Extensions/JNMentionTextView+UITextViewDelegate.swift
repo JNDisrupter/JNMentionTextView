@@ -171,7 +171,7 @@ extension JNMentionTextView: UITextViewDelegate {
         self.mentionDelegate?.textViewDidChange?(textView)
         
         // Update placeholder label visibility
-        self.showPlaceholder(textView.text.isEmpty)
+        self.updatePlaceholderLabelVisibility()
     }
     
     /**
@@ -195,7 +195,7 @@ extension JNMentionTextView: UITextViewDelegate {
         self.mentionDelegate?.textViewDidBeginEditing?(textView)
         
         // Update placeholder label visibility
-        self.showPlaceholder(textView.text.isEmpty)
+        self.updatePlaceholderLabelVisibility()
     }
     
     /**
@@ -209,7 +209,7 @@ extension JNMentionTextView: UITextViewDelegate {
         }
         
         // Update placeholder label visibility
-        self.showPlaceholder(textView.text.isEmpty)
+        self.updatePlaceholderLabelVisibility()
     }
     
     /**
