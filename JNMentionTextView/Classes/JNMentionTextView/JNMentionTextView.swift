@@ -106,14 +106,14 @@ public class JNMentionTextView: UITextView {
     /// Text
     override open var text: String! {
         didSet {
-            self.updatePlaceholderLabelVisibility()
+            self.updatePlaceholderVisibility()
         }
     }
     
     /// Attributed text
     override open var attributedText: NSAttributedString! {
         didSet {
-            self.updatePlaceholderLabelVisibility()
+            self.updatePlaceholderVisibility()
         }
     }
     
@@ -195,7 +195,7 @@ public class JNMentionTextView: UITextView {
     /**
      Update placeholder visibility
      */
-    public func updatePlaceholderLabelVisibility() {
+    func updatePlaceholderVisibility() {
         guard self.placeholderLabel != nil else { return }
         
         // Is placeholder hidden
@@ -244,7 +244,7 @@ public class JNMentionTextView: UITextView {
         self.addSubview(self.placeholderLabel!)
         
         // Update placeholder label visibility
-        self.updatePlaceholderLabelVisibility()
+        self.updatePlaceholderVisibility()
     }
     
     /**
