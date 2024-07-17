@@ -70,9 +70,6 @@ extension JNMentionTextView {
      */
     open func setSmartText(_ text: String) {
         
-        /// Difference
-        var difference = 0
-        
         /// Attributed String
         let attributedString = NSMutableAttributedString(string: text, attributes: self.normalAttributes)
         
@@ -82,44 +79,37 @@ extension JNMentionTextView {
             // build pattern
             let updatedPattern = "(\\" + pattern + "([A-Za-z0-9]{0,}))\\s"
             
-            // reset difference
-            difference = 0
-            
             do {
-
+                
+                // build regex
                 let regex = try NSRegularExpression(pattern: updatedPattern)
-                regex.enumerateMatches(in: attributedString.string, range: NSRange(location: 0, length: attributedString.length)) {
-                    match, flags, stop in
+                
+                // get matches
+                let matches = regex.matches(in: attributedString.string, options: [], range: NSRange(attributedString.string.startIndex..<attributedString.string.endIndex, in: attributedString.string))
+                
+                // loop in matches in revers
+                for match in matches.reversed() {
                     
-                    if let matchRange = match?.range(at: 1) {
+                    let matchRange = match.range(at: 1)
+                    
+                    // get mention ID
+                    let searchID = String((attributedString.string as NSString).substring(with: matchRange).dropFirst())
+                    
+                    // get mention item for ID
+                    if let item = self.mentionDelegate?.jnMentionTextView(getMentionItemFor: pattern, id: searchID) {
                         
-                        // update range
-                        var updatedRange = matchRange
-                        updatedRange.location += difference
+                        // create mention entity
+                        let mentionItem = JNMentionEntity(item: item, symbol: pattern)
                         
-                        // get mention ID
-                        let searchID = String((attributedString.string as NSString).substring(with: updatedRange).dropFirst())
+                        // update attribute string by adding mention item
+                        var updatedAttributes = attributes
+                        updatedAttributes[JNMentionTextView.JNMentionAttributeName] = mentionItem
                         
-                        // get mention item for ID
-                        if let item = self.mentionDelegate?.jnMentionTextView(getMentionItemFor: pattern, id: searchID) {
-                            
-                            // create mention entity
-                            let mentionItem = JNMentionEntity(item: item, symbol: pattern)
-                            
-                            // update attribute string by adding mention item
-                            var updatedAttributes = attributes
-                            updatedAttributes[JNMentionTextView.JNMentionAttributeName] = mentionItem
-                            
-                            // create mention attributed string
-                            let mentionAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: item.getPickableTitle(),
-                                                                                                                         attributes: updatedAttributes))
-                            // replace the matched pattern with the mention attributed string
-                            attributedString.replaceCharacters(in: updatedRange, with: mentionAttributedString)
-                            
-                            // check if difference is less than.
-                            difference += item.getPickableTitle().count - matchRange.length
-                            
-                        }
+                        // create mention attributed string
+                        let mentionAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: item.getPickableTitle(),
+                                                                                                                     attributes: updatedAttributes))
+                        // replace the matched pattern with the mention attributed string
+                        attributedString.replaceCharacters(in: matchRange, with: mentionAttributedString)
                     }
                 }
             }
@@ -147,9 +137,6 @@ extension JNMentionTextView {
         // add space to text
         let text = text + " "
         
-        /// Difference
-        var difference = 0
-        
         /// Attributed String
         let attributedString = NSMutableAttributedString(string: text, attributes: normalAttributes)
         
@@ -159,44 +146,37 @@ extension JNMentionTextView {
             // build pattern
             let updatedPattern = "(\\" + pattern + "([A-Za-z0-9]{0,}))\\s"
             
-            // reset difference
-            difference = 0
-            
             do {
                 
+                // build regex
                 let regex = try NSRegularExpression(pattern: updatedPattern)
-                regex.enumerateMatches(in: attributedString.string, range: NSRange(location: 0, length: attributedString.length)) {
-                    match, flags, stop in
+                
+                // get matches
+                let matches = regex.matches(in: attributedString.string, options: [], range: NSRange(attributedString.string.startIndex..<attributedString.string.endIndex, in: attributedString.string))
+                
+                // loop in matches in revers
+                for match in matches.reversed() {
                     
-                    if let matchRange = match?.range(at: 1) {
+                    let matchRange = match.range(at: 1)
+                    
+                    // get mention ID
+                    let searchID = String((attributedString.string as NSString).substring(with: matchRange).dropFirst())
+                    
+                    // get mention item for ID
+                    if let item = data[pattern]?.first(where: { $0.getPickableIdentifier() == searchID}) {
                         
-                        // update range
-                        var updatedRange = matchRange
-                        updatedRange.location += difference
+                        // create mention entity
+                        let mentionItem = JNMentionEntity(item: item , symbol: pattern)
                         
-                        // get mention ID
-                        let searchID = String((attributedString.string as NSString).substring(with: updatedRange).dropFirst())
+                        // update attribute string by adding mention item
+                        var updatedAttributes = attributes
+                        updatedAttributes[JNMentionTextView.JNMentionAttributeName] = mentionItem
                         
-                        // get mention item for ID
-                        if let item = data[pattern]?.first(where: { $0.getPickableIdentifier() == searchID}) {
-                            
-                            // create mention entity
-                            let mentionItem = JNMentionEntity(item: item , symbol: pattern)
-                            
-                            // update attribute string by adding mention item
-                            var updatedAttributes = attributes
-                            updatedAttributes[JNMentionTextView.JNMentionAttributeName] = mentionItem
-                            
-                            // create mention attributed string
-                            let mentionAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: item.getPickableTitle(),
-                                                                                                                         attributes: updatedAttributes))
-                            // replace the matched pattern with the mention attributed string
-                            attributedString.replaceCharacters(in: updatedRange, with: mentionAttributedString)
-                            
-                            // check if difference is less than.
-                            difference += item.getPickableTitle().count - matchRange.length
-                            
-                        }
+                        // create mention attributed string
+                        let mentionAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: item.getPickableTitle(),
+                                                                                                                     attributes: updatedAttributes))
+                        // replace the matched pattern with the mention attributed string
+                        attributedString.replaceCharacters(in: matchRange, with: mentionAttributedString)
                     }
                 }
             }
