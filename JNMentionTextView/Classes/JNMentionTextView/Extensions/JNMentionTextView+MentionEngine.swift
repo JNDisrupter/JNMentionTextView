@@ -31,9 +31,9 @@ extension JNMentionTextView {
         
         switch self.options.viewPositionMode {
         case .up:
-            popoverPresentationController?.permittedArrowDirections = .up
-        case .down:
             popoverPresentationController?.permittedArrowDirections = .down
+        case .down:
+            popoverPresentationController?.permittedArrowDirections = .up
         default:
             popoverPresentationController?.permittedArrowDirections = [.up, .down]
         }

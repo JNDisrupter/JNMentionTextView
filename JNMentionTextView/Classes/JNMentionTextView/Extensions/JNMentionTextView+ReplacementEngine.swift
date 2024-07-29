@@ -68,7 +68,7 @@ extension JNMentionTextView {
      - Parameter text: smart text which m.
      - Parameter selectedLocation: selected location.
      */
-    open func setSmartText(_ text: String) {
+    public func setSmartText(_ text: String) {
         
         /// Attributed String
         let attributedString = NSMutableAttributedString(string: text, attributes: self.normalAttributes)
@@ -85,7 +85,7 @@ extension JNMentionTextView {
                 let regex = try NSRegularExpression(pattern: updatedPattern)
                 
                 // get matches
-                let matches = regex.matches(in: attributedString.string, options: [], range: NSRange(attributedString.string.startIndex..<attributedString.string.endIndex, in: attributedString.string))
+                let matches = regex.matches(in: attributedString.string, options: [], range: NSRange(location: 0, length: attributedString.length))
                 
                 // loop in matches in revers
                 for match in matches.reversed() {
@@ -132,7 +132,7 @@ extension JNMentionTextView {
      - Parameter mentionReplacements: Mention Replacement.
      - Returns smartReplacement: smart replacement attributed string.
      */
-    open class func getSmartReplacement(text: String, data: [String: [JNMentionPickable]], normalAttributes: [NSAttributedString.Key: Any], mentionReplacements: [String: [NSAttributedString.Key : Any]]) -> NSAttributedString {
+    public class func getSmartReplacement(text: String, data: [String: [JNMentionPickable]], normalAttributes: [NSAttributedString.Key: Any], mentionReplacements: [String: [NSAttributedString.Key : Any]]) -> NSAttributedString {
         
         // add space to text
         let text = text + " "
@@ -152,7 +152,7 @@ extension JNMentionTextView {
                 let regex = try NSRegularExpression(pattern: updatedPattern)
                 
                 // get matches
-                let matches = regex.matches(in: attributedString.string, options: [], range: NSRange(attributedString.string.startIndex..<attributedString.string.endIndex, in: attributedString.string))
+                let matches = regex.matches(in: attributedString.string, options: [], range: NSRange(location: 0, length: attributedString.length))
                 
                 // loop in matches in revers
                 for match in matches.reversed() {
