@@ -22,13 +22,13 @@ public struct JNMentionPickerViewPositionwMode: OptionSet {
     }
 
     /// Picker View Positionw Mode Up
-    public static let up = JNMentionPickerViewPositionwMode(rawValue: 0)
+    public static let up = JNMentionPickerViewPositionwMode(rawValue: 1 << 0)
     
     /// Picker View Positionw Mode Down
-    public static let down = JNMentionPickerViewPositionwMode(rawValue: 1)
+    public static let down = JNMentionPickerViewPositionwMode(rawValue: 1 << 1)
     
     /// Picker View Positionw Mode automatic
-    public static let automatic = JNMentionPickerViewPositionwMode(rawValue: 2)
+    public static let automatic = JNMentionPickerViewPositionwMode(rawValue: 1 << 2)
 }
 
 /// JNMention Picker View Options
