@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // JNMention Picker View Delegate
 protocol JNMentionPickerViewControllerDelegate: NSObjectProtocol {

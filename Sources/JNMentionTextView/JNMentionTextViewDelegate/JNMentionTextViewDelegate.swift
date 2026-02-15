@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// JNMention Text View Delegate
 public protocol JNMentionTextViewDelegate: UITextViewDelegate {

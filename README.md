@@ -16,19 +16,14 @@
 
 ## Requirements
 
-- Xcode 14.3.1
-- iOS 11.0+
-- Swift 5.8+
+- Xcode 15.3
+- iOS 12.0+
+- Swift 5.10+
 
 
 ## Installation
 
-JNMentionTextView is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```swift
-pod 'JNMentionTextView'
-```
+JNMentionTextView support SwiftPM. To use SwiftPM, you should use Xcode 15.3 to open your project. Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter [JNMentionTextView repo's URL](https://github.com/JNDisrupter/JNMentionTextView.git)
 
 ## Usage:
 
