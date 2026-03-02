@@ -16,19 +16,14 @@
 
 ## Requirements
 
-- Xcode 14.3.1
-- iOS 11.0+
-- Swift 5.8+
+- iOS 12.0+ / macOS 15.7+
+- Xcode 26+
+- Swift 5.10+
 
 
-## Installation
+## Installation with Swift Package Manager
 
-JNMentionTextView is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```swift
-pod 'JNMentionTextView'
-```
+JNMentionTextView support SwiftPM. To use SwiftPM, you should use Xcode 26 to open your project. Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter [JNMentionTextView repo's URL](https://github.com/JNDisrupter/JNMentionTextView.git)
 
 ## Usage:
 
@@ -195,10 +190,6 @@ Consider the String as template that retured from the BackEnd has this format an
             public func resignFirstResponder(completion: (() -> ())? = nil)
         ```
    
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Author
 
 Jayel Zaghmoutt, Mohammad Nabulsi & Mohammad Ihmouda
